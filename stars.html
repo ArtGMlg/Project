@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+    </script>
+    <script src="./three.js"></script>
+    <script src="AstroControls.js"></script>
+    <script src="Detector.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Звёздное небо</title>
+  </head>
+
+  <body>
+    <div id ="WebGL-output" > </div>
+    <script>
+        if (!Detector.webgl) Detector.addGetWebGLMessage();
+        var scene = new THREE.Scene(); 
+        var camera = new THREE.PerspectiveCamera(35 , window.innerWidth / window.innerHeight , 0.1, 1000); 
+        var renderer = new THREE.WebGLRenderer();
+        var loader = new THREE.TextureLoader();
+        loader.crossOrigin = '';
+        var controls;
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        var links = ["https://i.ibb.co/nR0RC9f/ursaMin.png", "https://i.ibb.co/099R3vr/1.png", "https://i.ibb.co/xmCqZpF/Cepheus.png", "https://i.ibb.co/7RhZKNL/Ursa-Major.png", "https://i.ibb.co/ZXx2kR5/cassiopea.png","https://i.ibb.co/MhJLP5D/camelopadalis.png", "https://i.ibb.co/87qj0w0/hercules.png", "https://i.ibb.co/Hr2dFN6/corona-borealis.png", "https://i.ibb.co/g68k5rD/lyra.png", "https://i.ibb.co/fH5LgW7/Cygnus.png", "https://i.ibb.co/zS0t2HF/lacerta.png", "https://i.ibb.co/Z2xSbJk/Gemini.png", "https://i.ibb.co/dPr20cn/leo-minor.png", "https://i.ibb.co/mJRx2zP/pegasus-andromeda.png", "https://i.ibb.co/wgmBqXq/triangulum.png", "https://i.ibb.co/5sGkKTh/booties.png", "https://i.ibb.co/PzQ5QFX/canes-vinatici.png"];
+        var pozX = [];
+        var pozY = [];
+        var pozZ = [];
+        var sizeX = [];
+        var sizeY = [];
+        var rotX = [];
+        var rotY = [];
+        var rotZ =[];
+
+
+        //Space background is a large sphere
+        var spacetex = loader.load("https://i.ibb.co/1Rg1fLN/8k-stars-opti.jpg");
+        var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
+        var spacesphereMat = new THREE.MeshPhongMaterial();
+        spacesphereMat.map = spacetex;
+
+        var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
+
+        //spacesphere needs to be double sided as the camera is within the spacesphere
+        spacesphere.material.side = THREE.DoubleSide;
+
+        spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
+        spacesphere.material.map.wrapT = THREE.RepeatWrapping;
+        spacesphere.material.map.repeat.set( 4, 3);
+
+        spacesphere.position.x = 0; 
+        spacesphere.position.y = 0; 
+        spacesphere.position.z = 0; 
+
+        scene.add(spacesphere);
+
+        //position camera
+        camera.position.set(0,0,1); 
+
+        var light = new THREE.AmbientLight(0xffffff, 3);
+        scene.add(light);
+
+        for (var i = 0; i < links.length; i++) {
+            var constellationGeo = new THREE.PlaneGeometry(5.1,1.68,1,1);
+            var constellationMat = new THREE.MeshPhongMaterial({map: loader.load(links[i]) , side: THREE.DoubleSide, transparent: true});
+            var constellation = new THREE.Mesh(ursaMin,ursaplaneMaterial);1
+            constellation.position.set(pozX[i], pozZ[i], pozZ[i]);
+        }
+
+        var ursaMin = new THREE.PlaneGeometry(5.1,1.68,1,1);
+        var ursaplaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[0]) , side: THREE.DoubleSide, transparent: true});
+        var ursam = new THREE.Mesh(ursaMin,ursaplaneMaterial);
+        ursam.position.x = 0;
+        ursam.position.y = 0;
+        ursam.position.z = -18;
+        scene.add(ursam);
+
+        var dracoPlane = new THREE.PlaneGeometry(7.2,4.3,1,1);
+        var dracoplaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[1]) , side: THREE.DoubleSide, transparent: true});
+        var draco = new THREE.Mesh(dracoPlane,dracoplaneMaterial);
+        draco.position.x = 1;
+        draco.position.y = -2;
+        draco.position.z = -16;
+        draco.rotation.z += 0.5;
+        scene.add(draco);
+
+        var cepheusPlane = new THREE.PlaneGeometry(4.54,5,1,1);
+        var cepheusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[2]) , side: THREE.DoubleSide, transparent: true});
+        var cepheus = new THREE.Mesh(cepheusPlane,cepheusPlaneMaterial);
+        cepheus.position.x = -5;
+        cepheus.position.y = -2;
+        cepheus.position.z = -17;
+        cepheus.rotation.z -= 1;
+        scene.add(cepheus);
+
+        var ursaMajPlane = new THREE.PlaneGeometry(9.116,6.52,1,1);
+        var ursaMajPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[3]) , side: THREE.DoubleSide, transparent: true});
+        var ursaMaj = new THREE.Mesh(ursaMajPlane,ursaMajPlaneMaterial);
+        ursaMaj.position.x = 6;
+        ursaMaj.position.y = 5;
+        ursaMaj.position.z = -16.1;
+        ursaMaj.rotation.z += 2;
+        ursaMaj.rotation.y -= 0.5;
+        scene.add(ursaMaj);
+
+        var casiopeaPlane = new THREE.PlaneGeometry(6.23,4.0788,1,1);
+        var casiopeaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[4]) , side: THREE.DoubleSide, transparent: true});
+        var casiopea = new THREE.Mesh(casiopeaPlane,casiopeaPlaneMaterial);
+        casiopea.position.x = -9;
+        casiopea.position.y = 2;
+        casiopea.position.z = -16.1;
+        casiopea.rotation.z += 4.8;
+        scene.add(casiopea);
+
+        var camelopardusPlane = new THREE.PlaneGeometry(3.514,5.16,1,1);
+        var camelopardusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[5]) , side: THREE.DoubleSide, transparent: true});
+        var camelopardus = new THREE.Mesh(camelopardusPlane,camelopardusPlaneMaterial);
+        camelopardus.position.x = -6;
+        camelopardus.position.y = 7;
+        camelopardus.position.z = -16;
+        camelopardus.rotation.z += 1.2;
+        camelopardus.rotation.y += 0.5;
+        scene.add(camelopardus);
+
+        var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
+        var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
+        var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
+        hercules.position.x = 4;
+        hercules.position.y = -8;
+        hercules.position.z = -15.5;
+        hercules.rotation.z += 0.5;
+        scene.add(hercules);
+
+        var coronaPlane = new THREE.PlaneGeometry(2.3,1.8,1,1);
+        var coronaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[7]) , side: THREE.DoubleSide, transparent: true});
+        var coronaBorealis = new THREE.Mesh(coronaPlane,coronaPlaneMaterial);
+        coronaBorealis.position.x = 8;
+        coronaBorealis.position.y = -7;
+        coronaBorealis.position.z = -14;
+        coronaBorealis.rotation.z += 0.5;
+        scene.add(coronaBorealis);
+
+        var lyraPlane = new THREE.PlaneGeometry(1.6,1.5,1,1);
+        var lyraPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[8]) , side: THREE.DoubleSide, transparent: true});
+        var lyra = new THREE.Mesh(lyraPlane,lyraPlaneMaterial);
+        lyra.position.x = -1;
+        lyra.position.y = -9.5;
+        lyra.position.z = -16.1;
+        lyra.rotation.z += 0.5;
+        scene.add(lyra);
+
+        var cygnusPlane = new THREE.PlaneGeometry(6.89,5.04,1,1);
+        var cygnusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[9]) , side: THREE.DoubleSide, transparent: true});
+        var cygnus = new THREE.Mesh(cygnusPlane,cygnusPlaneMaterial);
+        cygnus.position.x = -6;
+        cygnus.position.y = -7;
+        cygnus.position.z = -12;
+        //cygnus.rotation.z += 0.5;
+        scene.add(cygnus);
+
+        var lacertaPlane = new THREE.PlaneGeometry(1.36,3.2,1,1);
+        var lacertaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[10]) , side: THREE.DoubleSide, transparent: true});
+        var lacerta = new THREE.Mesh(lacertaPlane,lacertaPlaneMaterial);
+        lacerta.position.x = -9;
+        lacerta.position.y = -3;
+        lacerta.position.z = -10;
+        lacerta.rotation.z -= 0.2;
+        scene.add(lacerta);
+
+        var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
+        var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
+        var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
+        hercules.position.x = 4;
+        hercules.position.y = -8;
+        hercules.position.z = -16.1;
+        hercules.rotation.z += 0.5;
+        //scene.add(hercules);
+
+        var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
+        var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
+        var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
+        hercules.position.x = 4;
+        hercules.position.y = -8;
+        hercules.position.z = -16.1;
+        hercules.rotation.z += 0.5;
+        //scene.add(hercules);
+
+        var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
+        var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
+        var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
+        hercules.position.x = 4;
+        hercules.position.y = -8;
+        hercules.position.z = -16.1;
+        hercules.rotation.z += 0.5;
+        //scene.add(hercules);
+
+        var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
+        var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
+        var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
+        hercules.position.x = 4;
+        hercules.position.y = -8;
+        hercules.position.z = -16.1;
+        hercules.rotation.z += 0.5;
+        //scene.add(hercules);
+
+        var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
+        var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
+        var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
+        hercules.position.x = 4;
+        hercules.position.y = -8;
+        hercules.position.z = -16.1;
+        hercules.rotation.z += 0.5;
+        //scene.add(hercules);
+
+        $("#WebGL-output").append(renderer.domElement); 
+
+        window.addEventListener('resize', onResize, false);
+
+        function onResize() {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = (window.innerWidth / window.innerHeight);
+            camera.updateProjectionMatrix();
+        };
+
+        controls = new THREE.AstroControls( camera, renderer.domElement );
+
+        //call render loop once
+
+        render();
+
+        //render loop
+        function render() { 
+            requestAnimationFrame(render);
+            controls.update();
+            renderer.render(scene, camera); 
+        };
+    </script>
+  </body>
+</html>
+
+<!-- <a href="https://ibb.co/dQcgWbF"><img src="https://i.ibb.co/Hr2dFN6/corona-borealis.png" alt="corona-borealis" border="0"></a>
+<a href="https://ibb.co/3cqQ3bH"><img src="https://i.ibb.co/fH5LgW7/Cygnus.png" alt="Cygnus" border="0"></a>
+<a href="https://ibb.co/41p20f5"><img src="https://i.ibb.co/Z2xSbJk/Gemini.png" alt="Gemini" border="0"></a>
+<a href="https://ibb.co/yQt8XCX"><img src="https://i.ibb.co/87qj0w0/hercules.png" alt="hercules" border="0"></a>
+<a href="https://ibb.co/1rLqfnH"><img src="https://i.ibb.co/dPr20cn/leo-minor.png" alt="leo-minor" border="0"></a>
+<a href="https://ibb.co/x3bxp2M"><img src="https://i.ibb.co/g68k5rD/lyra.png" alt="lyra" border="0"></a>
+<a href="https://ibb.co/9npM1Yd"><img src="https://i.ibb.co/mJRx2zP/pegasus-andromeda.png" alt="pegasus-andromeda" border="0"></a>
+<a href="https://ibb.co/2h4WrQr"><img src="https://i.ibb.co/wgmBqXq/triangulum.png" alt="triangulum" border="0"></a>
+<a href="https://ibb.co/WPCMfpj"><img src="https://i.ibb.co/7RhZKNL/Ursa-Major.png" alt="Ursa-Major" border="0"></a>
+<a href="https://ibb.co/wpB7cyh"><img src="https://i.ibb.co/5sGkKTh/booties.png" alt="booties" border="0"></a>
+<a href="https://ibb.co/DbjnwgD"><img src="https://i.ibb.co/MhJLP5D/camelopadalis.png" alt="camelopadalis" border="0"></a>
+<a href="https://ibb.co/cXLNLkf"><img src="https://i.ibb.co/PzQ5QFX/canes-vinatici.png" alt="canes-vinatici" border="0"></a>
+<a href="https://ibb.co/3dcRL52"><img src="https://i.ibb.co/ZXx2kR5/cassiopea.png" alt="cassiopea" border="0"></a>
+<a href="https://ibb.co/f81dJhD"><img src="https://i.ibb.co/xmCqZpF/Cepheus.png" alt="Cepheus" border="0"></a> -->

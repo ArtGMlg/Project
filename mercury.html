@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Меркурий</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+    </script>
+    <script src="./three.js"></script>
+    <script src="Detector.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+   <div class="menu">
+    <nav class="top-menu dws-menu" id="top-menu">
+      <input onclick="check()" type="checkbox" name="toggle" id="menu" class="toggleMenu">
+      <label for="menu" class="toggleMenu"><i class="fas fa-bars"></i></label>
+      <ul class="menu-main" id="menu-main">
+        <li><a href="earth.html"><i class="fas fa-home"></i></a></li>
+        <li><a href="#">Мекрурий</a></li>
+        <li><a href="venus.html">Венера</a></li>
+        <li><a href="earth.html">Земля</a></li>
+        <li><a href="mars.html">Марс</a></li>
+        <li><a href="jupiter.html">Юпитер</a></li>
+        <li><a href="saturn.html">Сатурн</a></li>
+        <li><a href="uranus.html">Уран</a></li>
+        <li><a href="neptune.html">Нептун</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="inf">
+    <div class="label">
+      <input onclick="collapse()" type="checkbox" name="toggle" id="collapse" class="collapse">
+      <label for="collapse" id="collapse-up"><i class="fas fa-sort-up"></i></label>
+      <label for="collapse" id="collapse-down"><i class="fas fa-sort-down"></i></label>
+    </div>
+    <p id="infp">gggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
+  </div>
+  <div id="range-div">
+      <input type="range" name="range" id="range" class="range" min="-7" max="-4" value='-7' step="0.5" onchange="scale()">
+  </div>
+  <div id ="WebGL-output"></div>
+  <script type="text/javascript" src="./js/blocks.js"></script>
+  <script>
+        if (!Detector.webgl) Detector.addGetWebGLMessage();
+    var scene = new THREE.Scene(); 
+    var camera = new THREE.PerspectiveCamera(45 , window.innerWidth / window.innerHeight , 0.1, 1000); 
+    var renderer = new THREE.WebGLRenderer();
+    var loader = new THREE.TextureLoader();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);  
+    
+    var planetGeometry = new THREE.SphereGeometry(1,32,32); 
+    
+    //Load the planet textures
+    loader.crossOrigin = '';
+    var texture = loader.load("https://i.ibb.co/Czj5Cdd/mercurymap.jpg");
+    var bumpmap = loader.load("https://i.ibb.co/jZtxXnd/mercurybump.jpg");
+    
+    var planetMaterial = new THREE.MeshPhongMaterial(); 
+    planetMaterial.map = texture;
+    
+    planetMaterial.bumpMap = bumpmap;
+    planetMaterial.bumpScale = 0.005;
+
+
+    var planet = new THREE.Mesh(planetGeometry, planetMaterial); 
+
+    planet.position.set(0,0,0); 
+    
+    //planet.rotation.x -= 0.4;
+   
+    scene.add(planet); 
+    
+    //Space background is a large sphere
+    var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");
+    var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
+    var spacesphereMat = new THREE.MeshPhongMaterial();
+    spacesphereMat.map = spacetex;
+
+    var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
+    
+    //spacesphere needs to be double sided as the camera is within the spacesphere
+    spacesphere.material.side = THREE.DoubleSide;
+    
+    //spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
+    //spacesphere.material.map.wrapT = THREE.RepeatWrapping;
+    //spacesphere.material.map.repeat.set( 5, 3);
+    
+    scene.add(spacesphere);
+   
+    //position camera
+    camera.position.set(0,0,-8);
+    camera.lookAt(scene.position); 
+    
+    //create two spotlights to illuminate the scene
+    var spotLight = new THREE.SpotLight( 0xffffff ); 
+    spotLight.position.set( 40, 0, -25 ); 
+    spotLight.intensity = 1.8;
+    scene.add( spotLight );
+
+    $("#WebGL-output").append(renderer.domElement);
+
+        window.addEventListener('resize', onResize, false);
+
+        function onResize() {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = (window.innerWidth / window.innerHeight);
+            camera.updateProjectionMatrix();
+        };
+
+    //call render loop once
+    render();
+
+    //render loop
+    function render() { 
+      requestAnimationFrame(render); 
+      //rotate planet and spacesphere
+      planet.rotation.y += 0.002;
+      spacesphere.rotation.y += 0.001;
+      renderer.render(scene, camera); 
+    };
+    
+    function scale() {
+        var scale = document.getElementById('range').value;
+        camera.position.z = scale;
+    }
+    </script>
+</body>
+</html>

@@ -42,7 +42,6 @@
       <input type="range" name="range" id="range" class="range" min="-7" max="-4" value='-7' step="0.5" onchange="scale()">
   </div>
   <div id ="WebGL-output" > </div>
-  <script type="text/javascript" src="./js/blocks.js"></script>
   <script>
         if (!Detector.webgl) Detector.addGetWebGLMessage();
     var scene = new THREE.Scene(); 
@@ -125,5 +124,6 @@
         camera.position.z = scale;
     }
     </script>
+  <script type="text/javascript" src="./js/blocks.js"></script>
 </body>
 </html>

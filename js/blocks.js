@@ -13,7 +13,7 @@ function onResize() {
   if ($(window).width() <= 870) {
     document.getElementById('menu-main').style.display = "none";
     document.getElementById('top-menu').style.height = height*0.09 + "px";
-    camera.position.set(0,0,-9);
+    camera.position.set(0,0,-8);
   }else{
     document.getElementById('menu-main').style.display = "inline-block";
     camera.position.set(0,0,-7);

@@ -37,10 +37,6 @@
       <label for="collapse" id="collapse-up"><i id="label" class="fas fa-sort-up"></i></label>
     </div>
     <div id="infp">
-      <p>
-        <input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">
-        <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
-      </p>
       <ul>
         <li>Третья планета от Солнца.</li>
         <li>Предположительно жизнь появилась на планете примерно  4,25 млрд лет назад.</li>
@@ -50,6 +46,12 @@
         <li>Земля имеет один естественный спутник – <a href="moon.html">Луну</a>. Остальные искусственные.</li>
       </ul>
     </div>
+  </div>
+  <div id="cutter-div">
+    <p>
+      <input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">
+      <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
+    </p>
   </div>
   <div id="range-div">
       <input type="range" name="range" id="range" class="range" min="-7" max="-4" value='-7' step="0.5" onchange="scale()">
@@ -142,7 +144,7 @@
           cut = create();
           scene.remove(planet);
           scene.add(cut);
-          setTimeout(stop, 500);
+          setTimeout(stop, 50);
         }else{
           scene.remove(cut);
           cut.geometry.dispose();

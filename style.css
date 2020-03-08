@@ -27,7 +27,7 @@ body{ margin: 0; overflow: hidden; }
 #inf{
   position: fixed;
   background-color: rgba(225,225,225,.5);
-  backdrop-filter: saturate(180%) blur(5px);
+  backdrop-filter: saturate(180%) blur(20px);
   height: 91%;
   width: 100%;
   z-index: 100;
@@ -46,6 +46,18 @@ body{ margin: 0; overflow: hidden; }
   background-color: transparent;
   color: black;
   display: none;
+  cursor: pointer;
+}
+
+#cut{
+  background-color: transparent;
+  color: black;
+  display: none;
+}
+
+#cutter{
+  font-size: 30px;
+  margin-left: 20px;
   cursor: pointer;
 }
 

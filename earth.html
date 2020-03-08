@@ -38,7 +38,8 @@
     </div>
     <div id="infp">
       <p>
-        
+        <input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">
+        <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
       </p>
       <ul>
         <li>Третья планета от Солнца.</li>
@@ -107,7 +108,13 @@
     //spacesphere.material.map.repeat.set( 5, 3);
     
     scene.add(spacesphere);
-   
+    function create(){
+        var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
+        var cutMat = new THREE.MeshPhongMaterial({map: loader.load("https://i.ibb.co/PzWPC32/image.png") , side: THREE.DoubleSide, transparent: true});
+        var cut = new THREE.Mesh(cutGeo,cutMat);
+        cut.position.set(0, 0, 0);
+        return cut;
+    };
     //position camera
     camera.position.set(0,0,-7);
     camera.lookAt(scene.position); 
@@ -120,13 +127,33 @@
 
     $("#WebGL-output"). append(renderer.domElement);
 
-        window.addEventListener('resize', onResize, false);
+    window.addEventListener('resize', onResize, false);
 
-        function onResize() {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = (window.innerWidth / window.innerHeight);
-            camera.updateProjectionMatrix();
+    function onResize() {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = (window.innerWidth / window.innerHeight);
+        camera.updateProjectionMatrix();
+    };
+
+    var cut = create();
+
+    function half() {
+        if (document.getElementById('cut').checked) {
+          cut = create();
+          scene.remove(planet);
+          scene.add(cut);
+        }else{
+          scene.remove(cut);
+          cut.geometry.dispose();
+          cut.material.dispose();
+          cut = undefined;
+          uncut();
         };
+    };
+
+    function uncut(){
+        scene.add(planet);
+    };
 
     //call render loop once
     render();
@@ -143,7 +170,7 @@
     function scale() {
         var scale = document.getElementById('range').value;
         camera.position.z = scale;
-    }
+    };
   </script>
   <script type="text/javascript" src="./js/blocks.js"></script>
 </body>

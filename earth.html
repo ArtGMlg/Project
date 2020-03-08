@@ -142,6 +142,7 @@
           cut = create();
           scene.remove(planet);
           scene.add(cut);
+          setTimeout(stop, 500);
         }else{
           scene.remove(cut);
           cut.geometry.dispose();
@@ -153,14 +154,19 @@
 
     function uncut(){
         scene.add(planet);
+        render();
     };
+
+    function stop() {
+      cancelAnimationFrame( id );
+    }
 
     //call render loop once
     render();
-
+    var id;
     //render loop
     function render() { 
-      requestAnimationFrame(render); 
+      id = requestAnimationFrame(render); 
       //rotate planet and spacesphere
       planet.rotation.y += 0.002;
       spacesphere.rotation.y += 0.001;

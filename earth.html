@@ -43,7 +43,7 @@
         <li>Приблизительно 70% планеты - Мировой Океан.</li>
         <li>Сутки на Земле 24 часа.</li>
         <li>Период обращения вокруг Солнца 365 суток.</li>
-        <li>Земля имеет один естественный спутник – <a href="moon.html">Луну</a>. Остальные искусственные.</li>
+        <li>Земля имеет один естественный спутник – <a style="text-decoration: none; color: black;" href="moon.html">Луну<sup><i style="font-size: 13px;" class="fas fa-external-link-alt"></i></sup></a>. Остальные искусственные.</li>
       </ul>
     </div>
   </div>
@@ -110,6 +110,7 @@
     //spacesphere.material.map.repeat.set( 5, 3);
     
     scene.add(spacesphere);
+
     function create(){
         var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
         var cutMat = new THREE.MeshPhongMaterial({map: loader.load("https://i.ibb.co/PzWPC32/image.png") , side: THREE.DoubleSide, transparent: true});
@@ -117,6 +118,7 @@
         cut.position.set(0, 0, 0);
         return cut;
     };
+
     //position camera
     camera.position.set(0,0,-7);
     camera.lookAt(scene.position); 

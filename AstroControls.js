@@ -30,14 +30,14 @@ THREE.AstroControls = function ( object, domElement ) {
 	this.panSpeed = 0.3;
 
 	this.noRotate = false;
-	this.noZoom = true;
+	this.noZoom = false;
 	this.noPan = false;
 
 	this.staticMoving = false;
 	this.dynamicDampingFactor = 0.2;
 
 	this.minDistance = 0;
-	this.maxDistance = Infinity;
+	this.maxDistance = 15;
 
 	this.keys = [null, null, null]; // [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
 

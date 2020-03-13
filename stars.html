@@ -61,7 +61,8 @@
         scene.add(spacesphere);
 
         //position camera
-        camera.position.set(0,0,1); 
+        camera.position.set(0,0,1);
+        camera.lookAt(0,0,0)
 
         var light = new THREE.AmbientLight(0xffffff, 3);
         scene.add(light);

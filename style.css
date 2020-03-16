@@ -160,9 +160,12 @@ div.label{
 }
 
 .menu-main a:before {
-  /*display: none;*/
+  display: none;
 }
 
+.menu-main a{
+  line-height: 55px;
+}
 .dws-menu label.toggleMenu
 {
   background-color: transparent;

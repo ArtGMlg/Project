@@ -1,10 +1,11 @@
 var height = $(window).height();
 
 if ($(window).width() <= 870) {
+  camera.position.set(0,0,-9);
   $('#menu-main').css("display","none");
   $('#range-div').css("display", "none");
   $('#top-menu').css("height", height*0.09 + "px");
-  camera.position.set(0,0,-9);
+  $('#menu-main').css("font-size", "14px");
 }
 
 window.addEventListener('resize', onResize, false);
@@ -12,15 +13,17 @@ window.addEventListener('resize', onResize, false);
 function onResize() {
   height = $(window).height();
   if ($(window).width() <= 870) {
+    camera.position.set(0,0,-9);
     $('#menu-main').css("display","none");
     $('#range-div').css("display", "none");
-    $('#top-menu').css("height", height*0.09 + "px")
-    camera.position.set(0,0,-8);
+    $('#top-menu').css("height", height*0.09 + "px");
   }else{
+    camera.position.set(0,0,-7);
     $('#menu-main').css("display", "inline-block");
     $('#range-div').css("display", "");
-    camera.position.set(0,0,-7);
-  }
+    $('#menu').prop('checked', false);
+    check();
+  };
 };
 
 function check() {

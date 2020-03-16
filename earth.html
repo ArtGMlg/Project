@@ -72,8 +72,8 @@
     //Load the planet textures
     loader.crossOrigin = '';
     var texture = loader.load("https://i.ibb.co/D4qNNyV/8k-earth-daymap-optimized.jpg");
-    var bumpmap = loader.load("https://i.ibb.co/S6RddJG/earthbump1k.jpg");
-    var specmap = loader.load("https://i.ibb.co/bjt83yB/earthspec1k.jpg");
+    var bumpmap = loader.load("https://i.ibb.co/4pxqvkg/earth-bump-8k.jpg");
+    var specmap = loader.load("https://i.ibb.co/HFf7gC9/8k-earth-specular-map-opti.jpg");
     
     var planetMaterial = new THREE.MeshPhongMaterial(); 
     planetMaterial.map = texture;
@@ -146,7 +146,7 @@
           cut = create();
           scene.remove(planet);
           scene.add(cut);
-          setTimeout(stop, 50);
+          setTimeout(stop, 70);
         }else{
           scene.remove(cut);
           cut.geometry.dispose();

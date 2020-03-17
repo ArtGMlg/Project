@@ -93,6 +93,20 @@
     planet.rotation.x -= 0.4;
    
     scene.add(planet); 
+
+    var cloudsMat = new THREE.MeshBasicMaterial({
+      map: loader.load("https://i.ibb.co/PF5xSjb/earth-clouds-2048.png"),
+      transparent: true,
+      opacity: 0.85
+    });
+
+    var cloudsGeo = new THREE.SphereGeometry(1.07, 32, 32);
+
+    var clouds = new THREE.Mesh(cloudsGeo, cloudsMat);
+
+    clouds.position.set(0,0,0);
+
+    scene.add(clouds);
     
     //Space background is a large sphere
     var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");
@@ -145,6 +159,7 @@
         if (document.getElementById('cut').checked) {
           cut = create();
           scene.remove(planet);
+          scene.remove(clouds);
           scene.add(cut);
           setTimeout(stop, 70);
         }else{
@@ -158,6 +173,7 @@
 
     function uncut(){
         scene.add(planet);
+        scene.add(clouds);
         render();
     };
 
@@ -173,6 +189,7 @@
       id = requestAnimationFrame(render); 
       //rotate planet and spacesphere
       planet.rotation.y += 0.002;
+      clouds.rotation.y += 0.0011;
       spacesphere.rotation.y += 0.001;
       renderer.render(scene, camera); 
     };

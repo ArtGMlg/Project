@@ -53,9 +53,25 @@ function collapse() {
 };
 
 function display(){
-    $('#menu-main').css("display", "none");
+  $('#menu-main').css("display", "none");
 }
 
 function infp(){
-    $('#infp').css("display", "none");
+  $('#infp').css("display", "none");
 };
+
+function playPause() {
+  if (document.getElementById('playPause').checked) {
+    $('#pause').css("opacity", "0");
+    $('#pause').css("display", "none");
+    $('#play').css("display", "block");
+    $('#play').css("opacity", "1");
+    cancelAnimationFrame( id );
+  }else{
+    $('#play').css("opacity", "0");
+    $('#play').css("display", "none");
+    $('#pause').css("display", "block");
+    $('#pause').css("opacity", "1");
+    render();
+  };
+}

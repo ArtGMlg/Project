@@ -9,6 +9,7 @@
     </script>
     <script src="./three.js"></script>
     <script src="Detector.js"></script>
+    <script src="./js/OrbitControls.js"></script>
     <script src="./jquery/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -181,6 +182,18 @@
         $('#playPause').prop('checked', false);
         playPause();
     };
+
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+    controls.enableDamping = false; 
+    controls.dampingFactor = 0.05;
+
+    controls.screenSpacePanning = false;
+
+    controls.minDistance = 2;
+    controls.maxDistance = 9;
+
+    controls.maxPolarAngle = Math.PI;
 
     //call render loop once
 

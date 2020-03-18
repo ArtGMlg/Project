@@ -66,12 +66,16 @@ function playPause() {
     $('#pause').css("display", "none");
     $('#play').css("display", "block");
     $('#play').css("opacity", "1");
-    cancelAnimationFrame( id );
+    plRot = 0;
+    clRot = 0;
+    spRot = 0;
   }else{
     $('#play').css("opacity", "0");
     $('#play').css("display", "none");
     $('#pause').css("display", "block");
     $('#pause').css("opacity", "1");
-    render();
+    plRot = 0.002;
+    clRot = 0.0011;
+    spRot = 0.001;
   };
 }

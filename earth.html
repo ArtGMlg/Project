@@ -164,7 +164,8 @@
           scene.remove(planet);
           scene.remove(clouds);
           scene.add(cut);
-          setTimeout(stop, 70);
+          $('#playPause').prop('checked', true);
+          playPause();
         }else{
           scene.remove(cut);
           cut.geometry.dispose();
@@ -177,23 +178,25 @@
     function uncut(){
         scene.add(planet);
         scene.add(clouds);
-        render();
+        $('#playPause').prop('checked', false);
+        playPause();
     };
 
-    function stop() {
-      cancelAnimationFrame( id );
-    }
-
     //call render loop once
-    render();
+
+    var plRot = 0.002;
+    var clRot = 0.0011;
+    var spRot = 0.001;
     var id;
+
+    render();
     //render loop
     function render() { 
       id = requestAnimationFrame(render); 
       //rotate planet and spacesphere
-      planet.rotation.y += 0.002;
-      clouds.rotation.y += 0.0011;
-      spacesphere.rotation.y += 0.001;
+      planet.rotation.y += plRot;
+      clouds.rotation.y += clRot;
+      spacesphere.rotation.y += spRot;
       renderer.render(scene, camera); 
     };
     

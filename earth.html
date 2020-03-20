@@ -142,10 +142,13 @@
     camera.lookAt(scene.position); 
     
     //create two spotlights to illuminate the scene
-    var spotLight = new THREE.SpotLight( 0xffffff ); 
+    var spotLight = new THREE.DirectionalLight( 0xffffff, 1.5 ); 
     spotLight.position.set( 40, 0, -25 ); 
-    spotLight.intensity = 1.5;
     scene.add( spotLight );
+
+    var DirectionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.2 ); 
+    DirectionalLight2.position.set( -40, 0, 25 ); 
+    scene.add( DirectionalLight2 );
 
     $("#WebGL-output"). append(renderer.domElement);
 
@@ -161,31 +164,31 @@
 
     function half() {
         if (document.getElementById('cut').checked) {
-          cut = create();
           scene.remove(planet);
           scene.remove(clouds);
           scene.add(cut);
           $('#playPause').prop('checked', true);
           playPause();
         }else{
-          scene.remove(cut);
-          cut.geometry.dispose();
-          cut.material.dispose();
-          cut = undefined;
+          $('#playPause').prop('checked', false);
+          playPause();
           uncut();
         };
     };
 
     function uncut(){
+        scene.remove(cut);
+        cut.geometry.dispose();
+        cut.material.dispose();
+        cut = undefined;
+        cut = create();
         scene.add(planet);
         scene.add(clouds);
-        $('#playPause').prop('checked', false);
-        playPause();
     };
 
     var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-    controls.enableDamping = false; 
+    controls.enableDamping = true; 
     controls.dampingFactor = 0.05;
 
     controls.screenSpacePanning = false;
@@ -210,6 +213,7 @@
       planet.rotation.y += plRot;
       clouds.rotation.y += clRot;
       spacesphere.rotation.y += spRot;
+      controls.update();
       renderer.render(scene, camera); 
     };
     

@@ -77,5 +77,8 @@ function playPause() {
     plRot = 0.002;
     clRot = 0.0011;
     spRot = 0.001;
+    if (document.getElementById('cut').checked) {
+      uncut();
+    };
   };
 }

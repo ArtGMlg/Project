@@ -9,7 +9,7 @@
     crossorigin="anonymous">
     </script>
     <script src="./three.js"></script>
-    <script src="AstroControls.js"></script>
+    <script src="./js/OrbitControls.js"></script>
     <script src="Detector.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Звёздное небо</title>
@@ -229,7 +229,17 @@
             camera.updateProjectionMatrix();
         };
 
-        controls = new THREE.AstroControls( camera, renderer.domElement );
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+        controls.enableDamping = true; 
+        controls.dampingFactor = 0.05;
+
+        controls.screenSpacePanning = false;
+
+        controls.minDistance = 0.0001;
+        controls.maxDistance = 4;
+
+        controls.maxPolarAngle = Math.PI;
 
         //call render loop once
 

@@ -220,22 +220,6 @@ input.toggleMenu:checked + label.toggleMenu
   }
 }
 
-input.range {
-    -webkit-appearance: slider-vertical;
-    background-color: #ccc;
-    height: 158px;
-    width: 2px;
-    margin: 8px auto;
-}
-
-input.range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border-radius: 20px;
-    background-color: #3ebede;
-    height: 30px;
-    width: 30px;
-}
-
 #playPause{
   background-color: transparent;
   color: black;

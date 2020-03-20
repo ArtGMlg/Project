@@ -10,7 +10,6 @@
     <script src="./three.js"></script>
     <script src="Detector.js"></script>
     <script src="./js/OrbitControls.js"></script>
-    <script src="./jquery/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -56,9 +55,6 @@
       <input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">
       <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
     </p>
-  </div>
-  <div id="range-div">
-      <input type="range" name="range" id="range" class="range" min="-7" max="-4" value='-7' step="0.5" onchange="scale()">
   </div>
   <div id ="WebGL-output"></div>
   
@@ -142,9 +138,9 @@
     camera.lookAt(scene.position); 
     
     //create two spotlights to illuminate the scene
-    var spotLight = new THREE.DirectionalLight( 0xffffff, 1.5 ); 
-    spotLight.position.set( 40, 0, -25 ); 
-    scene.add( spotLight );
+    var DirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.5 ); 
+    DirectionalLight.position.set( 40, 0, -25 ); 
+    scene.add( DirectionalLight );
 
     var DirectionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.2 ); 
     DirectionalLight2.position.set( -40, 0, 25 ); 
@@ -203,23 +199,17 @@
     var plRot = 0.002;
     var clRot = 0.0011;
     var spRot = 0.001;
-    var id;
 
     render();
     //render loop
     function render() { 
-      id = requestAnimationFrame(render); 
+      requestAnimationFrame(render); 
       //rotate planet and spacesphere
       planet.rotation.y += plRot;
       clouds.rotation.y += clRot;
       spacesphere.rotation.y += spRot;
       controls.update();
       renderer.render(scene, camera); 
-    };
-    
-    function scale() {
-        var scale = document.getElementById('range').value;
-        camera.position.z = scale;
     };
   </script>
   <script type="text/javascript" src="./js/blocks.js"></script>

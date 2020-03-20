@@ -9,6 +9,7 @@
     </script>
     <script src="./three.js"></script>
     <script src="Detector.js"></script>
+    <script src="./js/OrbitControls.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -36,9 +37,6 @@
     </div>
     <p id="infp">gggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
   </div>
-  <div id="range-div">
-      <input type="range" name="range" id="range" class="range" min="-7" max="-4" value='-7' step="3" onchange="scale()">
-  </div>
   <div id ="WebGL-output" > </div>
   <script>
         if (!Detector.webgl) Detector.addGetWebGLMessage();
@@ -53,8 +51,8 @@
     
     //Load the planet textures
     loader.crossOrigin = '';
-    var texture = loader.load("https://i.ibb.co/7X3DM4N/2k-mars.jpg");
-    var bumpmap = loader.load("https://i.ibb.co/QQ7prjr/mars-1k-topo.jpg");
+    var texture = loader.load("https://i.ibb.co/hymBQCN/8k-marsopti.jpg");
+    var bumpmap = loader.load("https://i.ibb.co/r3Pn7LD/mars-bump-8k.jpg");
     
     var planetMaterial = new THREE.MeshPhongMaterial(); 
     planetMaterial.map = texture;
@@ -90,13 +88,16 @@
    
     //position camera
     camera.position.set(0,0,-7); 
-    camera.lookAt(scene.position);
+    camera.lookAt(scene.position); 
     
     //create two spotlights to illuminate the scene
-    var spotLight = new THREE.SpotLight( 0xffffff ); 
-    spotLight.position.set( 40, 0, -25 ); 
-    spotLight.intensity = 1.45;
-    scene.add( spotLight );
+    var DirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.5 ); 
+    DirectionalLight.position.set( 40, 0, -25 ); 
+    scene.add( DirectionalLight );
+
+    var DirectionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.2 ); 
+    DirectionalLight2.position.set( -40, 0, 25 ); 
+    scene.add( DirectionalLight2 );
     
     $("#WebGL-output"). append(renderer.domElement);
 
@@ -108,22 +109,33 @@
             camera.updateProjectionMatrix();
         };
 
-    //call render loop once
-    render();
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
+    controls.enableDamping = true; 
+    controls.dampingFactor = 0.05;
+
+    controls.screenSpacePanning = false;
+
+    controls.minDistance = 2;
+    controls.maxDistance = 9;
+
+    controls.maxPolarAngle = Math.PI;
+
+    //call render loop once
+
+    var plRot = 0.002;
+    var spRot = 0.001;
+
+    render();
     //render loop
     function render() { 
       requestAnimationFrame(render); 
       //rotate planet and spacesphere
-      planet.rotation.y += 0.002;
-      spacesphere.rotation.y += 0.001;
+      planet.rotation.y += plRot;
+      spacesphere.rotation.y += spRot;
+      controls.update();
       renderer.render(scene, camera); 
     };
-
-    function scale() {
-        var scale = document.getElementById('range').value;
-        camera.position.z = scale;
-    }
     </script>
   <script type="text/javascript" src="./js/blocks.js"></script>
 </body>

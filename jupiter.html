@@ -9,6 +9,7 @@
     </script>
     <script src="./three.js"></script>
     <script src="Detector.js"></script>
+    <script src="./js/OrbitControls.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -37,9 +38,6 @@
     </div>
     <p id="infp">gggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
   </div>
-  <div id="range-div">
-      <input type="range" name="range" id="range" class="range" min="-7" max="-4" value='-7' step="0.5" onchange="scale()">
-  </div>
   <div id ="WebGL-output" > </div>
   <script>
         if (!Detector.webgl) Detector.addGetWebGLMessage();
@@ -54,7 +52,7 @@
     
     //Load the planet textures
     loader.crossOrigin = '';
-    var texture = loader.load("https://i.ibb.co/JdDsxkC/jupiter2-1k.jpg");
+    var texture = loader.load("https://i.ibb.co/G9KCjjh/8k-jupiteropti.jpg");
     
     var planetMaterial = new THREE.MeshPhongMaterial(); 
     planetMaterial.map = texture;
@@ -87,10 +85,13 @@
     camera.lookAt(scene.position); 
     
     //create two spotlights to illuminate the scene
-    var spotLight = new THREE.SpotLight( 0xffffff ); 
-    spotLight.position.set( 40, 0, -25 ); 
-    spotLight.intensity = 1;
-    scene.add( spotLight );
+    var DirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.1 ); 
+    DirectionalLight.position.set( 40, 0, -25 ); 
+    scene.add( DirectionalLight );
+
+    var DirectionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.2 ); 
+    DirectionalLight2.position.set( -40, 0, 25 ); 
+    scene.add( DirectionalLight2 );
 
     $("#WebGL-output"). append(renderer.domElement);
 
@@ -102,22 +103,33 @@
             camera.updateProjectionMatrix();
         };
 
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+    controls.enableDamping = true; 
+    controls.dampingFactor = 0.05;
+
+    controls.screenSpacePanning = false;
+
+    controls.minDistance = 2;
+    controls.maxDistance = 9;
+
+    controls.maxPolarAngle = Math.PI;
+
     //call render loop once
+
+    var plRot = 0.002;
+    var spRot = 0.001;
+
     render();
-    
     //render loop
     function render() { 
       requestAnimationFrame(render); 
       //rotate planet and spacesphere
-      planet.rotation.y += 0.002;
-      spacesphere.rotation.y += 0.001;
+      planet.rotation.y += plRot;
+      spacesphere.rotation.y += spRot;
+      controls.update();
       renderer.render(scene, camera); 
     };
-    
-    function scale() {
-        var scale = document.getElementById('range').value;
-        camera.position.z = scale;
-    }
     </script>
   <script type="text/javascript" src="./js/blocks.js"></script>
 </body>

@@ -231,8 +231,10 @@
 
         controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-        controls.enableDamping = true; 
+        controls.enableDamping = false; 
         controls.dampingFactor = 0.05;
+
+        controls.rotateSpeed = 0.25;
 
         controls.screenSpacePanning = false;
 
@@ -248,7 +250,6 @@
         //render loop
         function render() { 
             requestAnimationFrame(render);
-            controls.update();
             renderer.render(scene, camera); 
         };
     </script>

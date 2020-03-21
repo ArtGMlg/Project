@@ -25,6 +25,7 @@
   <button id="toTop" onclick="toTop()"><i class="fas fa-arrow-up"></i></button>
   <script>
     var height = $(window).height();
+    var width = $(window).width();
     if ($(window).width() <= 870){
       $('#top').css("height", height + "px");
       $('#up').css("display", "block");
@@ -39,7 +40,8 @@
     window.addEventListener('scroll', scroll, false);
 
     function onResize() {
-      if ($(window).width() <= 870){
+      width = $(window).width();
+      if (width <= 870){
         $('#top').css("height", height + "px");
         $('#up').css("display", "block");
       }else{
@@ -53,6 +55,9 @@
         $('#toTop').css("display", "block");
       }else{
         $('#toTop').css("display", "none")
+      }
+      if (window.pageXOffset >= width/2) {
+        event.preventDefault();
       }
     };
 

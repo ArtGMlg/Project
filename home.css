@@ -20,10 +20,12 @@ header{
 	list-style: none;
   margin: 50px 0 0 30%;
   padding: 0;
+  transition:.3s linear;
 }
 
 #links li {
 	display: inline-block;
+  transition:.3s linear;
 }
 
 #links a {
@@ -32,6 +34,7 @@ header{
   position: relative;
   line-height: 61px;
   padding-left: 20px;
+  padding-right: 20px;
   font-size: 18px;
   letter-spacing: 2px;
   font-family: 'Arimo', sans-serif;
@@ -39,9 +42,79 @@ header{
   color: white;
 }
 
+#links li:hover{
+	background-color: rgba(0,0,0,.5);
+}
+
 #firstLink{
 	margin-right: 150px;
 }
+
+#up{
+	background-color: transparent;
+	border-color: transparent;
+	color: white;
+	font-size: 30px;
+	width: 100%;
+	text-align: center;
+	display: none;
+	margin-top: 90px;
+	outline: none;
+  transition:.3s linear;
+}
+
+#up:hover{
+	background-color: rgba(0,0,0,.5);
+}
+
+#toTop{
+	border-radius: 100%;
+	border-color: transparent;
+	color: white;
+	font-size: 20px;
+	position: fixed;
+	top: 90%;
+	left: 90%;
+	background-color: rgba(0,0,0,.5);
+	display: none;
+	outline: none;
+}
+
+::-webkit-scrollbar-button {
+background-image:url('');
+background-repeat:no-repeat;
+border-radius: 3px;
+width:5px;
+height:0px;
+}
+
+::-webkit-scrollbar-track {
+background-color:rgba(0,0,0,.75);
+}
+
+::-webkit-scrollbar-thumb {
+-webkit-border-radius: 3px;
+border-radius: 3px;
+background-color:rgba(0,0,0,.9);;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background-color:rgba(0,0,0,.5);
+}
+
+::-webkit-resizer{
+background-image:url('');
+background-repeat:no-repeat;
+border-radius: 3px;
+width:6px;
+height:0px;
+}
+
+::-webkit-scrollbar{
+width: 6px;
+border-radius: 3px;
+}
+
 @media all and (max-width: 1024px){
 	header{
 		text-align: center;

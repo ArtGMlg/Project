@@ -1,41 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Главная</title>
-	<link rel="stylesheet" type="text/css" href="./home.css">
+  <title>Главная</title>
+  <link rel="stylesheet" type="text/css" href="./home.css">
   <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <script src="https://code.jquery.com/jquery-3.4.1.js"
-			    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-			    crossorigin="anonymous">
+          integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+          crossorigin="anonymous">
   </script>
 </head>
 <body>
-	<header id="top">
-		<i id="logo" class="fas fa-globe-americas"></i>
-		<ul id="links">
-			<li id="firstLink"><a href="stars.html">Звездное небо</a></li>
-			<li><a href="earth.html">Солнечная система</a></li>
-		</ul>
-	</header>
-	<article id="art"></article>
-	<script>
-		var height = $(window).height();
-		if ($(window).width() <= 870){
-			$('#top').css("height", height + "px");
-		}else{
-			$('#top').css("height", height*0.5 + "px");
-		};
-		$('#art').css("height", height + "px");
+  <header id="top">
+    <i id="logo" class="fas fa-globe-americas"></i>
+    <ul id="links">
+      <li id="firstLink"><a href="stars.html">Звездное небо</a></li>
+      <li><a href="earth.html">Солнечная система</a></li>
+    </ul>
+    <button id="up" onclick="up()"><i class="fas fa-arrow-up"></i></button>
+  </header>
+  <article id="art"></article>
+  <button id="toTop" onclick="toTop()"><i class="fas fa-arrow-up"></i></button>
+  <script>
+    var height = $(window).height();
+    if ($(window).width() <= 870){
+      $('#top').css("height", height + "px");
+      $('#up').css("display", "block");
+    }else{
+      $('#top').css("height", height*0.5 + "px");
+      $('#up').css("display", "none");
+    };
+    
+    $('#art').css("height", height + "px");
 
-		window.addEventListener('resize', onResize, false);
+    window.addEventListener('resize', onResize, false);
+    window.addEventListener('scroll', button, false);
 
-		function onResize() {
-		  	if ($(window).width() <= 870){
-					$('#top').css("height", height + "px");
-				}else{
-					$('#top').css("height", height*0.5 + "px");
-				};
-		  };
-	</script>
+    function onResize() {
+      if ($(window).width() <= 870){
+        $('#top').css("height", height + "px");
+        $('#up').css("display", "block");
+      }else{
+        $('#top').css("height", height*0.5 + "px");
+        $('#up').css("display", "none");
+      };
+    };
+
+    function button() {
+      if(window.pageYOffset >= height){
+        $('#toTop').css("display", "block");
+      }else{
+        $('#toTop').css("display", "none")
+      }
+    };
+
+    function toTop() {
+      $('html, body').animate({scrollTop: 0}, 1000);
+    }
+
+    function up() {
+      $('html, body').animate({scrollTop: height+1}, 1000);
+    }
+  </script>
 </body>
 </html>

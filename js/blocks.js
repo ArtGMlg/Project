@@ -32,10 +32,14 @@ function check() {
     $('#top-menu').css("height", height*0.96 + "px");
     $('#collapse').prop('checked', false);
     collapse();
+    $('#playPause').prop('checked', true);
+    setTimeout(playPause, 500);
   }else{
     //document.getElementById('menu-main').style.display = "none";
-    $('#top-menu').css("height", height*0.09 + "px")
-    if($(window).width() <= 870) setTimeout(display, 500);
+    $('#top-menu').css("height", height*0.09 + "px");
+    if($(window).width() <= 870){setTimeout(display, 500);};
+    $('#playPause').prop('checked', false);
+    playPause();
   };
 };
 function collapse() {
@@ -45,10 +49,14 @@ function collapse() {
     $('#infp').css("display", "block");
     $('#menu').prop('checked', false);
     check();
+    $('#playPause').prop('checked', true);
+    setTimeout(playPause, 500);
   }else{
     $('#inf').css("top", "96%");
     setTimeout(infp, 500);
     $('#label').css("transform", "rotateX(360deg)");
+    $('#playPause').prop('checked', false);
+    playPause();
   };
 };
 
@@ -77,7 +85,9 @@ function playPause() {
     plRot = 0.002;
     clRot = 0.0011;
     spRot = 0.001;
+    controls.rotateSpeed = 1.0;
     if (document.getElementById('cut').checked) {
+      $('#cut').prop('checked', false);
       uncut();
     };
   };

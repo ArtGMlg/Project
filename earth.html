@@ -19,7 +19,7 @@
       <input onclick="check()" type="checkbox" name="toggle" id="menu" class="toggleMenu">
       <label for="menu" class="toggleMenu"><i class="fas fa-bars"></i></label>
       <ul class="menu-main" id="menu-main">
-        <li><a href="#"><i class="fas fa-home"></i></a></li>
+        <li><a href="index.html"><i class="fas fa-home"></i></a></li>
         <li><a href="mercury.html">Мекрурий</a></li>
         <li><a href="venus.html">Венера</a></li>
         <li><a href="#">Земля</a></li>
@@ -126,11 +126,11 @@
     scene.add(spacesphere);
 
     function create(){
-        var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
-        var cutMat = new THREE.MeshPhongMaterial({map: loader.load("https://i.ibb.co/PzWPC32/image.png") , side: THREE.DoubleSide, transparent: true});
-        var cut = new THREE.Mesh(cutGeo,cutMat);
-        cut.position.set(0, 0, 0);
-        return cut;
+      var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
+      var cutMat = new THREE.MeshPhongMaterial({map: loader.load("https://i.ibb.co/PzWPC32/image.png") , side: THREE.DoubleSide, transparent: true});
+      var cut = new THREE.Mesh(cutGeo,cutMat);
+      cut.position.set(0, 0, 0);
+      return cut;
     };
 
     //position camera
@@ -159,27 +159,30 @@
     var cut = create();
 
     function half() {
-        if (document.getElementById('cut').checked) {
-          scene.remove(planet);
-          scene.remove(clouds);
-          scene.add(cut);
-          $('#playPause').prop('checked', true);
-          playPause();
-        }else{
-          $('#playPause').prop('checked', false);
-          playPause();
-          uncut();
-        };
+      if (document.getElementById('cut').checked) {
+        scene.remove(planet);
+        scene.remove(clouds);
+        scene.add(cut);
+        camera.position.set(0,0,-7);
+        $('#playPause').prop('checked', true);
+        playPause();
+        controls.rotateSpeed = 0;
+      }else{
+        $('#playPause').prop('checked', false);
+        playPause();
+        uncut();
+        controls.rotateSpeed = 1.0;
+      };
     };
 
     function uncut(){
-        scene.remove(cut);
-        cut.geometry.dispose();
-        cut.material.dispose();
-        cut = undefined;
-        cut = create();
-        scene.add(planet);
-        scene.add(clouds);
+      scene.remove(cut);
+      cut.geometry.dispose();
+      cut.material.dispose();
+      cut = undefined;
+      cut = create();
+      scene.add(planet);
+      scene.add(clouds);
     };
 
     var controls = new THREE.OrbitControls( camera, renderer.domElement );

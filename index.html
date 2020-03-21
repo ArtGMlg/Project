@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Главная</title>
+	<link rel="stylesheet" type="text/css" href="./home.css">
+  <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+			    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			    crossorigin="anonymous">
+  </script>
+</head>
+<body>
+	<header id="top">
+		<i id="logo" class="fas fa-globe-americas"></i>
+		<ul id="links">
+			<li id="firstLink"><a href="stars.html">Звездное небо</a></li>
+			<li><a href="earth.html">Солнечная система</a></li>
+		</ul>
+	</header>
+	<article id="art"></article>
+	<script>
+		var height = $(window).height();
+		$('#top').css("height", height*0.5 + "px");
+		$('#art').css("height", height + "px");
+	</script>
+</body>
+</html>

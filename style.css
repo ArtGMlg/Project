@@ -2,12 +2,6 @@
 
 body{ margin: 0; overflow: hidden; }
 
-#WebGL-output{
-  filter: blur(0px);
-  transition-property: filter;
-  transition-duration: 0.5s; 
-}
-
 .menu{
   position: fixed;
   width: 100%;

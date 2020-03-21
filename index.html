@@ -20,8 +20,22 @@
 	<article id="art"></article>
 	<script>
 		var height = $(window).height();
-		$('#top').css("height", height*0.5 + "px");
+		if ($(window).width() <= 870){
+			$('#top').css("height", height + "px");
+		}else{
+			$('#top').css("height", height*0.5 + "px");
+		};
 		$('#art').css("height", height + "px");
+
+		window.addEventListener('resize', onResize, false);
+
+		function onResize() {
+		  	if ($(window).width() <= 870){
+					$('#top').css("height", height + "px");
+				}else{
+					$('#top').css("height", height*0.5 + "px");
+				};
+		  };
 	</script>
 </body>
 </html>

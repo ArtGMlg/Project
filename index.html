@@ -25,13 +25,18 @@
   <button id="toTop" onclick="toTop()"><i class="fas fa-arrow-up"></i></button>
   <script>
     var height = $(window).height();
-    var width = $(window).width();
     if ($(window).width() <= 870){
       $('#top').css("height", height + "px");
       $('#up').css("display", "block");
+      $('#animation1').css("display", "none");
+      $('#animation2').css("display", "none");
+      $('#animation3').css("display", "none");
     }else{
       $('#top').css("height", height*0.5 + "px");
       $('#up').css("display", "none");
+      $('#animation1').css("display", "");
+      $('#animation2').css("display", "");
+      $('#animation3').css("display", "");
     };
     
     $('#art').css("height", height + "px");
@@ -40,13 +45,18 @@
     window.addEventListener('scroll', scroll, false);
 
     function onResize() {
-      width = $(window).width();
-      if (width <= 870){
+      if ($(window).width() <= 870){
         $('#top').css("height", height + "px");
         $('#up').css("display", "block");
+        $('#animation1').css("display", "none");
+        $('#animation2').css("display", "none");
+        $('#animation3').css("display", "none");
       }else{
         $('#top').css("height", height*0.5 + "px");
         $('#up').css("display", "none");
+        $('#animation1').css("display", "");
+        $('#animation2').css("display", "");
+        $('#animation3').css("display", "");
       };
     };
 
@@ -55,9 +65,6 @@
         $('#toTop').css("display", "block");
       }else{
         $('#toTop').css("display", "none")
-      }
-      if (window.pageXOffset >= width/2) {
-        event.preventDefault();
       }
     };
 

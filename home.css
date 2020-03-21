@@ -2,6 +2,7 @@
 
 body{
 	margin: 0;
+	overflow-x: hidden;
 }
 
 header{
@@ -78,6 +79,69 @@ header{
 	background-color: rgba(0,0,0,.5);
 	display: none;
 	outline: none;
+}
+
+#animation1{
+	position: absolute;
+	z-index: -100;
+	left: -1000px;
+	animation: moveFirst 15s infinite;
+}
+
+#animation2{
+	position: absolute;
+	z-index: -99;
+	left: 3000px;
+	animation: moveSecond 20s infinite;
+	animation-delay: 5s;
+}
+
+#animation3{
+	position: absolute;
+	z-index: -98;
+	top: 145px;
+	left: 3000px;
+	animation: moveThird 30s infinite;
+	animation-delay: 15s;
+}
+
+@keyframes moveFirst {
+  from {
+    left: -1000px;
+    top: 0;
+		transform: rotateZ(0deg);
+  }
+  to { 
+    left: 2360px; 
+    top: 145px;
+		transform: rotateZ(360deg);
+  }  
+}
+
+@keyframes moveSecond{
+	from {
+    left: 3000px;
+    top: 0;
+		transform: rotateZ(0deg);
+  }
+  to { 
+    left: -2360px; 
+    top: 145px;
+		transform: rotateZ(360deg);
+  }  
+}
+
+@keyframes moveThird{
+	from {
+    left: 3000px;
+    top: 145px;
+		transform: rotateZ(0deg);
+  }
+  to { 
+    left: -2360px; 
+    top: 0px;
+		transform: rotateZ(360deg);
+  }  
 }
 
 ::-webkit-scrollbar-button {

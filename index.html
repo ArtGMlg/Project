@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Главная</title>
   <link rel="stylesheet" type="text/css" href="./home.css">
   <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -119,10 +120,12 @@
     function scroll() {
       if(window.pageYOffset >= height){
         $('#toTop').css("display", "block");
+        $('#top').css('position', 'fixed');
       }else{
-        $('#toTop').css("display", "none")
-      }
+        $('#toTop').css("display", "none");
+      };
     };
+
 
     function toTop() {
       $('html, body').animate({scrollTop: 0}, 1000);
@@ -134,3 +137,5 @@
   </script>
 </body>
 </html>
+
+, z-index: '100', height: height/3 + "px"}

@@ -12,6 +12,7 @@
     <script src="./js/OrbitControls.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
  <div class="menu">
@@ -38,7 +39,25 @@
     </div>
     <p id="infp">gggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
   </div>
+  <div id="loadingScreen">
+    <div id="loadingContent">
+      <h3 style="margin-bottom: 35px">Секундочку...</h3>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3"></div>
+      </div>
+      <h5 style="margin-top: 35px">Это может занять минуту или две :)</h5>
+    </div>
+  </div>
     <div id ="WebGL-output" > </div>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    var height = $(window).height();
+    var width = $(window).width();
+
+    $('#loadingScreen').css('height', height+"px");
+    $('#loadingContent').css('padding-top', height*0.286+"px");
+  </script>
     <script>
         if (!Detector.webgl) Detector.addGetWebGLMessage();
         var scene = new THREE.Scene(); 
@@ -53,6 +72,14 @@
         //Load the planet textures
         loader.crossOrigin = '';
         var texture = loader.load("https://i.ibb.co/JyNnWzM/2k-saturn.jpg");
+
+    THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+
+      console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+      $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
+      $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
+      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100))
+    };
         
         var planetMaterial = new THREE.MeshPhongMaterial(); 
         planetMaterial.map = texture;
@@ -137,6 +164,14 @@
       planet.rotation.y += plRot;      spacesphere.rotation.y += spRot;
       controls.update();
       renderer.render(scene, camera); 
+    };
+
+    THREE.DefaultLoadingManager.onLoad = function ( ) {
+
+      $('#loadingScreen').css('display', 'none');
+
+      console.log( 'Loading Complete!');
+
     };
     </script>
   <script type="text/javascript" src="./js/blocks.js"></script>

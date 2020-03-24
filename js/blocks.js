@@ -1,27 +1,30 @@
 var height = $(window).height();
+var width = $(window).width();
 
-if ($(window).width() <= 870) {
+$('#quality').css('margin-left', width-200 + "px");
+
+if (width <= 870) {
   camera.position.set(0,0,-9);
   $('#menu-main').css("display","none");
-  $('#range-div').css("display", "none");
   $('#top-menu').css("height", height*0.09 + "px");
   $('#menu-main').css("font-size", "14px");
-}
+};
 
 window.addEventListener('resize', onResize, false);
 
 function onResize() {
   height = $(window).height();
-  if ($(window).width() <= 870) {
+  width = $(window).width();
+  if (width <= 870) {
     camera.position.set(0,0,-9);
     $('#menu-main').css("display","none");
-    $('#range-div').css("display", "none");
     $('#top-menu').css("height", height*0.09 + "px");
+    $('#quality').css('margin-left', width-200 + "px");
   }else{
     camera.position.set(0,0,-7);
     $('#menu-main').css("display", "inline-block");
-    $('#range-div').css("display", "");
     $('#menu').prop('checked', false);
+    $('#quality').css('margin-left', width-200 + "px");
     check();
   };
 };
@@ -62,7 +65,7 @@ function collapse() {
 
 function display(){
   $('#menu-main').css("display", "none");
-}
+};
 
 function infp(){
   $('#infp').css("display", "none");
@@ -91,4 +94,4 @@ function playPause() {
       uncut();
     };
   };
-}
+};

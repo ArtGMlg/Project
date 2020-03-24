@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
   <div class="menu">
@@ -58,6 +57,13 @@
       <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
     </p>
   </div>
+  <div id="quality">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button onclick="changeQualityLow()" type="button" id="low" class="btn btn-secondary">Low</button>
+      <button onclick="changeQualityMiddle()" type="button" id="medium" class="btn btn-secondary">Medium</button>
+      <button onclick="changeQualityHigh()" type="button" id="high" class="btn btn-secondary">High</button>
+    </div>
+  </div>
   <div id="loadingScreen">
     <div id="loadingContent">
       <h3 style="margin-bottom: 35px">Секундочку...</h3>
@@ -85,15 +91,14 @@
     var renderer = new THREE.WebGLRenderer();
     var loader = new THREE.TextureLoader();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);  
-    
-    var planetGeometry = new THREE.SphereGeometry(1,32,32); 
+    renderer.setSize(window.innerWidth, window.innerHeight); 
     
     //Load the planet textures
     loader.crossOrigin = '';
     var texture = loader.load("https://i.ibb.co/D4qNNyV/8k-earth-daymap-optimized.jpg");
     var bumpmap = loader.load("https://i.ibb.co/4pxqvkg/earth-bump-8k.jpg");
     var specmap = loader.load("https://i.ibb.co/HFf7gC9/8k-earth-specular-map-opti.jpg");
+    var cloudsMap = loader.load("https://i.ibb.co/PF5xSjb/earth-clouds-2048.png");
 
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
 
@@ -101,9 +106,12 @@
       $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
       $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
-    };
+    }; 
     
-    var planetMaterial = new THREE.MeshPhongMaterial(); 
+    var planetGeometry = new THREE.SphereGeometry(1,32,32); 
+    
+    var planetMaterial = new THREE.MeshPhongMaterial();
+    planetMaterial.needsUpdate = true;
     planetMaterial.map = texture;
     
     planetMaterial.specularMap = specmap;
@@ -120,12 +128,101 @@
     
     planet.rotation.x -= 0.4;
    
-    scene.add(planet); 
+    scene.add(planet);
 
-    var cloudsMat = new THREE.MeshBasicMaterial({
-      map: loader.load("https://i.ibb.co/PF5xSjb/earth-clouds-2048.png"),
-      transparent: true,
-      opacity: 0.85
+    function changeQualityLow(){
+      planet.material.dispose();
+      scene.remove(planet);
+      planetMaterial = new THREE.MeshBasicMaterial();
+      planetMaterial.needsUpdate = true;
+      planetMaterial.map = texture;
+      
+      planetMaterial.specularMap = specmap;
+      planetMaterial.specular = new THREE.Color('grey');
+      planetMaterial.shininess = 10;
+      
+      planetMaterial.bumpMap = bumpmap;
+      planetMaterial.bumpScale = 0.04;
+      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      clouds.material.dispose();
+      scene.remove(clouds);
+      cloudsMat = new THREE.MeshBasicMaterial({
+        map: cloudsMap,
+        transparent: true
+      });
+
+      scene.add(planet);
+      scene.add(clouds);
+
+      $('#low').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
+      $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+      $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+    };
+
+    function changeQualityMiddle(){
+      planet.material.dispose();
+      scene.remove(planet);
+      planetMaterial = new THREE.MeshLambertMaterial();
+      planetMaterial.needsUpdate = true;
+      planetMaterial.map = texture;
+      
+      planetMaterial.specularMap = specmap;
+      planetMaterial.specular = new THREE.Color('grey');
+      planetMaterial.shininess = 10;
+      
+      planetMaterial.bumpMap = bumpmap;
+      planetMaterial.bumpScale = 0.04;
+      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      clouds.material.dispose();
+      scene.remove(clouds);
+      cloudsMat = new THREE.MeshLambertMaterial({
+        map: cloudsMap,
+        transparent: true
+      });
+
+      scene.add(planet);
+      scene.add(clouds);
+
+      $('#medium').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
+      $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+      $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+    };
+
+    function changeQualityHigh(){
+      planet.material.dispose();
+      scene.remove(planet);
+      planetMaterial = new THREE.MeshPhongMaterial();
+      planetMaterial.needsUpdate = true;
+      planetMaterial.map = texture;
+      
+      planetMaterial.specularMap = specmap;
+      planetMaterial.specular = new THREE.Color('grey');
+      planetMaterial.shininess = 10;
+      
+      planetMaterial.bumpMap = bumpmap;
+      planetMaterial.bumpScale = 0.04;
+      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      clouds.material.dispose();
+      scene.remove(clouds);
+      cloudsMat = new THREE.MeshPhongMaterial({
+        map: cloudsMap,
+        transparent: true
+      });
+
+      scene.add(planet);
+      scene.add(clouds);
+
+      $('#high').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
+      $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+      $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+    };
+
+    var cloudsMat = new THREE.MeshPhongMaterial({
+      map: cloudsMap,
+      transparent: true
     });
 
     var cloudsGeo = new THREE.SphereGeometry(1.07, 32, 32);

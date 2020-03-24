@@ -57,6 +57,13 @@
       <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
     </p>
   </div>
+  <div id="quality">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button onclick="changeQualityLow()" type="button" id="low" class="btn btn-secondary">Low</button>
+      <button onclick="changeQualityMiddle()" type="button" id="medium" class="btn btn-secondary">Medium</button>
+      <button onclick="changeQualityHigh()" type="button" id="high" class="btn btn-secondary">High</button>
+    </div>
+  </div>
   <div id="loadingScreen">
     <div id="loadingContent">
       <h3 style="margin-bottom: 35px">Секундочку...</h3>
@@ -111,6 +118,59 @@
     planet.position.set(0,0,0); 
    
     scene.add(planet); 
+
+    function changeQualityLow(){
+      planet.material.dispose();
+      scene.remove(planet);
+      planetMaterial = new THREE.MeshBasicMaterial();
+      planetMaterial.needsUpdate = true;
+      planetMaterial.map = texture;
+      
+      planetMaterial.bumpMap = bumpmap;
+      planetMaterial.bumpScale = 0.04;
+      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      scene.add(planet);
+      $('#low').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
+      $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+      $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+    };
+
+    function changeQualityMiddle(){
+      planet.material.dispose();
+      scene.remove(planet);
+      planetMaterial = new THREE.MeshLambertMaterial();
+      planetMaterial.needsUpdate = true;
+      planetMaterial.map = texture;
+      
+      planetMaterial.bumpMap = bumpmap;
+      planetMaterial.bumpScale = 0.04;
+      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      scene.add(planet);
+
+      $('#medium').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
+      $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+      $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+    };
+
+    function changeQualityHigh(){
+      planet.material.dispose();
+      scene.remove(planet);
+      planetMaterial = new THREE.MeshPhongMaterial();
+      planetMaterial.needsUpdate = true;
+      planetMaterial.map = texture;
+      
+      planetMaterial.bumpMap = bumpmap;
+      planetMaterial.bumpScale = 0.04;
+      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      scene.add(planet);
+
+      $('#high').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
+      $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+      $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+    };
     
     //Space background is a large sphere
     var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");

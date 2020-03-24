@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Главная</title>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="./home.css">
   <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -67,9 +67,9 @@
     if ($(window).width() <= 870){
       $('#top').css("height", height + "px");
       $('#up').css("display", "block");
-      $('#animation1').css("display", "none");
-      $('#animation2').css("display", "none");
-      $('#animation3').css("display", "none");
+      //$('#animation1').css("display", "none");
+      //$('#animation2').css("display", "none");
+      //$('#animation3').css("display", "none");
       $('#image').css("display", "block");
       $('.picture').css("float", "none");
       $('#text').css("display", "block");
@@ -92,9 +92,9 @@
       if ($(window).width() <= 870){
         $('#top').css("height", height + "px");
         $('#up').css("display", "block");
-        $('#animation1').css("display", "none");
-        $('#animation2').css("display", "none");
-        $('#animation3').css("display", "none");
+        //$('#animation1').css("display", "none");
+        //$('#animation2').css("display", "none");
+        //$('#animation3').css("display", "none");
         $('#image').css("display", "block");
         $('.picture').css("float", "none");
         $('#text').css("display", "block");
@@ -111,7 +111,8 @@
         $('.picture').css("float", "left");
         $('#text').css("display", "inline-block");
         $('.article-text').css("max-width", "59%");
-        $('.picture').css("margin-left", "0")
+        $('.picture').css("margin-left", "0");
+        $('#content').css("max-width", width);
       };
     };
 

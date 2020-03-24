@@ -36,7 +36,25 @@
       <input onclick="collapse()" type="checkbox" name="toggle" id="collapse" class="collapse">
       <label for="collapse" id="collapse-up"><i id="label" class="fas fa-sort-up"></i></label>
     </div>
-    <p id="infp">gggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
+    <div id="infp">
+      <!-- <ul>
+        <li>Третья планета от Солнца.</li>
+        <li>Предположительно жизнь появилась на планете примерно  4,25 млрд лет назад.</li>
+        <li>Приблизительно 70% планеты - Мировой Океан.</li>
+        <li>Сутки на Земле 24 часа.</li>
+        <li>Период обращения вокруг Солнца 365 суток.</li>
+        <li>Земля имеет один естественный спутник – <a style="text-decoration: none; color: black;" href="moon.html">Луну<sup><i style="font-size: 13px; margin-left: 3px" class="fas fa-external-link-alt"></i></sup></a>. Остальные искусственные.</li>
+      </ul> -->
+    </div>
+  </div>
+  <div id="cutter-div">
+    <p>
+      <input onclick="playPause()" type="checkbox" name="playPause" id="playPause">
+      <label for="playPause" id="play"><i style="color: white;" id="player" class="fas fa-play"></i></label>
+      <label for="playPause" id="pause"><i style="color: white;" id="player" class="fas fa-pause"></i></label>
+      <input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">
+      <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
+    </p>
   </div>
   <div id="loadingScreen">
     <div id="loadingContent">
@@ -78,7 +96,7 @@
       console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
       $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
-      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100))
+      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
     };
     
     var planetMaterial = new THREE.MeshPhongMaterial(); 

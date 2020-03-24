@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
   <div class="menu">
@@ -99,7 +100,7 @@
       console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
       $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
-      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100))
+      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
     };
     
     var planetMaterial = new THREE.MeshPhongMaterial(); 

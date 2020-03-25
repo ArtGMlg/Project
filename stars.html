@@ -45,6 +45,7 @@
         var loader = new THREE.TextureLoader();
         loader.crossOrigin = '';
         var controls;
+        window.scene = scene;
 
         renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -106,100 +107,87 @@
         var ursaplaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[0]) , side: THREE.DoubleSide, transparent: true});
         var ursam = new THREE.Mesh(ursaMin,ursaplaneMaterial);
         ursam.position.x = 0;
-        ursam.position.y = 0;
-        ursam.position.z = -18;
+        ursam.position.y = 16.5;
+        ursam.position.z = -10;
+        ursam.rotation.set(1.1, 0, -0.3);
         scene.add(ursam);
 
-        var dracoPlane = new THREE.PlaneGeometry(7.2,4.3,1,1);
+        var dracoPlane = new THREE.PlaneGeometry(8.9,5.3,1,1);
         var dracoplaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[1]) , side: THREE.DoubleSide, transparent: true});
         var draco = new THREE.Mesh(dracoPlane,dracoplaneMaterial);
         draco.position.x = 1;
-        draco.position.y = -2;
-        draco.position.z = -16;
-        draco.rotation.z += 0.5;
+        draco.position.y = 12;
+        draco.position.z = -10;
+        draco.rotation.x = 1.1;
+        draco.rotation.z = 0.76;
         scene.add(draco);
 
-        var cepheusPlane = new THREE.PlaneGeometry(4.54,5,1,1);
+        var cepheusPlane = new THREE.PlaneGeometry(3.9,4.3,1,1);
         var cepheusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[2]) , side: THREE.DoubleSide, transparent: true});
         var cepheus = new THREE.Mesh(cepheusPlane,cepheusPlaneMaterial);
-        cepheus.position.x = -5;
-        cepheus.position.y = -2;
-        cepheus.position.z = -17;
-        cepheus.rotation.z -= 1;
+        cepheus.position.x = -6;
+        cepheus.position.y = 11;
+        cepheus.position.z = -10;
+        cepheus.rotation.x = 1;
+        cepheus.rotation.z = -1;
         scene.add(cepheus);
 
         var ursaMajPlane = new THREE.PlaneGeometry(9.116,6.52,1,1);
         var ursaMajPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[3]) , side: THREE.DoubleSide, transparent: true});
         var ursaMaj = new THREE.Mesh(ursaMajPlane,ursaMajPlaneMaterial);
-        ursaMaj.position.x = 6;
-        ursaMaj.position.y = 5;
-        ursaMaj.position.z = -16.1;
-        ursaMaj.rotation.z += 2;
-        ursaMaj.rotation.y -= 0.5;
+        ursaMaj.position.x = 5.1;
+        ursaMaj.position.y = 14;
+        ursaMaj.position.z = -3.4;
+        ursaMaj.rotation.set(1.5, -0.5, 2.4);
         scene.add(ursaMaj);
 
-        var casiopeaPlane = new THREE.PlaneGeometry(6.23,4.0788,1,1);
+        var casiopeaPlane = new THREE.PlaneGeometry(3.74,2.45,1,1);
         var casiopeaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[4]) , side: THREE.DoubleSide, transparent: true});
         var casiopea = new THREE.Mesh(casiopeaPlane,casiopeaPlaneMaterial);
-        casiopea.position.x = -9;
-        casiopea.position.y = 2;
-        casiopea.position.z = -16.1;
-        casiopea.rotation.z += 4.8;
+        casiopea.position.set(-10, 13.2, -7);
+        casiopea.rotation.set(0.84, 0.44, 4.96);
         scene.add(casiopea);
 
         var camelopardusPlane = new THREE.PlaneGeometry(3.514,5.16,1,1);
         var camelopardusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[5]) , side: THREE.DoubleSide, transparent: true});
         var camelopardus = new THREE.Mesh(camelopardusPlane,camelopardusPlaneMaterial);
-        camelopardus.position.x = -6;
-        camelopardus.position.y = 7;
-        camelopardus.position.z = -16;
-        camelopardus.rotation.z += 1.2;
-        camelopardus.rotation.y += 0.5;
+        camelopardus.position.set(-7, 17, -3.5);
+        camelopardus.rotation.set(1.2, 0.5, 1.5);
         scene.add(camelopardus);
 
         var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);
         var herculesPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[6]) , side: THREE.DoubleSide, transparent: true});
         var hercules = new THREE.Mesh(herculesPlane,herculesPlaneMaterial);
-        hercules.position.x = 4;
-        hercules.position.y = -8;
-        hercules.position.z = -15.5;
-        hercules.rotation.z += 0.5;
+        hercules.position.set(4, 3.5, -15.5);
+        hercules.rotation.z = 0.5;
         scene.add(hercules);
 
         var coronaPlane = new THREE.PlaneGeometry(2.3,1.8,1,1);
         var coronaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[7]) , side: THREE.DoubleSide, transparent: true});
         var coronaBorealis = new THREE.Mesh(coronaPlane,coronaPlaneMaterial);
-        coronaBorealis.position.x = 8;
-        coronaBorealis.position.y = -7;
-        coronaBorealis.position.z = -14;
-        coronaBorealis.rotation.z += 0.5;
+        coronaBorealis.position.set(8, 4.62, -14);
+        coronaBorealis.rotation.z = 0.5;
         scene.add(coronaBorealis);
 
         var lyraPlane = new THREE.PlaneGeometry(1.6,1.5,1,1);
         var lyraPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[8]) , side: THREE.DoubleSide, transparent: true});
         var lyra = new THREE.Mesh(lyraPlane,lyraPlaneMaterial);
-        lyra.position.x = -1;
-        lyra.position.y = -9.5;
-        lyra.position.z = -16.1;
-        lyra.rotation.z += 0.5;
+        lyra.position.set(-2, 3, -16.1);
+        lyra.rotation.z = 0.35;
         scene.add(lyra);
 
         var cygnusPlane = new THREE.PlaneGeometry(6.89,5.04,1,1);
         var cygnusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[9]) , side: THREE.DoubleSide, transparent: true});
         var cygnus = new THREE.Mesh(cygnusPlane,cygnusPlaneMaterial);
-        cygnus.position.x = -6;
-        cygnus.position.y = -7;
-        cygnus.position.z = -12;
-        //cygnus.rotation.z += 0.5;
+        cygnus.position.set(-6.5, 2.6, -12);
+        cygnus.rotation.z += 0.2;
         scene.add(cygnus);
 
         var lacertaPlane = new THREE.PlaneGeometry(1.36,3.2,1,1);
         var lacertaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[10]) , side: THREE.DoubleSide, transparent: true});
         var lacerta = new THREE.Mesh(lacertaPlane,lacertaPlaneMaterial);
-        lacerta.position.x = -9;
-        lacerta.position.y = -3;
-        lacerta.position.z = -10;
-        lacerta.rotation.z -= 0.2;
+        lacerta.position.set(-9.3, 6.6, -9.2);
+        lacerta.rotation.set(0.5, 0.5, -0.2);
         scene.add(lacerta);
 
         var herculesPlane = new THREE.PlaneGeometry(6.36,6.252,1,1);

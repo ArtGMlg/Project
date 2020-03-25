@@ -103,9 +103,10 @@
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
 
       console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+
       $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
-      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
+      $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%");
     }; 
     
     var planetGeometry = new THREE.SphereGeometry(1,32,32); 

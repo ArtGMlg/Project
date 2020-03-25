@@ -252,7 +252,11 @@
 
     function create(){
       var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
-      var cutMat = new THREE.MeshPhongMaterial({map: loader.load("https://i.ibb.co/PzWPC32/image.png") , side: THREE.DoubleSide, transparent: true});
+      var cutMat = new THREE.MeshPhongMaterial({
+        map: loader.load("https://i.ibb.co/PzWPC32/image.png"),
+        side: THREE.DoubleSide,
+        transparent: true
+      });
       var cut = new THREE.Mesh(cutGeo,cutMat);
       cut.position.set(0, 0, 0);
       return cut;
@@ -276,9 +280,9 @@
     window.addEventListener('resize', onResize, false);
 
     function onResize() {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = (window.innerWidth / window.innerHeight);
-        camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = (window.innerWidth / window.innerHeight);
+      camera.updateProjectionMatrix();
     };
 
     var cut = create();

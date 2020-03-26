@@ -8,6 +8,11 @@ if (width <= 870) {
   $('#menu-main').css("display","none");
   $('#top-menu').css("height", height*0.09 + "px");
   $('#menu-main').css("font-size", "14px");
+  $('#quality').css('margin-left', "0px");
+  $('#quality').css('margin-right', width-200 + "px");
+}else{
+  $('#quality').css('margin-left', width-200 + "px");
+  $('#quality').css('margin-right', "0px");
 };
 
 window.addEventListener('resize', onResize, false);
@@ -19,12 +24,14 @@ function onResize() {
     camera.position.set(0,0,-9);
     $('#menu-main').css("display","none");
     $('#top-menu').css("height", height*0.09 + "px");
-    $('#quality').css('margin-left', width-200 + "px");
+    $('#quality').css('margin-left', "0px");
+    $('#quality').css('margin-right', width-200 + "px");
   }else{
     camera.position.set(0,0,-7);
     $('#menu-main').css("display", "inline-block");
     $('#menu').prop('checked', false);
     $('#quality').css('margin-left', width-200 + "px");
+    $('#quality').css('margin-right', "0px");
     check();
   };
 };
@@ -89,6 +96,7 @@ function playPause() {
     clRot = 0.0011;
     spRot = 0.001;
     controls.rotateSpeed = 1.0;
+    controls.zoomSpeed = 1.0;
     if (document.getElementById('cut').checked) {
       $('#cut').prop('checked', false);
       uncut();

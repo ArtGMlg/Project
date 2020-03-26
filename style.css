@@ -89,13 +89,13 @@ div.label{
 
 #cutter-div{
   position: absolute;
-  top: 15%;
+  top: 18%;
   z-index: 50;
 }
 
 #quality{
   position: absolute;
-  top: 10%;
+  top: 12%;
   z-index: 50;
 }
 

@@ -99,6 +99,7 @@
     var bumpmap = loader.load("https://i.ibb.co/4pxqvkg/earth-bump-8k.jpg");
     var specmap = loader.load("https://i.ibb.co/HFf7gC9/8k-earth-specular-map-opti.jpg");
     var cloudsMap = loader.load("https://i.ibb.co/PF5xSjb/earth-clouds-2048.png");
+    var cutTex = loader.load("https://i.ibb.co/mvz08BV/Earth-cut.png");
 
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
 
@@ -153,6 +154,8 @@
         transparent: true
       });
 
+      uncut();
+
       scene.add(planet);
       scene.add(clouds);
 
@@ -183,6 +186,8 @@
         transparent: true
       });
 
+      uncut();
+
       scene.add(planet);
       scene.add(clouds);
 
@@ -212,6 +217,8 @@
         map: cloudsMap,
         transparent: true
       });
+
+      uncut();
 
       scene.add(planet);
       scene.add(clouds);
@@ -252,14 +259,15 @@
     scene.add(spacesphere);
 
     function create(){
-      var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
+      var cutGeo = new THREE.PlaneGeometry(4.6,4.6,1,1);
       var cutMat = new THREE.MeshPhongMaterial({
-        map: loader.load("https://i.ibb.co/PzWPC32/image.png"),
+        map: cutTex,
         side: THREE.DoubleSide,
         transparent: true
       });
       var cut = new THREE.Mesh(cutGeo,cutMat);
       cut.position.set(0, 0, 0);
+      cut.rotation.y = 3.14;
       return cut;
     };
 
@@ -297,11 +305,11 @@
         $('#playPause').prop('checked', true);
         playPause();
         controls.rotateSpeed = 0;
+        controls.zoomSpeed = 0;
       }else{
         $('#playPause').prop('checked', false);
         playPause();
         uncut();
-        controls.rotateSpeed = 1.0;
       };
     };
 

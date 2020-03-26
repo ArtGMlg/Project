@@ -68,7 +68,7 @@
     <div id="loadingContent">
       <h3 style="margin-bottom: 35px">Секундочку...</h3>
       <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3"></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4"></div>
       </div>
       <h5 style="margin-top: 35px">Это может занять минуту или две :)</h5>
     </div>
@@ -98,6 +98,7 @@
     loader.crossOrigin = '';
     var texture = loader.load("https://i.ibb.co/0BjNd8G/8k-venus-surfaceopti.jpg");
     var bumpmap = loader.load("https://i.ibb.co/gVknGTg/venus-bump-map-8kopti.jpg");
+    var cutTex = loader.load("https://i.ibb.co/PgG9KWH/Venus-cut.png");
 
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
 
@@ -133,6 +134,8 @@
       planetMaterial.bumpScale = 0.03;
       planet = new THREE.Mesh(planetGeometry, planetMaterial);
 
+      uncut();
+
       scene.add(planet);
 
       $('#low').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
@@ -151,6 +154,8 @@
       planetMaterial.bumpScale = 0.03;
       planet = new THREE.Mesh(planetGeometry, planetMaterial);
 
+      uncut();
+
       scene.add(planet);
 
       $('#medium').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
@@ -168,6 +173,8 @@
       planetMaterial.bumpMap = bumpmap;
       planetMaterial.bumpScale = 0.03;
       planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      uncut();
 
       scene.add(planet);
 
@@ -192,6 +199,19 @@
     //spacesphere.material.map.repeat.set( 5, 3);
     
     scene.add(spacesphere);
+
+    function create(){
+      var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
+      var cutMat = new THREE.MeshPhongMaterial({
+        map: cutTex,
+        side: THREE.DoubleSide,
+        transparent: true
+      });
+      var cut = new THREE.Mesh(cutGeo,cutMat);
+      cut.position.set(-0.5, -0.2, 0);
+      cut.rotation.y = 3.14;
+      return cut;
+    };
    
     //position camera
     camera.position.set(0,0,-7);
@@ -206,15 +226,42 @@
     DirectionalLight2.position.set( -40, 0, 25 ); 
     scene.add( DirectionalLight2 );
 
-    $("#WebGL-output"). append(renderer.domElement);
+    $("#WebGL-output").append(renderer.domElement);
 
-        window.addEventListener('resize', onResize, false);
+    window.addEventListener('resize', onResize, false);
 
-        function onResize() {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = (window.innerWidth / window.innerHeight);
-            camera.updateProjectionMatrix();
-        };
+    function onResize() {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = (window.innerWidth / window.innerHeight);
+      camera.updateProjectionMatrix();
+    };
+
+    var cut = create();
+
+    function half() {
+      if (document.getElementById('cut').checked) {
+        scene.remove(planet);
+        scene.add(cut);
+        camera.position.set(0,0,-7);
+        $('#playPause').prop('checked', true);
+        playPause();
+        controls.rotateSpeed = 0;
+        controls.zoomSpeed = 0;
+      }else{
+        $('#playPause').prop('checked', false);
+        playPause();
+        uncut();
+      };
+    };
+
+    function uncut(){
+      scene.remove(cut);
+      cut.geometry.dispose();
+      cut.material.dispose();
+      cut = undefined;
+      cut = create();
+      scene.add(planet);
+    };
 
     var controls = new THREE.OrbitControls( camera, renderer.domElement );
 

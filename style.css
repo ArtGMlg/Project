@@ -83,7 +83,15 @@ div.label{
   cursor: pointer;
 }
 
+#collapse-left{
+  cursor: pointer;
+}
+
 .fa-sort-up{
+  font-size: 35px;
+}
+
+.fa-caret-left{
   font-size: 35px;
 }
 
@@ -97,6 +105,26 @@ div.label{
   position: absolute;
   top: 12%;
   z-index: 50;
+}
+
+#content{
+  position: fixed;
+  background-color: rgba(225,225,225,.5);
+  backdrop-filter: saturate(180%) blur(15px);
+  height: 91%;
+  width: 100%;
+  z-index: 100;
+  left: 98%;
+  overflow-x: auto;
+  color: black;
+  transition-property: left;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.labelS{
+  float: left;
+  padding-left: 4px;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Arimo');
@@ -249,4 +277,41 @@ input.toggleMenu:checked + label.toggleMenu
   opacity: 1;
   transition-property: opacity;
   transition-duration: 0.5s;
+}
+
+
+
+::-webkit-scrollbar-button {
+background-image:url('');
+background-repeat:no-repeat;
+border-radius: 3px;
+width:5px;
+height:0px;
+}
+
+::-webkit-scrollbar-track {
+background-color:rgba(225,225,225,.5);
+}
+
+::-webkit-scrollbar-thumb {
+-webkit-border-radius: 3px;
+border-radius: 3px;
+background-color:rgba(225,225,225,.85);
+}
+
+::-webkit-scrollbar-thumb:hover{
+background-color:rgba(225,225,225,.5);
+}
+
+::-webkit-resizer{
+background-image:url('');
+background-repeat:no-repeat;
+border-radius: 3px;
+width:6px;
+height:0px;
+}
+
+::-webkit-scrollbar{
+width: 6px;
+border-radius: 3px;
 }

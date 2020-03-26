@@ -38,14 +38,14 @@
       <label for="collapse" id="collapse-up"><i id="label" class="fas fa-sort-up"></i></label>
     </div>
     <div id="infp">
-      <!-- <ul>
-        <li>Третья планета от Солнца.</li>
-        <li>Предположительно жизнь появилась на планете примерно  4,25 млрд лет назад.</li>
-        <li>Приблизительно 70% планеты - Мировой Океан.</li>
-        <li>Сутки на Земле 24 часа.</li>
-        <li>Период обращения вокруг Солнца 365 суток.</li>
+      <ul>
+        <li>Пятая по счету планета от Солнца.</li>
+        <li>Первая планета, которая входит в группу Планет-Гигантов.</li>
+        <li>Юпитер относится к газовым гигантам.</li>
+        <li>Назван в честь верховного древнеримского бога.</li>
+        <li>У Юпитера на данный моменты обнаружены 79 естественных спутников.</li>
         <li>Земля имеет один естественный спутник – <a style="text-decoration: none; color: black;" href="moon.html">Луну<sup><i style="font-size: 13px; margin-left: 3px" class="fas fa-external-link-alt"></i></sup></a>. Остальные искусственные.</li>
-      </ul> -->
+      </ul>
     </div>
   </div>
   <div id="cutter-div">
@@ -153,15 +153,6 @@
       planetMaterial = new THREE.MeshPhongMaterial();
       planetMaterial.needsUpdate = true;
       planetMaterial.map = texture;
-      
-      planetMaterial.specularMap = specmap;
-      planetMaterial.specular = new THREE.Color('grey');
-      planetMaterial.shininess = 10;
-      
-      planetMaterial.bumpMap = bumpmap;
-      planetMaterial.bumpScale = 0.04;
-      planet = new THREE.Mesh(planetGeometry, planetMaterial);
-
       scene.add(planet);
 
       $('#high').css({"background-color" : "#5a6268", "border-color": "#5a6268"});

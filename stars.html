@@ -29,32 +29,292 @@
     </div>
     <div id="content">
       <div class="labelS">
-        <input onclick="collapse()" type="checkbox" name="toggle" id="collapse" class="collapse">
+        <input onclick="collapse()" type="checkbox" name="toggle" id="collapse" class="collapse" disabled="false">
         <label for="collapse" id="collapse-left"><i id="label" class="fas fa-caret-left"></i></label>
       </div>
       <div id="filling">
         <ul id="list">
-          <li><button>Малая Медведица</button></li>
-          <li><button>Дракон</button></li>
-          <li><button>Кассиопея</button></li>
-          <li><button>Жираф</button></li>
-          <li><button>Цефей</button></li>
-          <li><button>Большая Медведица</button></li>
-          <li><button>Малый Лев</button></li>
-          <li><button>Гончие Псы</button></li>
-          <li><button>Волопас</button></li>
-          <li><button>Северная Корона</button></li>
-          <li><button>Геркулес</button></li>
-          <li><button>Лира</button></li>
-          <li><button>Лебедь</button></li>
-          <li><button>Ящерица</button></li>
-          <li><button>Андромеда, Пегас</button></li>
-          <li><button>Персей</button></li>
-          <li><button>Треугольник</button></li>
-          <li><button>Возничий</button></li>
-          <li><button>Близнецы</button></li>
-          <li><button>Рысь</button></li>
+          <li onclick="Inf('ursaMin')">Малая Медведица</li>
+          <li onclick="Inf('draco')">Дракон</li>
+          <li onclick="Inf('casiopea')">Кассиопея</li>
+          <li onclick="Inf('camelopardus')">Жираф</li>
+          <li onclick="Inf('cepheus')">Цефей</li>
+          <li onclick="Inf('ursaMaj')">Большая Медведица</li>
+          <li onclick="Inf('leoMin')">Малый Лев</li>
+          <li onclick="Inf('canesVinatici')">Гончие Псы</li>
+          <li onclick="Inf('booties')">Волопас</li>
+          <li onclick="Inf('coronaBorealis')">Северная Корона</li>
+          <li onclick="Inf('hercules')">Геркулес</li>
+          <li onclick="Inf('lyra')">Лира</li>
+          <li onclick="Inf('cygnus')">Лебедь</li>
+          <li onclick="Inf('lacerta')">Ящерица</li>
+          <li onclick="Inf('pegasusAndromeda')">Андромеда, Пегас</li>
+          <li onclick="Inf('perseus')">Персей</li>
+          <li onclick="Inf('triangulum')">Треугольник</li>
+          <li onclick="Inf('auriga')">Возничий</li>
+          <li onclick="Inf('gemini')">Близнецы</li>
+          <li onclick="Inf('lynx')">Рысь</li>
         </ul>
+        <div class="constellation" id="ursaMin">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Мал. Медведица</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Можно наблюдать в любое время года.</li>
+            <li>Содержит 25 звёзд, из которых 7 образуют характерный ковш.</li>
+            <li>Самые яркие объекты созвездия: Полярная звезда, Звезда Севера.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="draco">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Дракон</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать в мае – ноябре.</li>
+            <li>Содержит более 210 звезд, из которых 13 образуют основную фигуру.</li>
+            <li>Самые яркие объекты созвездия: звезда Этамин, звезда Тета Дракона.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="casiopea">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Кассиопея</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Можно наблюдать в любе время года.</li>
+            <li>Содержит около 90 звезд, из которых 5 образуют фигуру, похожую на буквы «М» или «W».</li>
+            <li>Самые яркие объекты созвездия: звезда Шедар, звезда Каф, звезда Нави.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="camelopardus">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Жираф</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать в январе-феврале.</li>
+            <li>Содержит 45 звезд, из которых 5 образуют "тело" жирафа</li>
+            <li>Самые яркие объекты созвездия: бета Жирафа, звезда CS Жиpaфa.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="cepheus">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Цефей</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Можно наблюдать в любое времмя года</li>
+            <li>Содержит 60 звезд, из которых 7 образуют фигуру.</li>
+            <li>Самые яркие объекты созвездия: звезда Aльдepaмин (альфa Цeфeя), звезда Aльфиpк (бeтa Цeфeя).</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="ursaMaj">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Бол. Медведица</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Можно наблюдать в любое время года.</li>
+            <li>Семь звезд образуют ковш.</li>
+            <li>Самые яркие объекты созвездия: звезда Алиот, звезда Дубхе.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="leoMin">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Мал. Лев</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать в марте-апреле.</li>
+            <li>Содержит 34 звезды, из которых 5 образуют основную фигуру</li>
+            <li>Самые яркие объекты созвездия: звезда Пpeципуa, Бeтa Maлoгo Львa.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="canesVinatici">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Гончие Псы</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать в марте-апреле.</li>
+            <li>Содержит 57 звезд, из которых лишь 2 образуют фигуру.</li>
+            <li>Самые яркие объекты созвездия: звезда Сердце Карла (альфа Гончих Псов), звезда Чapa (бета Гочих Псов).</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="booties">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Волопас</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать весной и в первой половине лета.</li>
+            <li>Содержит примерно 50 тысяч звезд, из которых 6 образуют основную фигуру.</li>
+            <li>Самые яркие объекты созвездия: звезда Арктур (альфа Волопаса), звезда Неккар(бета Волопаса).</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="coronaBorealis">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Северная Корона</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать в июне</li>
+            <li>Содержит по меньшей мере 20 звезд, из них 6 оюразуют фигуру</li>
+            <li>Самые яркие объекты созвездия: Aльфeккa (альфа Северной Короны), Hуcaкaн (бета Северной Короны).</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="hercules">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Геркулес</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="lyra">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Лира</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="cygnus">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Лебедь</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="lacerta">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Ящерица</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="pegasusAndromeda">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Пегас + Андромеда</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии.</li>
+            <li>Лучше всего наблюдать в августе и сентябре.</li>
+            <li>Содержит 166 звезд, из которых 14 образуют основную фигуру.</li>
+            <li>Самые яркие объекты созвездия: звезда Эниф, звезда Маркаб.</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="perseus">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Персей</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="triangulum">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Треугольник</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="auriga">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Возничий</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="gemini">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Близнецы</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
+        <div class="constellation" id="lynx">
+          <span>
+            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
+            <h2>Рысь</h2>
+          </span>
+          <ul>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+            <li>Находится в Северном полушарии</li>
+          </ul>
+          <p></p>
+        </div>
       </div>
     </div>
     <div id ="WebGL-output"></div>
@@ -79,7 +339,7 @@
 
       renderer.setSize(window.innerWidth, window.innerHeight);
 
-      var links = ["https://i.ibb.co/nR0RC9f/ursaMin.png", "https://i.ibb.co/099R3vr/1.png", "https://i.ibb.co/xmCqZpF/Cepheus.png", "https://i.ibb.co/7RhZKNL/Ursa-Major.png", "https://i.ibb.co/ZXx2kR5/cassiopea.png","https://i.ibb.co/MhJLP5D/camelopadalis.png", "https://i.ibb.co/87qj0w0/hercules.png", "https://i.ibb.co/Hr2dFN6/corona-borealis.png", "https://i.ibb.co/g68k5rD/lyra.png", "https://i.ibb.co/fH5LgW7/Cygnus.png", "https://i.ibb.co/zS0t2HF/lacerta.png", "https://i.ibb.co/Z2xSbJk/Gemini.png", "https://i.ibb.co/dPr20cn/leo-minor.png", "https://i.ibb.co/mJRx2zP/pegasus-andromeda.png", "https://i.ibb.co/wgmBqXq/triangulum.png", "https://i.ibb.co/Ryq3V3H/booties.png", "https://i.ibb.co/PzQ5QFX/canes-vinatici.png", "https://i.ibb.co/jbfDpDf/lynx.png"];
+      var links = ["https://i.ibb.co/nR0RC9f/ursaMin.png", "https://i.ibb.co/099R3vr/1.png", "https://i.ibb.co/xmCqZpF/Cepheus.png", "https://i.ibb.co/7RhZKNL/Ursa-Major.png", "https://i.ibb.co/ZXx2kR5/cassiopea.png","https://i.ibb.co/MhJLP5D/camelopadalis.png", "https://i.ibb.co/87qj0w0/hercules.png", "https://i.ibb.co/Hr2dFN6/corona-borealis.png", "https://i.ibb.co/g68k5rD/lyra.png", "https://i.ibb.co/fH5LgW7/Cygnus.png", "https://i.ibb.co/zS0t2HF/lacerta.png", "https://i.ibb.co/Z2xSbJk/Gemini.png", "https://i.ibb.co/dPr20cn/leo-minor.png", "https://i.ibb.co/mJRx2zP/pegasus-andromeda.png", "https://i.ibb.co/wgmBqXq/triangulum.png", "https://i.ibb.co/Ryq3V3H/booties.png", "https://i.ibb.co/PzQ5QFX/canes-vinatici.png", "https://i.ibb.co/jbfDpDf/lynx.png", "https://i.ibb.co/kgfH5mM/perseus.png", "https://i.ibb.co/xYWRTzV/auriga.png"];
 
       THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
         console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
@@ -242,7 +502,21 @@
       lynx.rotation.set(1.5, -0.3, 2.5);
       scene.add(lynx);
 
-      $("#WebGL-output").append(renderer.domElement); 
+      var perseusPlane = new THREE.PlaneGeometry(2.25*1.2,5.38*1.2,1,1);
+      var perseusPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[18]) , side: THREE.DoubleSide, transparent: true});
+      var perseus = new THREE.Mesh(perseusPlane,perseusPlaneMaterial);
+      perseus.position.set(-8.6, 13.3, 1.7);
+      perseus.rotation.set(1.3, 0.5, -3.3);
+      scene.add(perseus);
+
+      var aurigaPlane = new THREE.PlaneGeometry(1.76*1.8,3.56*1.8,1,1);
+      var aurigaPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[19]) , side: THREE.DoubleSide, transparent: true});
+      var auriga = new THREE.Mesh(aurigaPlane,aurigaPlaneMaterial);
+      auriga.position.set(-3, 7, 4.3);
+      auriga.rotation.set(2.1, 0.02, 3.5);
+      scene.add(auriga);
+
+      $("#WebGL-output").append(renderer.domElement);
 
       window.addEventListener('resize', onResize, false);
 

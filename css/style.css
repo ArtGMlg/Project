@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arimo');
 
 body{ margin: 0; overflow: hidden; }
 
@@ -120,6 +121,8 @@ div.label{
   transition-property: left;
   transition-duration: 0.5s;
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .labelS{
@@ -127,7 +130,6 @@ div.label{
   padding-left: 4px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Arimo');
 .top-menu {
   background: rgba(130,130,130,.75);
   box-shadow: 3px 0 7px rgba(0,0,0,.3);

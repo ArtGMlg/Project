@@ -214,10 +214,10 @@ function back() {
   setTimeout(consHide, 500);
   $("#collapse").prop("disabled", false);
   controls.update();
-}
+};
 
 function consHide() {
   $('.constellation').css('display', 'none');
   $('#list').css('display', "block");
   $('#list').css('opacity', "1");
-}
+};

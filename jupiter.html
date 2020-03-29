@@ -81,6 +81,10 @@
 
     $('#loadingScreen').css('height', height+"px");
     $('#loadingContent').css('padding-top', height*0.286+"px");
+    
+    if(!localStorage.getItem('quality')){
+      localStorage.setItem('quality', '');
+    }
   </script>
   <script>
         if (!Detector.webgl) Detector.addGetWebGLMessage();
@@ -128,6 +132,8 @@
       $('#low').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
       $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
       $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+
+      localStorage.quality = 'low';
     };
 
     function changeQualityMiddle(){
@@ -144,6 +150,8 @@
       $('#medium').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
       $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
       $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+
+      localStorage.quality = 'med';
     };
 
     function changeQualityHigh(){
@@ -157,6 +165,8 @@
       $('#high').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
       $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
       $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+
+      localStorage.quality = 'high';
     };
     
     //Space background is a large sphere
@@ -232,6 +242,20 @@
       $('#loadingScreen').css('display', 'none');
 
       console.log( 'Loading Complete!');
+
+      var quality = localStorage.getItem('quality');
+
+      switch(quality){
+        case "low":
+          changeQualityLow();
+          break;
+        case "med":
+          changeQualityMiddle();
+          break;
+        case "high":
+          changeQualityHigh();
+          break;
+      };
 
     };
     </script>

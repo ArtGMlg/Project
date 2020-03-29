@@ -82,8 +82,11 @@
 
     $('#loadingScreen').css('height', height+"px");
     $('#loadingContent').css('padding-top', height*0.286+"px");
+
+    if(!localStorage.getItem('quality')){
+      localStorage.setItem('quality', '');
+    }
   </script>
-  
   <script>
     if (!Detector.webgl) Detector.addGetWebGLMessage();
     var scene = new THREE.Scene(); 
@@ -162,6 +165,8 @@
       $('#low').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
       $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
       $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+
+      localStorage.quality = 'low';
     };
 
     function changeQualityMiddle(){
@@ -194,6 +199,8 @@
       $('#medium').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
       $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
       $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+
+      localStorage.quality = 'med';
     };
 
     function changeQualityHigh(){
@@ -226,6 +233,8 @@
       $('#high').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
       $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
       $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
+
+      localStorage.quality = 'high';
     };
 
     var cloudsMat = new THREE.MeshPhongMaterial({
@@ -301,7 +310,11 @@
         scene.remove(planet);
         scene.remove(clouds);
         scene.add(cut);
-        camera.position.set(0,0,-7);
+        if (width >= 870){
+          camera.position.set(0,0,-7);
+        }else{
+          camera.position.set(0,0,-9);
+        };
         $('#playPause').prop('checked', true);
         playPause();
         controls.rotateSpeed = 0;
@@ -359,6 +372,19 @@
 
       console.log( 'Loading Complete!');
 
+      var quality = localStorage.getItem('quality');
+
+      switch(quality){
+        case "low":
+          changeQualityLow();
+          break;
+        case "med":
+          changeQualityMiddle();
+          break;
+        case "high":
+          changeQualityHigh();
+          break;
+      };
     };
   </script>
   <script type="text/javascript" src="./js/blocks.js"></script>

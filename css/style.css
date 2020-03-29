@@ -76,12 +76,10 @@ h5, h3{
   display: none;
 }
 
-div.label{
-  margin: 0% 0% 0% 48.5%;
-}
-
 #collapse-up{
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
 #collapse-left{

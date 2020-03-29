@@ -53,7 +53,7 @@
           <li tabindex="17" onclick="Inf('triangulum')">Треугольник</li>
           <li tabindex="18" onclick="Inf('auriga')">Возничий</li>
           <li tabindex="19" onclick="Inf('gemini')">Близнецы</li>
-          <li tabindex="20" onclick="Inf('lynx')">Рысь</li>
+          <li tabindex="20" onclick="">Рысь</li>
         </ul>
         <div class="constellation" id="ursaMin">
           <span>
@@ -71,7 +71,7 @@
               Миф
             </button>
           </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less001.php"><button type="button" class="btn btn-light">Обнаруживаем Малую Медведицу</button></a>
+          <a class="btn btn-light" target="blank" href="http://meteoweb.ru/astro/less001.php" role="button">Обнаруживаем Малую Медведицу</a>
         </div>
         <div class="constellation" id="draco">
           <span>
@@ -448,10 +448,17 @@
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             constData = data;
-          }
+          },
+        error: function(){
+          
+        }
       });
 
       function showMyth(constname) {
+        if (!constData) {
+          $('#exampleModalLongTitle').html("В данный момент невозможно получить данные с сервера.");
+          setTimeout(show, 500);
+        }else{
         for(i=0; i<constData.constellations.length; i++){
           if(constData.constellations[i].latName === constname){
             var mythModalTitle = $('#exampleModalLongTitle');
@@ -462,8 +469,9 @@
             mythModalBody.append(constData.constellations[i].description);
             setTimeout(show, 500);
             return;
-          }
-        }
+          };
+        };
+        };
       };
 
       function show() {

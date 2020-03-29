@@ -6,6 +6,7 @@
   display: none;
   opacity: 0;
   transition: opacity .5s linear;
+  width: 95%;
 }
 
 ul#list li{
@@ -33,9 +34,10 @@ ul#list li:hover{
 }
 
 ul#list li:focus{
-  transform: scale(.8);
+  transform: scale(.9);
   transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
   outline: none;
+  background-color: transparent;
 }
 
 .btn{

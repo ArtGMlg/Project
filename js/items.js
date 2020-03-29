@@ -4,7 +4,7 @@ var width = $(window).width();
 $("#collapse").prop("disabled", false);
 
 $('#content').css('height', height);
-$('#content').css('width', width*0.3);
+$('#content').css('width', width*0.35);
 $('.labelS').css({
   'height': height,
   'padding-top': height*0.40 + "px"
@@ -16,7 +16,7 @@ function onResize() {
   height = $(window).height();
   width = $(window).width();
   $('#content').css('height', height);
-  $('#content').css('width', width*0.3);
+  $('#content').css('width', width*0.35);
   $('.labelS').css({
     'height': height,
     'padding-top': height*0.40 + "px"
@@ -25,7 +25,7 @@ function onResize() {
 
 function collapse() {
   if (document.getElementById('collapse').checked){
-    $('#content').css("left", "70%");
+    $('#content').css("left", "65%");
     $('#label').css("transform", "rotate(180deg)");
     setTimeout(display, 500);
   }else{

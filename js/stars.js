@@ -173,7 +173,7 @@ scene.add(canesVinatici);
 var lynxPlane = new THREE.PlaneGeometry(18.5*0.5,17.16*0.5,1,1);
 var lynxPlaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[17]) , side: THREE.DoubleSide, transparent: true});
 var lynx = new THREE.Mesh(lynxPlane,lynxPlaneMaterial);
-lynx.position.set(1.5, 12.5, 1.9);
+lynx.position.set(1.5, 11.5, 1.9);
 lynx.rotation.set(1.5, -0.3, 2.5);
 scene.add(lynx);
 

@@ -46,11 +46,11 @@ function hide() {
 
 function Inf(constellationName) {
   switch(constellationName){
-    case 'ursaMin':
+    case 'ursam':
       $('#list').css('opacity', "0");
       setTimeout(hide, 500);
-      $('#ursaMin').css('display', "block");
-      $('#ursaMin').css('opacity', "1");
+      $('#ursam').css('display', "block");
+      $('#ursam').css('opacity', "1");
       camera.lookAt(ursam.position);
       $("#collapse").prop("disabled", true);
       break;

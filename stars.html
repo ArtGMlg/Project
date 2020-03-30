@@ -34,7 +34,7 @@
       </div>
       <div id="filling">
         <ul id="list">
-          <li tabindex="1" onclick="Inf('ursaMin')">Малая Медведица</li>
+          <li tabindex="1" onclick="Inf('ursam')">Малая Медведица</li>
           <li tabindex="2" onclick="Inf('draco')">Дракон</li>
           <li tabindex="3" onclick="Inf('casiopea')">Кассиопея</li>
           <li tabindex="4" onclick="Inf('camelopardus')">Жираф</li>
@@ -53,363 +53,8 @@
           <li tabindex="17" onclick="Inf('triangulum')">Треугольник</li>
           <li tabindex="18" onclick="Inf('auriga')">Возничий</li>
           <li tabindex="19" onclick="Inf('gemini')">Близнецы</li>
-          <li tabindex="20" onclick="">Рысь</li>
+          <li tabindex="20" onclick="Inf('lynx')">Рысь</li>
         </ul>
-        <div class="constellation" id="ursaMin">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Мал. Медведица</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Можно наблюдать в любое время года.</li>
-            <li>Содержит 25 звёзд, из которых 7 образуют характерный ковш.</li>
-            <li>Самые яркие объекты созвездия: Полярная звезда, Звезда Севера.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('ursam')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a class="btn btn-light" target="blank" href="http://meteoweb.ru/astro/less001.php" role="button">Обнаруживаем Малую Медведицу</a>
-        </div>
-        <div class="constellation" id="draco">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Дракон</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в мае – ноябре.</li>
-            <li>Содержит более 210 звезд, из которых 13 образуют основную фигуру.</li>
-            <li>Самые яркие объекты созвездия: звезда Этамин, звезда Тета Дракона.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('draco')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less001.php"><button type="button" class="btn btn-light">Обнаруживаем Дракона</button></a>
-        </div>
-        <div class="constellation" id="casiopea">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Кассиопея</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Можно наблюдать в любе время года.</li>
-            <li>Содержит около 90 звезд, из которых 5 образуют фигуру, похожую на буквы «М» или «W».</li>
-            <li>Самые яркие объекты созвездия: звезда Шедар, звезда Каф, звезда Нави.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('cassiopea')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less001.php"><button type="button" class="btn btn-light">Обнаруживаем Кассиопею</button></a>
-        </div>
-        <div class="constellation" id="camelopardus">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Жираф</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в январе-феврале.</li>
-            <li>Содержит 45 звезд, из которых 5 образуют "тело" жирафа</li>
-            <li>Самые яркие объекты созвездия: бета Жирафа, звезда CS Жиpaфa.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('camelopardus')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://www.abc2home.ru/znaki_zodiaka/sozvezdiya/zhiraf-camelopardalis.html#nayti_sozvezdie_zhiraf"><button type="button" class="btn btn-light">Обнаруживаем Жирафа</button></a>
-        </div>
-        <div class="constellation" id="cepheus">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Цефей</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Можно наблюдать в любое времмя года</li>
-            <li>Содержит 60 звезд, из которых 7 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: звезда Aльдepaмин (альфa Цeфeя), звезда Aльфиpк (бeтa Цeфeя).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('cepheus')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less002.php"><button type="button" class="btn btn-light">Обнаруживаем Цефей</button></a>
-        </div>
-        <div class="constellation" id="ursaMaj">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Бол. Медведица</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Можно наблюдать в любое время года.</li>
-            <li>Семь звезд образуют ковш.</li>
-            <li>Самые яркие объекты созвездия: звезда Алиот, звезда Дубхе.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('ursaMaj')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less001.php"><button type="button" class="btn btn-light">Обнаруживаем Большую Медведицу</button></a>
-        </div>
-        <div class="constellation" id="leoMin">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Мал. Лев</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в марте-апреле.</li>
-            <li>Содержит 34 звезды, из которых 5 образуют основную фигуру</li>
-            <li>Самые яркие объекты созвездия: звезда Пpeципуa, Бeтa Maлoгo Львa.</li>
-          </ul>
-          <a target="blank" href="https://asteropa.ru/sozvezdie-malyj-lev/#poisk-sozvezdiya-na-nebe"><button type="button" class="btn btn-light">Обнаруживаем Малого Льва</button></a>
-        </div>
-        <div class="constellation" id="canesVinatici">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Гончие Псы</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в марте-апреле.</li>
-            <li>Содержит 57 звезд, из которых лишь 2 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: звезда Сердце Карла (альфа Гончих Псов), звезда Чapa (бета Гочих Псов).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('canesVinatici')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="https://kosmoved.ru/sozvezdie-canes-venatici.shtml#sozvezdie-canes-venatici-poisk"><button type="button" class="btn btn-light">Обнаруживаем Гончих Псов</button></a>
-        </div>
-        <div class="constellation" id="booties">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Волопас</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать весной и в первой половине лета.</li>
-            <li>Содержит примерно 50 тысяч звезд, из которых 6 образуют основную фигуру.</li>
-            <li>Самые яркие объекты созвездия: звезда Арктур (альфа Волопаса), звезда Неккар(бета Волопаса).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('booties')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less005.php"><button type="button" class="btn btn-light">Обнаруживаем Волопас</button></a>
-        </div>
-        <div class="constellation" id="coronaBorealis">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Северная Корона</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в июне.</li>
-            <li>Содержит по меньшей мере 20 звезд, из них 6 оюразуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: Aльфeккa (альфа Северной Короны), Hуcaкaн (бета Северной Короны).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('coronaBorealis')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less006.php"><button type="button" class="btn btn-light">Обнаруживаем Северную Корону</button></a>
-        </div>
-        <div class="constellation" id="hercules">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Геркулес</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в июне.</li>
-            <li>Содержит по меньшей мере 235 звезд, из которых 19 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: Kpaeугoльный кaмeнь (четыре яркие звезды: Пи, Эта, Дзета и Эпcилoн Гepкулeca), Kopнeфopoc (бета Геркулеса)</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('hercules')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="https://symvolik.ru/sozvezdiya-severnogo-polushariya/72-gerkules"><button type="button" class="btn btn-light">Обнаруживаем Геркулеса</button></a>
-        </div>
-        <div class="constellation" id="lyra">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Лира</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать с мая по октябрь.</li>
-            <li>Содержит по меньшей мере 75 звезд, из которых 5 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: звездв Вега(альфа Лиры), звезда Шелиак (бета Лиры).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('lyra')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less002.php"><button type="button" class="btn btn-light">Обнаруживаем Лиру</button></a>
-        </div>
-        <div class="constellation" id="cygnus">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Лебедь</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать с начала лета и до середины осени</li>
-            <li>Соднржит по меньшей мере 270 звезд, которые можно различить невооруженным глазом, из них 10 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: звездв Денеб (альфа Лебедя), звезда Алиберо (бета Лебедя).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('cygnus')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less007.php"><button type="button" class="btn btn-light">Обнаруживаем Лебедя</button></a>
-        </div>
-        <div class="constellation" id="lacerta">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Ящерица</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в августе-сентябре</li>
-            <li>Содержит 63 звезды, из котрых 8 образуют фигуру</li>
-            <li>Самые яркие объекты созвездия: Aльфa Ящepицы, Бeтa Ящepицы</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('lacerta')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less007.php"><button type="button" class="btn btn-light">Обнаруживаем Ящерицу</button></a>
-        </div>
-        <div class="constellation" id="pegasusAndromeda">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Пегас + Андромеда</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в августе и сентябре.</li>
-            <li>Содержит 166 звезд, из которых 14 образуют основную фигуру.</li>
-            <li>Самые яркие объекты созвездия: звезда Эниф, звезда Маркаб.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('pegasusAndromeda')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less008.php"><button type="button" class="btn btn-light">Обнаруживаем Пегаса</button></a>
-        </div>
-        <div class="constellation" id="perseus">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Персей</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в ноябре-декабре.</li>
-            <li>Содержит около 350 звезд, из которых 11 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: звезда Мирфак (альфа Персея), звезда Алголь (бета Персея).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('perseus')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less003.php"><button type="button" class="btn btn-light">Обнаруживаем Персея</button></a>
-        </div>
-        <div class="constellation" id="triangulum">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Треугольник</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в ноябре.</li>
-            <li>Содержит по меньшей мере 25 звезд, из которых три образуют фигуру Треугольника</li>
-            <li>Самые яркие объекты созвездия: Aльфa Tpeугoльникa, Бета Треугольника.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('triangulum')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less009.php"><button type="button" class="btn btn-light">Обнаруживаем Треугольник</button></a>
-        </div>
-        <div class="constellation" id="auriga">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Возничий</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в декабре-январе.</li>
-            <li>Содержит около 150 звезд, из котрых 6 образуют фигуру неправильного шестиугольника</li>
-            <li>Самые яркие объекты созвездия: Kaпeллa (Aльфa Boзничeгo), Бeтa Boзничeгo.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('auriga')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less003.php"><button type="button" class="btn btn-light">Обнаруживаем Возничего</button></a>
-        </div>
-        <div class="constellation" id="gemini">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Близнецы</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать в декабре-январе.</li>
-            <li>Содержит около 120 звезд, из которых 17 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: Kacтop (Aльфa Близнeцoв), Пoллукc (Бeтa Близнeцoв).</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('gemini')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="http://meteoweb.ru/astro/less004.php"><button type="button" class="btn btn-light">Обнаруживаем Близнецов</button></a>
-        </div>
-        <div class="constellation" id="lynx">
-          <span>
-            <button onclick="back()" type="button" class="btn btn-outline-light"><i class="fas fa-chevron-left"></i></button>
-            <h2>Рысь</h2>
-          </span>
-          <ul>
-            <li>Находится в Северном полушарии.</li>
-            <li>Лучше всего наблюдать зимой.</li>
-            <li>Содержит 92 звезды, из которых 8 образуют фигуру.</li>
-            <li>Самые яркие объекты созвездия: Aльфa Pыcи, З1 Pыcи.</li>
-          </ul>
-          <p>
-            <button onclick="showMyth('lynx')" type="button" class="btn btn-light" data-toggle="modal">
-              Миф
-            </button>
-          </p>
-          <a target="blank" href="https://symvolik.ru/sozvezdiya-severnogo-polushariya/139-rys"><button type="button" class="btn btn-light">Обнаруживаем Рысь</button></a>
-        </div>
       </div>
     </div>
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -448,11 +93,29 @@
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             constData = data;
-          },
-        error: function(){
-          
-        }
+            createConstDivs(data);
+          }
       });
+
+      function createConstDivs(data){
+        for (i = 0; i < data.constellations.length; i++) {
+          $('#filling').append(
+            "<div class=\"constellation\" id=\"" + data.constellations[i].latName + "\">"+
+              "<span>"+
+                "<button onclick=\"back()\" type=\"button\" class=\"btn btn-outline-light\"><i class=\"fas fa-chevron-left\"></i></button>"+
+                "<h2>"+data.constellations[i].name+"</h2>" + 
+              "</span>" +
+              data.constellations[i].list +
+              "<p>"+
+                "<button onclick=\"showMyth(\'" +data.constellations[i].latName +"\')\" type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\">"+
+                  "Миф" +
+                "</button>"+
+              "</p>"+
+              "<a target=\"blank\" href=\""+data.constellations[i].link+"\" class=\"btn btn-light\" role=\"button\">Обнаруживаем созвездие"+data.constellations[i].name+"</a>"+
+            "</div>"
+          );
+        };
+      };
 
       function showMyth(constname) {
         if (!constData) {
@@ -476,7 +139,7 @@
 
       function show() {
         $('#exampleModalLong').modal('show');
-      }
+      };
     </script>
   </body>
 </html>

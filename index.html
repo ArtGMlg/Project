@@ -67,23 +67,18 @@
     if ($(window).width() <= 870){
       $('#top').css("height", height + "px");
       $('#up').css("display", "block");
-      //$('#animation1').css("display", "none");
-      //$('#animation2').css("display", "none");
-      //$('#animation3').css("display", "none");
       $('#image').css("display", "block");
       $('.picture').css("float", "none");
+      $('.picture').css("width", "150%");
+      $('.picture').css("margin-left", "40%");
       $('#text').css("display", "block");
       $('.article-text').css("max-width", width + "px");
-      $('.picture').css("margin-left", "60%");
     }else{
       $('#top').css("height", height*0.5 + "px");
       $('#up').css("display", "none");
-      $('#animation1').css("display", "");
-      $('#animation2').css("display", "");
-      $('#animation3').css("display", "");
+      $('.article-text').css("max-width", "59%");
     };
     
-    $('#content').css("max-width", width);
 
     window.addEventListener('resize', onResize, false);
     window.addEventListener('scroll', scroll, false);
@@ -92,27 +87,24 @@
       if ($(window).width() <= 870){
         $('#top').css("height", height + "px");
         $('#up').css("display", "block");
-        //$('#animation1').css("display", "none");
-        //$('#animation2').css("display", "none");
-        //$('#animation3').css("display", "none");
         $('#image').css("display", "block");
         $('.picture').css("float", "none");
+        $('.picture').css("width", "150%");
+        $('.picture').css("margin-left", "40%");
         $('#text').css("display", "block");
         $('.article-text').css("max-width", width + "px");
         $('.picture').css("margin-left", "60%");
-        $('#content').css("max-width", width);
+        $('.article-text').css("max-width", width + "px");
       }else{
         $('#top').css("height", height*0.5 + "px");
         $('#up').css("display", "none");
-        $('#animation1').css("display", "");
-        $('#animation2').css("display", "");
-        $('#animation3').css("display", "");
         $('#image').css("display", "inline-block");
         $('.picture').css("float", "left");
+        $('.picture').css("width", "90%");
         $('#text').css("display", "inline-block");
         $('.article-text').css("max-width", "59%");
         $('.picture').css("margin-left", "0");
-        $('#content').css("max-width", width);
+        $('.article-text').css("max-width", "59%");
       };
     };
 

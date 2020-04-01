@@ -1,4 +1,7 @@
+//Проверяем поддерживает ли устройство WebGl
 if (!Detector.webgl) Detector.addGetWebGLMessage();
+
+//Создаем необходимые объекты и подключаем загрузчик текстур
 var scene = new THREE.Scene(); 
 var camera = new THREE.PerspectiveCamera(35 , window.innerWidth / window.innerHeight , 0.1, 1000); 
 var renderer = new THREE.WebGLRenderer();
@@ -7,10 +10,12 @@ loader.crossOrigin = '';
 var controls;
 window.scene = scene;
 
+//Устанавливаем размер отрисованной области
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 var links = ["https://i.ibb.co/nR0RC9f/ursaMin.png", "https://i.ibb.co/099R3vr/1.png", "https://i.ibb.co/xmCqZpF/Cepheus.png", "https://i.ibb.co/7RhZKNL/Ursa-Major.png", "https://i.ibb.co/ZXx2kR5/cassiopea.png","https://i.ibb.co/MhJLP5D/camelopadalis.png", "https://i.ibb.co/87qj0w0/hercules.png", "https://i.ibb.co/Hr2dFN6/corona-borealis.png", "https://i.ibb.co/g68k5rD/lyra.png", "https://i.ibb.co/fH5LgW7/Cygnus.png", "https://i.ibb.co/zS0t2HF/lacerta.png", "https://i.ibb.co/Z2xSbJk/Gemini.png", "https://i.ibb.co/dPr20cn/leo-minor.png", "https://i.ibb.co/mJRx2zP/pegasus-andromeda.png", "https://i.ibb.co/wgmBqXq/triangulum.png", "https://i.ibb.co/Ryq3V3H/booties.png", "https://i.ibb.co/PzQ5QFX/canes-vinatici.png", "https://i.ibb.co/jbfDpDf/lynx.png", "https://i.ibb.co/kgfH5mM/perseus.png", "https://i.ibb.co/xYWRTzV/auriga.png"];
 
+//Проверяем ход загрузки текстур
 THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
   console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
   $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
@@ -23,7 +28,7 @@ THREE.DefaultLoadingManager.onLoad = function ( ) {
   console.log( 'Loading Complete!');
 };
 
-//Space background is a large sphere
+//Фон космоса - большая сфера
 var spacetex = loader.load("https://i.ibb.co/1Rg1fLN/8k-stars-opti.jpg");
 var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
 var spacesphereMat = new THREE.MeshPhongMaterial();
@@ -31,7 +36,7 @@ spacesphereMat.map = spacetex;
 
 var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
 
-//spacesphere needs to be double sided as the camera is within the spacesphere
+//Фон необходимо отобразить с двух сторон сферы так как камера находится внутри нее
 spacesphere.material.side = THREE.DoubleSide;
 
 spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
@@ -44,13 +49,15 @@ spacesphere.position.z = 0;
 
 scene.add(spacesphere);
 
-//position camera
+//Позиционируем камеру
 camera.position.set(0,0,1);
 camera.lookAt(0,0,0);
 
+//Создаем источник света
 var light = new THREE.AmbientLight(0xffffff, 6);
 scene.add(light);
 
+//Создаем все созвездия
 var ursaMin = new THREE.PlaneGeometry(5.1,1.68,1,1);
 var ursaplaneMaterial = new THREE.MeshPhongMaterial({map: loader.load(links[0]) , side: THREE.DoubleSide, transparent: true});
 var ursam = new THREE.Mesh(ursaMin,ursaplaneMaterial);
@@ -191,16 +198,19 @@ auriga.position.set(-3.4, 8.8, 4.7);
 auriga.rotation.set(2.1, 0.02, 3.5);
 scene.add(auriga);
 
+//Прикрепляем к контейнеру то, что хотим отрисовать
 $("#WebGL-output").append(renderer.domElement);
 
+//Создаем инспектор событий, чтобы узнать, когда окно браузера уменьшится или увеличится
 window.addEventListener('resize', onResize, false);
 
 function onResize() {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = (window.innerWidth / window.innerHeight);
-    camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = (window.innerWidth / window.innerHeight);
+  camera.updateProjectionMatrix();
 };
 
+//Добавляем способ контролирования положения камеры
 controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 controls.enableDamping = false; 
@@ -215,11 +225,10 @@ controls.maxDistance = 4;
 
 controls.maxPolarAngle = Math.PI;
 
-//call render loop once
-
+//Вызываем цикл прорисовки
 render();
 
-//render loop
+//Цикл прописовки
 function render() { 
   requestAnimationFrame(render);
   renderer.render(scene, camera); 

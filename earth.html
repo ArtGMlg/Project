@@ -88,15 +88,19 @@
     }
   </script>
   <script>
+    //Проверяем поддерживает ли устройство WebGl
     if (!Detector.webgl) Detector.addGetWebGLMessage();
+
+    //Создаем необходимые объекты и подключаем загрузчик текстур
     var scene = new THREE.Scene(); 
     var camera = new THREE.PerspectiveCamera(45 , window.innerWidth / window.innerHeight , 0.1, 1000); 
     var renderer = new THREE.WebGLRenderer();
     var loader = new THREE.TextureLoader();
 
+    //Устанавливаем размер отрисованной области
     renderer.setSize(window.innerWidth, window.innerHeight); 
     
-    //Load the planet textures
+    //Загружаем текстуры планеты
     loader.crossOrigin = '';
     var texture = loader.load("https://i.ibb.co/D4qNNyV/8k-earth-daymap-optimized.jpg");
     var bumpmap = loader.load("https://i.ibb.co/4pxqvkg/earth-bump-8k.jpg");
@@ -104,6 +108,7 @@
     var cloudsMap = loader.load("https://i.ibb.co/PF5xSjb/earth-clouds-2048.png");
     var cutTex = loader.load("https://i.ibb.co/mvz08BV/Earth-cut.png");
 
+    //Проверяем ход загрузки текстур
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
 
       console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
@@ -113,6 +118,7 @@
       $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%");
     }; 
     
+    //Создаем планету
     var planetGeometry = new THREE.SphereGeometry(1,32,32); 
     
     var planetMaterial = new THREE.MeshPhongMaterial();
@@ -135,6 +141,7 @@
    
     scene.add(planet);
 
+    //Описываем функцию смены качества отрисовки текстур
     function changeQualityLow(){
       planet.material.dispose();
       scene.remove(planet);
@@ -237,6 +244,7 @@
       localStorage.quality = 'high';
     };
 
+    //Создаем облака
     var cloudsMat = new THREE.MeshPhongMaterial({
       map: cloudsMap,
       transparent: true
@@ -250,7 +258,7 @@
 
     scene.add(clouds);
     
-    //Space background is a large sphere
+    //Фон космоса - большая сфера
     var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");
     var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
     var spacesphereMat = new THREE.MeshPhongMaterial();
@@ -258,12 +266,8 @@
 
     var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
     
-    //spacesphere needs to be double sided as the camera is within the spacesphere
+    //Фон необходимо отобразить с двух сторон сферы так как камера находится внутри нее
     spacesphere.material.side = THREE.DoubleSide;
-    
-    //spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
-    //spacesphere.material.map.wrapT = THREE.RepeatWrapping;
-    //spacesphere.material.map.repeat.set( 5, 3);
     
     scene.add(spacesphere);
 
@@ -280,11 +284,11 @@
       return cut;
     };
 
-    //position camera
+    //Позиционируем камеру
     camera.position.set(0,0,-7);
     camera.lookAt(scene.position); 
     
-    //create two spotlights to illuminate the scene
+    //Создаем два источника света, чтобы подсветить сцену
     var DirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.5 ); 
     DirectionalLight.position.set( 40, 0, -25 ); 
     scene.add( DirectionalLight );
@@ -293,8 +297,10 @@
     DirectionalLight2.position.set( -40, 0, 25 ); 
     scene.add( DirectionalLight2 );
 
-    $("#WebGL-output"). append(renderer.domElement);
+    //Прикрепляем к контейнеру то, что хотим отрисовать
+    $("#WebGL-output").append(renderer.domElement);
 
+    //Создаем инспектор событий, чтобы узнать, когда окно браузера уменьшится или увеличится
     window.addEventListener('resize', onResize, false);
 
     function onResize() {
@@ -303,6 +309,7 @@
       camera.updateProjectionMatrix();
     };
 
+    //Создаем разрез планеты
     var cut = create();
 
     function half() {
@@ -336,6 +343,7 @@
       scene.add(clouds);
     };
 
+    //Добавляем способ контролирования положения камеры
     var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
     controls.enableDamping = true; 
@@ -348,14 +356,14 @@
 
     controls.maxPolarAngle = Math.PI;
 
-    //call render loop once
-
     var plRot = 0.002;
     var clRot = 0.0011;
     var spRot = 0.001;
 
+    //Вызываем цикл прорисовки
     render();
-    //render loop
+
+    //Цикл прорисовки
     function render() { 
       requestAnimationFrame(render); 
       //rotate planet and spacesphere

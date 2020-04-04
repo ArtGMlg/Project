@@ -3,6 +3,18 @@
 
 body{ margin: 0; overflow: hidden; }
 
+#oldie{
+  font-family: 'Arimo', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  background: rgba(255, 255, 255, .85);
+  color: rgb(0, 0, 0);
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+}
+
 #loadingScreen{
   position: absolute;
   z-index: 100000;

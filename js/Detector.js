@@ -26,24 +26,17 @@ var Detector = {
 
 		var element = document.createElement( 'div' );
 		element.id = 'webgl-error-message';
-		element.style.fontFamily = 'monospace';
-		element.style.fontSize = '13px';
-		element.style.fontWeight = 'normal';
-		element.style.textAlign = 'center';
-		element.style.background = '#fff';
-		element.style.color = '#000';
-		element.style.padding = '1.5em';
-		element.style.width = '400px';
-		element.style.margin = '5em auto 0';
+		element.style.height = $(window).height() + "px";
+		element.style.padding = $(window).height()*0.286 + "px" + " 0px" + " 0px" + " 0px";
 
 		if ( ! this.webgl ) {
 
 			element.innerHTML = window.WebGLRenderingContext ? [
-				'Кажется, Ваша видеокарта не поддерживает <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br />',
-				'Вы можете узнать об этом <a href="http://get.webgl.org/" style="color:#000">здесь</a>.'
+				'<p>Кажется, Ваша видеокарта не поддерживает <a target="blank" href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation">WebGL</a>.</p><br>',
+				'<p>Вы можете узнать об этом <a href="http://get.webgl.org/" target="blank">здесь</a>.</p>'
 			].join( '\n' ) : [
-				'Похоже Ваш браузер не поддерживает <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>',
-				'Узнайте как получить его <a href="http://get.webgl.org/" style="color:#000">здесь</a>.'
+				'<p>Похоже Ваш браузер не поддерживает <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" target="blank">WebGL</a>.</p><br>',
+				'<p>Узнайте как получить его <a href="http://get.webgl.org/" target="blank">здесь</a>.</p>'
 			].join( '\n' );
 
 		}
@@ -53,6 +46,8 @@ var Detector = {
 	},
 
 	addGetWebGLMessage: function ( parameters ) {
+
+		$('#WebGL-output').remove();
 
 		var parent, id, element;
 

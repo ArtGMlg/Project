@@ -165,6 +165,11 @@ ul#list li:nth-child(20) {
           animation-delay: 1s;
 }
 
+ul#list li:nth-child(20) {
+  -webkit-animation-delay: 1.05s;
+          animation-delay: 1.05s;
+}
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;

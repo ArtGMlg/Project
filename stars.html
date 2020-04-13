@@ -22,7 +22,7 @@
       <div id="loadingContent">
         <h3 style="margin-bottom: 35px">Секундочку...</h3>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="17"></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="1" style="width: 100%">0%</div>
         </div>
         <h5 style="margin-top: 35px">Это может занять минуту или две :)</h5>
       </div>
@@ -34,6 +34,7 @@
       </div>
       <div id="filling">
         <ul id="list">
+          <a href="index.html" style="text-decoration: none; color: black;"><li tabindex="0">На главную <i class="fas fa-home"></i></li></a>
           <li tabindex="1" onclick="Inf('ursam')">Малая Медведица</li>
           <li tabindex="2" onclick="Inf('draco')">Дракон</li>
           <li tabindex="3" onclick="Inf('casiopea')">Кассиопея</li>
@@ -72,8 +73,6 @@
       </div>
     </div>
     <div id ="WebGL-output"></div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var height = $(window).height();
       var width = $(window).width();
@@ -81,6 +80,8 @@
       $('#loadingScreen').css('height', height+"px");
       $('#loadingContent').css('padding-top', height*0.286+"px");
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/stars.js"></script>
     <script src="./js/items.js"></script>
     <script>

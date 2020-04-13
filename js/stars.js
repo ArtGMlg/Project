@@ -18,7 +18,6 @@ var links = ["https://i.ibb.co/nR0RC9f/ursaMin.png", "https://i.ibb.co/099R3vr/1
 //Проверяем ход загрузки текстур
 THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
   console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-  $('.progress-bar').css('width', (itemsLoaded/itemsTotal)*100 + "%");
   $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
   $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%");
 };

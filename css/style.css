@@ -289,8 +289,6 @@ input.toggleMenu:checked + label.toggleMenu
   transition-duration: 0.5s;
 }
 
-
-
 ::-webkit-scrollbar-button {
 background-image:url('');
 background-repeat:no-repeat;

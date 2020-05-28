@@ -2,17 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous">
-    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="./js/three.js"></script>
     <script src="./js/Detector.js"></script>
     <script src="./js/OrbitControls.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/60c6536c6a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/list.css">
     <title>Звёздное небо</title>
@@ -28,6 +24,7 @@
       </div>
     </div>
     <div id="content">
+      <div id="bgBlur"></div>
       <div class="labelS">
         <input onclick="collapse()" type="checkbox" name="toggle" id="collapse" class="collapse" disabled="false">
         <label for="collapse" id="collapse-left"><i id="label" class="fas fa-caret-left"></i></label>
@@ -73,13 +70,6 @@
       </div>
     </div>
     <div id ="WebGL-output"></div>
-    <script type="text/javascript">
-      var height = $(window).height();
-      var width = $(window).width();
-
-      $('#loadingScreen').css('height', height+"px");
-      $('#loadingContent').css('padding-top', height*0.286+"px");
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/stars.js"></script>
@@ -112,7 +102,7 @@
                   "Миф" +
                 "</button>"+
               "</p>"+
-              "<a target=\"blank\" href=\""+data.constellations[i].link+"\" class=\"btn btn-light\" role=\"button\">Обнаруживаем созвездие "+data.constellations[i].name+"</a>"+
+              "<a target=\"_blank\" href=\""+data.constellations[i].link+"\" class=\"btn btn-light\" style=\"width: 60%\" role=\"button\">Обнаруживаем созвездие "+data.constellations[i].name+"</a>"+
             "</div>"
           );
         };
@@ -121,25 +111,20 @@
       function showMyth(constname) {
         if (!constData) {
           $('#exampleModalLongTitle').html("В данный момент невозможно получить данные с сервера.");
+          $('#myth').html("Мы уже знаем об этой ошибке и стараемся устранить её.");
           setTimeout(show, 500);
         }else{
         for(i=0; i<constData.constellations.length; i++){
           if(constData.constellations[i].latName === constname){
-            var mythModalTitle = $('#exampleModalLongTitle');
-            var mythModalBody = $('#myth');
-            $('#exampleModalLongTitle').html("");
-            $('#myth').html("");
-            mythModalTitle.append("Миф о созвездии " + constData.constellations[i].name);
-            mythModalBody.append(constData.constellations[i].description);
-            setTimeout(show, 500);
+            $('#exampleModalLongTitle').html("Миф о созвездии " + constData.constellations[i].name);
+            $('#myth').html(constData.constellations[i].description);
+            setTimeout(function(){
+              $('#exampleModalLong').modal('toggle');
+            }, 500);
             return;
           };
         };
         };
-      };
-
-      function show() {
-        $('#exampleModalLong').modal('show');
       };
     </script>
   </body>

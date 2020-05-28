@@ -62,6 +62,7 @@ function collapse() {
     $('#playPause').prop('checked', true);
     setTimeout(playPause, 500);
   }else{
+    $('#collapseOne').collapse('hide');
     $('#inf').css("top", "96%");
     setTimeout(infp, 500);
     $('#label').css("transform", "rotateX(360deg)");
@@ -93,7 +94,7 @@ function playPause() {
     $('#pause').css("display", "block");
     $('#pause').css("opacity", "1");
     plRot = 0.002;
-    clRot = 0.0011;
+    clRot = 0.003;
     spRot = 0.001;
     controls.rotateSpeed = 1.0;
     controls.zoomSpeed = 1.0;

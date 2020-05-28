@@ -3,16 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Марс</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous">
-    </script>
-    <script src="./js/three.js"></script>
-    <script src="./js/Detector.js"></script>
-    <script src="./js/OrbitControls.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="./js/three.js"></script>
+  <script src="./js/Detector.js"></script>
+  <script src="./js/OrbitControls.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script src="https://kit.fontawesome.com/60c6536c6a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
   <div id="loadingScreen">
@@ -53,6 +50,37 @@
         <li>Температура на планете колеблется от −153 °C на полюсах зимой и до +20 °C на экваторе.</li>
         <li>Марс имеет два естественные спутника– Фобос и Деймос.</li>
       </ul>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Подробнее
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <p>
+                Марс четвертая планета от Солнца и последняя из планет земной группы. Марс назван в честь мифологической фигуры&nbsp;&mdash; римского бога войны. В дополнение к его официальному названию Марс иногда называют Красной планетой, что связано с коричнево-красным цветом его поверхности. При всем этом Марс является второй самой маленькой планетой в Солнечной системе после Меркурия.
+              </p>
+              <p>            
+                Несмотря на тонкий атмосферный слой Марс обладает достаточно приемлемыми по земным меркам погодными условиями. Наиболее экстремальными формами этой погоды являются ветра, пыльные бури, морозы и туманы.
+              </p>
+              <p>
+                На сегодняшний день самым значительным открытием в отношении марсианской поверхности было обнаружение каналов. Особенностью этих каналов является то, что они, по мнению экспертов NASA, были созданы проточной водой, и, таким образом, являются наиболее достоверным доказательством теории о том, что в далеком прошлом поверхность Марса значительно напоминала земную.
+              </p>
+              <p>
+                Один марсианский год равен почти 686 земным дням. Марсианский день длится примерно 24&nbsp;часа&nbsp;40&nbsp;минут,&nbsp;&mdash; именно такое время требуется планете, чтобы завершить один полный оборот вокруг своей оси.
+              </p>
+              <p>
+                Марс имеет два спутника&nbsp;&mdash; Фобос и Деймос.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div id="cutter-div">
@@ -73,12 +101,6 @@
   </div>
   <div id ="WebGL-output" > </div>
   <script type="text/javascript">
-    var height = $(window).height();
-    var width = $(window).width();
-
-    $('#loadingScreen').css('height', height+"px");
-    $('#loadingContent').css('padding-top', height*0.286+"px");
-    
     if(!localStorage.getItem('quality')){
       localStorage.setItem('quality', '');
     }
@@ -103,7 +125,6 @@
     var cutTex = loader.load("https://i.ibb.co/t4LH7sn/Mars-cut.png");
 
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-
       console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
       $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
@@ -114,7 +135,6 @@
     
     planetMaterial.bumpMap = bumpmap;
     planetMaterial.bumpScale = 0.02;
-
 
     var planet = new THREE.Mesh(planetGeometry, planetMaterial); 
 
@@ -193,17 +213,13 @@
     //Space background is a large sphere
     var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");
     var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
-    var spacesphereMat = new THREE.MeshPhongMaterial();
+    var spacesphereMat = new THREE.MeshBasicMaterial();
     spacesphereMat.map = spacetex;
 
     var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
     
     //spacesphere needs to be double sided as the camera is within the spacesphere
     spacesphere.material.side = THREE.DoubleSide;
-    
-    //spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
-    //spacesphere.material.map.wrapT = THREE.RepeatWrapping;
-    //spacesphere.material.map.repeat.set( 5, 3);
     
     scene.add(spacesphere);
 
@@ -233,7 +249,7 @@
     DirectionalLight2.position.set( -40, 0, 25 ); 
     scene.add( DirectionalLight2 );
     
-    $("#WebGL-output"). append(renderer.domElement);
+    $("#WebGL-output").append(renderer.domElement);
 
     window.addEventListener('resize', onResize, false);
 
@@ -299,8 +315,7 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-
-      $('#loadingScreen').css('display', 'none');
+      $('#loadingScreen').remove();
 
       console.log( 'Loading Complete!');
 
@@ -317,7 +332,6 @@
           changeQualityHigh();
           break;
       };
-
     };
     </script>
   <script type="text/javascript" src="./js/blocks.js"></script>

@@ -3,16 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Венера</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous">
-    </script>
-    <script src="./js/three.js"></script>
-    <script src="./js/Detector.js"></script>
-    <script src="./js/OrbitControls.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link href="./fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="./js/three.js"></script>
+  <script src="./js/Detector.js"></script>
+  <script src="./js/OrbitControls.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script src="https://kit.fontawesome.com/60c6536c6a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
   <div id="loadingScreen">
@@ -55,6 +52,31 @@
         <li>Не имеет наклона оси, поэтому не имеет сезонности.</li>
         <li>Не имеет спутников.</li>
       </ul>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Подробнее
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <p>
+                Венера&nbsp;&mdash; вторая по удалённости от Солнца планета Солнечной системы, наряду с Меркурием, Землёй и Марсом принадлежащая к семейству планет земной группы. Названа в честь древнеримской богини любви Венеры. По ряду характеристик&nbsp;&mdash; например, по массе и размерам&nbsp;&mdash; Венера считается «сестрой» Земли. Венерианский год составляет 224,7&nbsp;земных суток. Она имеет самый длинный период вращения вокруг своей оси среди всех планет Солнечной системы и вращается в направлении, противоположном направлению вращения большинства планет. Венера не имеет естественных спутников.
+              </p>
+              <p>            
+                Венера имеет плотную атмосферу, состоящую более чем на 96&nbsp;% из углекислого газа. Атмосферное давление на поверхности планеты в 92 раза больше, чем на поверхности Земли, и примерно равно давлению воды на глубине 900 метров. Венера — самая горячая планета в Солнечной системе: средняя температура её поверхности&nbsp;&mdash; (462&nbsp;&#8451;), даже несмотря на то, что Меркурий находится ближе к Солнцу.
+              </p>
+              <p>
+                Венера покрыта непрозрачным слоем облаков из серной кислоты с высокой отражающей способностью, что, помимо всего прочего, закрывает поверхность планеты от прямой видимости. Высокая температура поверхности обусловлена действием парникового эффекта. В качестве одного из наиболее ярких объектов в небе, Венера была важным элементом в человеческой культуре. Она была первой планетой, для которой в начале второго тысячелетия до нашей эры было зафиксировано движение по небу. Как ближайшая к Земле планета, Венера была главной целью для ранних межпланетных исследований. Это была первая планета, которую посещали космические аппараты (&laquo;<nobr>Маринер-2</nobr>&raquo; в 1962&nbsp;году), и на поверхность которой была совершена посадка.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div id="cutter-div">
@@ -75,12 +97,6 @@
   </div>
   <div id ="WebGL-output" > </div>
   <script type="text/javascript">
-    var height = $(window).height();
-    var width = $(window).width();
-
-    $('#loadingScreen').css('height', height+"px");
-    $('#loadingContent').css('padding-top', height*0.286+"px");
-    
     if(!localStorage.getItem('quality')){
       localStorage.setItem('quality', '');
     }
@@ -88,7 +104,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script>
-        if (!Detector.webgl) Detector.addGetWebGLMessage();
+    if (!Detector.webgl) Detector.addGetWebGLMessage();
     var scene = new THREE.Scene(); 
     var camera = new THREE.PerspectiveCamera(45 , window.innerWidth / window.innerHeight , 0.1, 1000); 
     var renderer = new THREE.WebGLRenderer();
@@ -105,7 +121,6 @@
     var cutTex = loader.load("https://i.ibb.co/PgG9KWH/Venus-cut.png");
 
     THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-
       console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
       $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
@@ -116,7 +131,6 @@
     
     planetMaterial.bumpMap = bumpmap;
     planetMaterial.bumpScale = 0.03;
-
 
     var planet = new THREE.Mesh(planetGeometry, planetMaterial); 
 
@@ -195,17 +209,13 @@
     //Space background is a large sphere
     var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");
     var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
-    var spacesphereMat = new THREE.MeshPhongMaterial();
+    var spacesphereMat = new THREE.MeshBasicMaterial();
     spacesphereMat.map = spacetex;
 
     var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
     
     //spacesphere needs to be double sided as the camera is within the spacesphere
     spacesphere.material.side = THREE.DoubleSide;
-    
-    //spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
-    //spacesphere.material.map.wrapT = THREE.RepeatWrapping;
-    //spacesphere.material.map.repeat.set( 5, 3);
     
     scene.add(spacesphere);
 
@@ -301,8 +311,7 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-
-      $('#loadingScreen').css('display', 'none');
+      $('#loadingScreen').remove();
 
       console.log( 'Loading Complete!');
 
@@ -319,7 +328,6 @@
           changeQualityHigh();
           break;
       };
-
     };
     </script>
   <script type="text/javascript" src="./js/blocks.js"></script>

@@ -23,14 +23,14 @@ THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal
 };
 
 THREE.DefaultLoadingManager.onLoad = function ( ) {
-  $('#loadingScreen').css('display', 'none');
+  $('#loadingScreen').remove();
   console.log( 'Loading Complete!');
 };
 
 //Фон космоса - большая сфера
-var spacetex = loader.load("https://i.ibb.co/1Rg1fLN/8k-stars-opti.jpg");
+var spacetex = loader.load("https://i.ibb.co/NTMWckf/8k-stars-milky-way-optimized.jpg");
 var spacesphereGeo = new THREE.SphereGeometry(20,20,20);
-var spacesphereMat = new THREE.MeshPhongMaterial();
+var spacesphereMat = new THREE.MeshBasicMaterial();
 spacesphereMat.map = spacetex;
 
 var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
@@ -38,9 +38,9 @@ var spacesphere = new THREE.Mesh(spacesphereGeo,spacesphereMat);
 //Фон необходимо отобразить с двух сторон сферы так как камера находится внутри нее
 spacesphere.material.side = THREE.DoubleSide;
 
-spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
-spacesphere.material.map.wrapT = THREE.RepeatWrapping;
-spacesphere.material.map.repeat.set( 4, 3);
+//spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
+//spacesphere.material.map.wrapT = THREE.RepeatWrapping;
+//spacesphere.material.map.repeat.set( 4, 3);
 
 spacesphere.position.x = 0; 
 spacesphere.position.y = 0; 
@@ -53,7 +53,7 @@ camera.position.set(0,0,1);
 camera.lookAt(0,0,0);
 
 //Создаем источник света
-var light = new THREE.AmbientLight(0xffffff, 6);
+var light = new THREE.AmbientLight(0xffffff, 1);
 scene.add(light);
 
 //Создаем все созвездия
@@ -227,7 +227,7 @@ controls.maxPolarAngle = Math.PI;
 //Вызываем цикл прорисовки
 render();
 
-//Цикл прописовки
+//Цикл прорисовки
 function render() { 
   requestAnimationFrame(render);
   renderer.render(scene, camera); 

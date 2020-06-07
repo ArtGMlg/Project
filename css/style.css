@@ -322,6 +322,14 @@ div#myth p{
   text-align: justify;
 }
 
+.modal-header h5{
+  text-align: center;
+}
+
+.abs-btn{
+  position: absolute;
+}
+
 #bgBlur{
   position: fixed;
   z-index: -1;

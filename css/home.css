@@ -14,46 +14,16 @@ header{
 	width: 100%;
 	background: rgba(0,0,0,.75);
   transition:.3s linear;
+  backdrop-filter: saturate(180%) blur(5px);
 }
 
 #logo{
 	font-size: 100px;
 	color: white;
-	margin: 40px 0 0 45%;
-}
-
-#links{
-	list-style: none;
-  margin: 50px 0 0 30%;
-  padding: 0;
-  transition:.3s linear;
-}
-
-#links li {
-	display: inline-block;
-  transition:.3s linear;
-}
-
-#links a {
-  text-decoration: none;
-  display: block;
-  position: relative;
-  line-height: 61px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 18px;
-  letter-spacing: 2px;
-  font-family: 'Arimo', sans-serif;
-  font-weight: bold;
-  color: white;
-}
-
-#links li:hover{
-	background-color: rgba(0,0,0,.5);
-}
-
-#firstLink{
-	margin-right: 150px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #up{
@@ -67,6 +37,7 @@ header{
 	margin-top: 90px;
 	outline: none;
   transition:.3s linear;
+  cursor: pointer;
 }
 
 #up:hover{
@@ -79,11 +50,25 @@ header{
 	color: white;
 	font-size: 20px;
 	position: fixed;
-	top: 90%;
-	left: 90%;
+	right: 3%;
 	background-color: rgba(0,0,0,.5);
 	display: none;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
 	outline: none;
+	cursor: pointer;
+	transition: all.3s linear;
+	animation-name: showToTop;
+	animation-iteration-count: 1;
+	animation-fill-mode: both;
+	animation-duration: 1s;
+	animation-timing-function: cubic-bezier(0.43,-0.06, 0.11, 2.21);
+}
+
+.moving-block{
+	font-size: 100px;
 }
 
 #animation1{
@@ -112,8 +97,10 @@ header{
 
 .article-pic
 {
-  max-width: 39%;
-  display: inline-block;
+  width: 39%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   vertical-align: top;
   transition:.3s linear;
@@ -134,7 +121,7 @@ section img
 
 .article-text
 {
-  max-width: 59%;
+  max-width: 55%;
   display: inline-block;
   transition:.3s linear;
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -147,14 +134,48 @@ section
   padding-top: 0;
   padding-bottom: 0;
   background-color: white;
-  margin: 15px 0 15px 0;
+  padding: 50px 0px 50px 0px;
   min-height: 285px;
-  display: inline-block;
   transition:.3s linear;
 }
 
-article{
-  overflow-y: auto;
+section:nth-child(4n+3) div.article-pic{
+	float: right;
+}
+
+section:nth-child(2n+5) div.article-pic img{
+	margin-left: 15px;
+}
+
+section:first-child{
+	padding: 20px 0px 50px 15px;
+}
+
+section:last-child{
+	padding: 50px 0px 50px 0px;
+}
+
+#list{
+	height: fit-content;
+  display: flex;
+  justify-content: space-around;
+}
+
+#list a{
+	height: fit-content;
+  font-size: 18px;
+  line-height: 61px;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 2px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: bold;
+  padding: 0px 10px;
+  transition: all.3s linear;
+}
+
+#list a:hover{
+	background-color: rgba(0,0,0,.5);
 }
 
 @keyframes moveFirst {
@@ -196,12 +217,20 @@ article{
   }  
 }
 
-::-webkit-scrollbar {
-  width: 6px; 
-  background-color: rgba(0,0,0,.75);
+@keyframes showToTop{
+	0%{
+		bottom: -1%;
+		opacity: 0;
+	}
+	100%{
+		bottom: 5%;
+		opacity: 1;
+	}
 }
-::-webkit-scrollbar:hover {
-  width: 12px;
+
+::-webkit-scrollbar {
+  width: 10px; 
+  background-color: rgba(0,0,0,.75);
 }
 
 ::-webkit-scrollbar-thumb:vertical {
@@ -212,25 +241,53 @@ article{
   -webkit-border-radius: 80px;
 }
 
-@media all and (max-width: 1024px){
-	header{
-		text-align: center;
+@media all and (max-width: 800px){
+	section img{
+		float: none;
+		margin: 0px;
 	}
 
-	#links li {
+	section{
+		padding: 0px;
+	}
+
+	section:nth-child(4n+3) div.article-pic{
+		float: none;
+	}
+
+	section:nth-child(2n+5) div.article-pic img{
+		padding: 0px 0px 0px 0px;
+	}
+
+	section:first-child{
+		padding: 0px 0px 0px 0px;
+	}
+
+	#logo{
+		height: 40%;
+	}
+
+	#list{
 		display: block;
 		text-align: center;
 	}
 
-	#firstLink{
-		margin-right: 0px;
+	#list a{
+		display: block;
 	}
 
-	#links{
-		margin: 50px 0 0 0;
+	.article-pic{
+		width: 100%;
+		display: flex;
+    justify-content: center;
 	}
 
-	#logo{
-		margin: 40px 0 0 0;
+	.article-pic img{
+		width: -webkit-fill-available;
+	}
+
+	.article-text{
+		max-width: 100%;
+		display: block;
 	}
 }

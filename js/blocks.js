@@ -39,14 +39,14 @@ function onResize() {
 function check() {
   if (document.getElementById('menu').checked){
     $('#menu-main').css("display", "block");
-    $('#top-menu').css("height", height*0.96 + "px");
+    $('#top-menu').css({"height": height*0.96 + "px", "overflow-y": "auto"});
     $('#collapse').prop('checked', false);
     collapse();
     $('#playPause').prop('checked', true);
     setTimeout(playPause, 500);
   }else{
     //document.getElementById('menu-main').style.display = "none";
-    $('#top-menu').css("height", height*0.09 + "px");
+    $('#top-menu').css({"height": height*0.09 + "px", "overflow-y": "none"});
     if($(window).width() <= 870){setTimeout(display, 500);};
     $('#playPause').prop('checked', false);
     playPause();
@@ -54,7 +54,7 @@ function check() {
 };
 function collapse() {
   if (document.getElementById('collapse').checked){
-    $('#inf').css("top", "9%");
+    $('#inf').css({"top": "9%", "overflow-y": "none"});
     $('#label').css("transform", "rotateX(180deg)");
     $('#infp').css("display", "block");
     $('#menu').prop('checked', false);
@@ -63,7 +63,7 @@ function collapse() {
     setTimeout(playPause, 500);
   }else{
     $('#collapseOne').collapse('hide');
-    $('#inf').css("top", "96%");
+    $('#inf').css({"top": "96%", "overflow-y": "auto"});
     setTimeout(infp, 500);
     $('#label').css("transform", "rotateX(360deg)");
     $('#playPause').prop('checked', false);

@@ -256,7 +256,7 @@ section:last-child{
 	}
 
 	section:nth-child(2n+5) div.article-pic img{
-		padding: 0px 0px 0px 0px;
+		margin: 0px 0px 0px 0px;
 	}
 
 	section:first-child{

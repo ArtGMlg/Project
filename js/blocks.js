@@ -54,7 +54,7 @@ function check() {
 };
 function collapse() {
   if (document.getElementById('collapse').checked){
-    $('#inf').css({"top": "9%", "overflow-y": "hidden"});
+    $('#inf').css({"top": "9%", "overflow-y": "auto"});
     $('#label').css("transform", "rotateX(180deg)");
     $('#infp').css("display", "block");
     $('#menu').prop('checked', false);
@@ -63,7 +63,7 @@ function collapse() {
     setTimeout(playPause, 500);
   }else{
     $('#collapseOne').collapse('hide');
-    $('#inf').css({"top": "96%", "overflow-y": "auto"});
+    $('#inf').css({"top": "96%", "overflow-y": "hidden"});
     setTimeout(infp, 500);
     $('#label').css("transform", "rotateX(360deg)");
     $('#playPause').prop('checked', false);

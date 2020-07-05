@@ -46,7 +46,7 @@ function check() {
     setTimeout(playPause, 500);
   }else{
     //document.getElementById('menu-main').style.display = "none";
-    $('#top-menu').css({"height": height*0.09 + "px", "overflow-y": "none"});
+    $('#top-menu').css({"height": height*0.09 + "px", "overflow-y": "hidden"});
     if($(window).width() <= 870){setTimeout(display, 500);};
     $('#playPause').prop('checked', false);
     playPause();
@@ -54,7 +54,7 @@ function check() {
 };
 function collapse() {
   if (document.getElementById('collapse').checked){
-    $('#inf').css({"top": "9%", "overflow-y": "none"});
+    $('#inf').css({"top": "9%", "overflow-y": "hidden"});
     $('#label').css("transform", "rotateX(180deg)");
     $('#infp').css("display", "block");
     $('#menu').prop('checked', false);

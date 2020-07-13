@@ -54,7 +54,7 @@ function check() {
 };
 function collapse() {
   if (document.getElementById('collapse').checked){
-    $('#inf').css("top". "9%");
+    $('#inf').css("top", "9%");
     $('#label').css("transform", "rotateX(180deg)");
     $('#infp').css("display", "block");
     $('#menu').prop('checked', false);

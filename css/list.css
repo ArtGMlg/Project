@@ -218,3 +218,7 @@ h2{
 .card{
   background-color: rgba(225,225,225,.5);
 }
+
+.modal-open .modal{
+  backdrop-filter: blur(3px);
+}

@@ -16,18 +16,33 @@ body{ margin: 0; overflow: hidden; }
 }
 
 #loadingScreen{
+  opacity: 1;
   position: absolute;
-  z-index: 100000;
-  background-color: rgba(204,204,204, .85);
+  z-index: 102;
+  background-color: rgba(204,204,204, .6);
   backdrop-filter: saturate(180%) blur(20px);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
 }
 
 #loadingContent{
   width: 100%;
+}
+
+#loadingContent img{
+  width: 25%;
+}
+
+@media screen and (max-width: 665px){
+  #loadingContent img{
+    width: 25%
+  }
+}
+
+#phrases{
+  opacity: 1;
 }
 
 h5, h3{
@@ -39,7 +54,7 @@ h5, h3{
   position: fixed;
   width: 100%;
   z-index: 100;
-  backdrop-filter: saturate(180%) blur(15px);
+  backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
 }
 
 .fas{
@@ -56,16 +71,13 @@ h5, h3{
 #inf{
   position: fixed;
   background-color: rgba(225,225,225,.5);
-  backdrop-filter: saturate(180%) blur(15px);
-  height: 91%;
-  width: 100%;
+  backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
+  height: 91vh;
+  width: 100vw;
   z-index: 100;
-  top: 96%;
-  overflow-x: auto;
+  top: 96vh;
+  overflow-y: auto;
   color: black;
-  transition-property: top;
-  transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #infp{
@@ -121,13 +133,17 @@ h5, h3{
   position: absolute;
   top: 12%;
   z-index: 50;
+  transition: right .3s linear, left .3s linear;
+  right: 10px;
 }
 
 #content{
   position: fixed;
   background-color: rgba(225,225,225,.5);
   z-index: 100;
-  left: 98%;
+  left: calc(100vw - 30px);
+  height: 100vh;
+  width: 35vw;
   overflow-x: auto;
   color: black;
   transition-property: left;
@@ -135,10 +151,6 @@ h5, h3{
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
-}
-
-#label{
-  transition: all .5s ease-in-out;
 }
 
 .labelS{
@@ -156,129 +168,248 @@ h5, h3{
 
 .top-menu {
   background: rgba(130,130,130,.75);
-  box-shadow: 3px 0 7px rgba(0,0,0,.3);
-  padding-right: 20px;
+  height: 9vh;
 }
-.top-menu:after {
-  content: "";
-  display: block;
-  clear: both;
+
+label[for="menu"]{
+  height: 9vh;
 }
-.navbar-logo {display: inline-block; margin: 20px 0px 0px 20px;}
+
+.navbar-logo {
+  display: inline-block; margin: 20px 0px 0px 20px;
+}
 
 .menu-main {
+  display: block;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.menu-main li {display: inline-block;}
+
+.menu-main li {
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+}
+
 .menu-main a {
   text-decoration: none;
   display: block;
   position: relative;
-  line-height: 61px;
+  line-height: 55px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: bold;
+  color: white;
+  transition: all .3s linear;
+}
+
+.menu-main a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.menu-main a:not([href]) {
+  color: #007bff;
+}
+
+.menu-main a:not([href]):hover {
+  color: #007bff;
+  text-decoration: none;
+  cursor: default;
+}
+
+.submenu{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: rgba(130,130,130,.75);
+  top: 110%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.submenu li a {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  line-height: 55px;
   padding-left: 20px;
   font-size: 18px;
   letter-spacing: 2px;
   font-family: 'Arimo', sans-serif;
   font-weight: bold;
   color: white;
-  transition:.3s linear;
+  transition: all .3s linear;
+  backdrop-filter: blur(15px);
 }
-.menu-main a:before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  background: white;
+
+.submenu li a:hover{
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+#earth:hover .submenu{
+  visibility: visible;
+  opacity: 1;
+}
+
+.arrow{
   position: absolute;
-  left: 50%;
-  transform: rotate(45deg) translateX(6.5px);
-  opacity: 0;
-  transition: .3s linear;
   display: block;
+  width: .8rem;
+  height: .4rem;
+  left: calc(50% - .4rem);
+  top: -.4rem;
 }
-.menu-main a:hover:before {opacity: 1;}
+
+.arrow::before {
+  position: absolute;
+  content: "";
+  border-color: transparent;
+  border-style: solid;
+  bottom: 0;
+  border-width: 0 .4rem .4rem;
+  border-bottom-color: rgba(130,130,130,.75);
+}
+
 @media (max-width: 870px) {
-.menu-main {
-  float: none;
-  /*padding-top: 20px;*/
-}
-/*#menu-div{
-  height: 9%;
-  transition-property: height;
-  transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); 
-}*/
-.top-menu {
-  text-align: center;
-  /*padding: 20px 0 0 0;*/
+  .menu-main {
+    float: none;
+  }
+  .top-menu {
+    text-align: center;
+  }
+
+  .menu-main a {
+    padding: 0 10px;
+  }
+
+  .dws-menu{
+    overflow: hidden;
+  }
+
+  .dws-menu ul.menu-main{
+    display: none;
+    position: relative;
+  }
+
+  .dws-menu label.toggleMenu{
+    display: flex!important;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .submenu{
+    position: relative;
+    visibility: visible;
+    border: none!important;
+    opacity: 1;
+    -webkit-animation: fadeIn 0.5s linear;
+            animation: fadeIn 0.5s linear;       
+    -webkit-animation-delay: 0.25s;
+            animation-delay: 0.25s;
+  }
+
+  .arrow{
+    left: calc(50% - .8rem);
+  }
+
+  .menu-main li{
+    display: block;
+    margin-left: 0;
+    -webkit-animation: fadeIn 0.5s linear;
+            animation: fadeIn 0.5s linear;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+  }
+
+  .menu-main li:nth-child(1) {
+    -webkit-animation-delay: 0.05s;
+            animation-delay: 0.05s;
+  }
+
+  .menu-main li:nth-child(2) {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+  }
+
+  .menu-main li:nth-child(3) {
+    -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s;
+  }
+
+  .menu-main li:nth-child(4) {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+  }
+
+  .menu-main li:nth-child(5) {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+  }
+
+  .menu-main li:nth-child(6) {
+    -webkit-animation-delay: 0.35s;
+            animation-delay: 0.35s;
+  }
+
+  .menu-main li:nth-child(7) {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+  }
+
+  .menu-main li:nth-child(8) {
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s;
+  }
+
+  .menu-main li:nth-child(9) {
+    margin-bottom: 5rem;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+  }
+
+  .dws-menu label.toggleMenu .fas{
+    color: black;
+    display: flex;
+    align-items: center;
+  }
+
+  #quality{
+    left: 10px;
+    right: 0;
+  }
 }
 
-.menu-main a {padding: 0 10px;}
-.menu-main a:before {transform: rotate(45deg) translateX(-6px);}
-}
-@media (max-width: 870px) {
-.menu-main li {display: block;}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 10px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.menu-main a:before {
-  display: none;
-}
-
-.menu-main a{
-  line-height: 55px;
-}
-.dws-menu label.toggleMenu
-{
+.dws-menu label.toggleMenu{
   background-color: transparent;
   color: black;
   display: none;
   cursor: pointer;
-  /*padding: 9px 20px;*/
 }
-.dws-menu input#menu
-{
+.dws-menu input#menu{
   display: none;  
-}
-
-@media all and (max-width: 870px){
-.dws-menu{
-  overflow: hidden;
-}
-.dws-menu ul.menu-main{
-  display: none;
-  transition-property: display;
-  transition-delay: 0.5s;
-  transition-duration: 0.5s;
-}
-.dws-menu label.toggleMenu
-{
-  display: block;
-}
-.menu-main li{
-  display: block;
-}
-input.toggleMenu:checked + label.toggleMenu
-{
-  background-color: ;
-}
-#top-menu{
-  transition-property: height;
-  transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-/*input.toggleMenu:checked ~ ul.menu-main
-{
-  display: block;
-}*/
-.dws-menu label.toggleMenu .fas{
-  color: black;
-  margin: 15px 0 15px 15px;
-}
-.sub-menu{
-    position: relative;
-    display: block;
-  }
 }
 
 #playPause{

@@ -11,19 +11,11 @@ body{
 }
 
 header{
-	width: 100%;
+	width: 100vw;
+	height: 50vh;
 	background: rgba(0,0,0,.75);
   transition:.3s linear;
   backdrop-filter: saturate(180%) blur(5px);
-}
-
-#logo{
-	font-size: 100px;
-	color: white;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #up{
@@ -38,6 +30,28 @@ header{
 	outline: none;
   transition:.3s linear;
   cursor: pointer;
+}
+
+@media screen and (max-width: 800px){
+	header{
+		height: 100vh;
+	}
+	#up{
+		display: block;
+	}
+}
+
+article{
+	background-color: white;
+}
+
+#logo{
+	font-size: 100px;
+	color: white;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #up:hover{
@@ -74,25 +88,67 @@ header{
 #animation1{
 	position: absolute;
 	z-index: -100;
-	left: -1000px;
-	animation: moveFirst 15s infinite;
+	top: 0;
+	transform: translate(-30vw, -10vw);
+	animation: animation1 25s infinite;
+	animation-timing-function: linear;
+	animation-delay: 2s;
+	animation-timing-function: ease-out;
 }
 
 #animation2{
 	position: absolute;
 	z-index: -99;
-	left: 3000px;
-	animation: moveSecond 20s infinite;
-	animation-delay: 5s;
+	top: 0;
+	transform: translate(100vw, -10vw);
+	animation: animation2 28s infinite;
+	animation-timing-function: linear;
+	animation-delay: 6s;
+	animation-timing-function: ease-in;
 }
 
 #animation3{
 	position: absolute;
 	z-index: -98;
-	top: 145px;
-	left: 3000px;
-	animation: moveThird 30s infinite;
+	top: 0;
+	transform: translate(100vw, 70vw);
+	animation: animation3 30s infinite;
+	animation-timing-function: linear;
+	animation-delay: 9s;
+	animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+#animation4{
+	position: absolute;
+	z-index: -97;
+	top: 0;
+	transform: translate(-30vw, 70vw);
+	animation: animation4 33s infinite;
+	animation-timing-function: linear;
+	animation-delay: 12s;
+	animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0);
+}
+
+#animation5{
+	position: absolute;
+	z-index: -97;
+	top: 0;
+	transform: translate(-30vw, 35vw);
+	animation: animation5 35s infinite;
+	animation-timing-function: linear;
 	animation-delay: 15s;
+	animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+#animation6{
+	position: absolute;
+	z-index: -97;
+	top: 0;
+	transform: translate(100vw, -10vw);
+	animation: animation6 15s infinite;
+	animation-timing-function: linear;
+	animation-delay: 18s;
+	animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
 }
 
 .article-pic
@@ -106,63 +162,17 @@ header{
   transition:.3s linear;
 }
 
-.article-pic img
-{
-  width: 90%;
-  transition:.3s linear;
-}
-
 section img
 {
-  float: left;
-  margin-right: 15px;
   transition:.3s linear;
+  width: 100%;
 }
 
-.article-text
-{
-  max-width: 55%;
-  display: inline-block;
-  transition:.3s linear;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 20px;
-  margin: 10px;
+section:nth-child(4n+3){
+	flex-flow: row-reverse;
 }
 
-section
-{
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: white;
-  padding: 50px 0px 50px 0px;
-  min-height: 285px;
-  transition:.3s linear;
-}
-
-section:nth-child(4n+3) div.article-pic{
-	float: right;
-}
-
-section:nth-child(2n+5) div.article-pic img{
-	margin-left: 15px;
-}
-
-section:first-child{
-	padding: 20px 0px 50px 15px;
-}
-
-section:last-child{
-	padding: 50px 0px 50px 0px;
-}
-
-#list{
-	height: fit-content;
-  display: flex;
-  justify-content: space-around;
-}
-
-#list a{
-	height: fit-content;
+header a{
   font-size: 18px;
   line-height: 61px;
   text-decoration: none;
@@ -171,50 +181,82 @@ section:last-child{
   font-family: 'Arimo', sans-serif;
   font-weight: bold;
   padding: 0px 10px;
-  transition: all.3s linear;
+  transition: all .3s linear;
 }
 
-#list a:hover{
+header a:hover{
 	background-color: rgba(0,0,0,.5);
+	color: #dcdcdc;
+	text-decoration: none;
 }
 
-@keyframes moveFirst {
-  from {
-    left: -1000px;
-    top: 0;
-		transform: rotateZ(0deg);
+@keyframes animation1 {
+  0% {
+		transform: translate(-30vw, -10vw) rotate(0deg);
   }
-  to { 
-    left: 2360px; 
-    top: 145px;
-		transform: rotateZ(360deg);
+  50%{
+		transform: translate(100vw, 50vw) rotate(360deg);
+  }
+  100% { 
+    transform: translate(-30vw, -15vw) rotate(0deg);
   }  
 }
 
-@keyframes moveSecond{
-	from {
-    left: 3000px;
-    top: 0;
-		transform: rotateZ(0deg);
+@keyframes animation2{
+	0% {
+		transform: translate(100vw, -10vw) rotate(0deg);
   }
-  to { 
-    left: -2360px; 
-    top: 145px;
-		transform: rotateZ(360deg);
+  50% {
+  	transform: translate(-20vw, 90vw) rotate(360deg);
+  }
+  100% { 
+    transform: translate(80vw, -10vw) rotate(0deg);
   }  
 }
 
-@keyframes moveThird{
-	from {
-    left: 3000px;
-    top: 145px;
-		transform: rotateZ(0deg);
+@keyframes animation3{
+	0% {
+		transform: translate(100vw, 70vw) rotate(0deg);
   }
-  to { 
-    left: -2360px; 
-    top: 0px;
-		transform: rotateZ(360deg);
-  }  
+  50% {
+		transform: translate(-20vw, -10vw) rotate(360deg);
+  }
+  100% {
+		transform: translate(100vw, 75vw) rotate(0deg);
+  }
+}
+
+@keyframes animation4{
+	0% {
+		transform: translate(-30vw, 70vw) rotate(0deg);
+  }
+  100% {
+		transform: translate(100vw, -10vw) rotate(15deg);
+  }
+}
+
+@keyframes animation5{
+	0% {
+		transform: translate(-30vw, 35vw) rotate(0deg);
+  }
+  50% {
+		transform: translate(100vw, 15vw) rotate(15deg);
+  }
+  51% {
+  	transform: translate(100vw, 15vw) rotate(180deg);
+  }
+  100% {
+  	transform: translate(-30vw, 35vw) rotate(180deg);
+  }
+}
+
+@keyframes animation6{
+	0% {
+		transform: translate(100vw, -10vw);
+  }
+  100% {
+		transform: translate(-20vw, 75vw);
+  }
 }
 
 @keyframes showToTop{
@@ -235,32 +277,15 @@ section:last-child{
 
 ::-webkit-scrollbar-thumb:vertical {
   background-color: #666666;
-  -webkit-border-radius: 80px;
+  -webkit-border-radius: 1rem;
 }
 ::-webkit-scrollbar-thumb:vertical:active {
-  -webkit-border-radius: 80px;
+  -webkit-border-radius: 1rem;
 }
 
-@media all and (max-width: 800px){
+@media all and (max-width: 992px){
 	section img{
-		float: none;
-		margin: 0px;
-	}
-
-	section{
-		padding: 0px;
-	}
-
-	section:nth-child(4n+3) div.article-pic{
-		float: none;
-	}
-
-	section:nth-child(2n+5) div.article-pic img{
-		margin: 0px 0px 0px 0px;
-	}
-
-	section:first-child{
-		padding: 0px 0px 0px 0px;
+		width: 75%;
 	}
 
 	#logo{
@@ -276,18 +301,8 @@ section:last-child{
 		display: block;
 	}
 
-	.article-pic{
+	header a{
 		width: 100%;
-		display: flex;
-    justify-content: center;
-	}
-
-	.article-pic img{
-		width: -webkit-fill-available;
-	}
-
-	.article-text{
-		max-width: 100%;
-		display: block;
+		text-align: center;
 	}
 }

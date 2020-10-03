@@ -1,78 +1,73 @@
-var height = $(window).height();
-var width = $(window).width();
-
-$('#quality').css('margin-left', width-200 + "px");
-
-if (width <= 870) {
-  camera.position.set(0,0,-9);
-  $('#menu-main').css("display","none");
-  $('#top-menu').css("height", height*0.09 + "px");
-  $('#menu-main').css("font-size", "14px");
-  $('#quality').css('margin-left', "0px");
-  $('#quality').css('margin-right', width-200 + "px");
-}else{
-  $('#quality').css('margin-left', width-200 + "px");
-  $('#quality').css('margin-right', "0px");
+if ($(window).width() <= 870) {
+  camera.fov = 50;
+  camera.updateProjectionMatrix();
 };
+
+$('div#WebGL-output').on({
+  'mouseover': function(){
+    $(this).find('canvas').css('cursor', 'grab')
+  },
+  'mousedown': function(){
+    $(this).find('canvas').css('cursor', 'grabbing')
+  },
+  'mouseup': function(){
+    $(this).find('canvas').css('cursor', 'grab')
+  }
+})
 
 window.addEventListener('resize', onResize, false);
 
 function onResize() {
-  height = $(window).height();
-  width = $(window).width();
-  if (width <= 870) {
-    camera.position.set(0,0,-9);
-    $('#menu-main').css("display","none");
-    $('#top-menu').css("height", height*0.09 + "px");
-    $('#quality').css('margin-left', "0px");
-    $('#quality').css('margin-right', width-200 + "px");
+  if ($(window).width() <= 576) {
+    camera.fov = 50;
+    camera.updateProjectionMatrix();
   }else{
-    camera.position.set(0,0,-7);
-    $('#menu-main').css("display", "inline-block");
-    $('#menu').prop('checked', false);
-    $('#quality').css('margin-left', width-200 + "px");
-    $('#quality').css('margin-right', "0px");
-    check();
+    camera.fov = 45;
+    camera.updateProjectionMatrix();
   };
+  $(window).width() >= 870 ? $('#menu').prop('checked', false) && check() : '';
 };
 
 function check() {
-  if (document.getElementById('menu').checked){
-    $('#menu-main').css("display", "block");
-    $('#top-menu').css({"height": height*0.96 + "px", "overflow-y": "auto"});
-    $('#collapse').prop('checked', false);
-    collapse();
-    $('#playPause').prop('checked', true);
-    setTimeout(playPause, 500);
+  if ($('#menu').prop('checked') === true){
+    $('#collapse').prop('checked') === true ? $('#collapse').prop('checked', false) && collapse() : '';
+    $('#top-menu').animate({
+      'height': '96vh'
+    }, 500, 'linear', function(){
+      $('ul.menu-main').css("display", "block");
+      $('#top-menu').css('overflow-y', 'auto');
+      $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', true) && playPause() : '';
+    })
   }else{
-    //document.getElementById('menu-main').style.display = "none";
-    $('#top-menu').css({"height": height*0.09 + "px", "overflow-y": "hidden"});
-    if($(window).width() <= 870){setTimeout(display, 500);};
-    $('#playPause').prop('checked', false);
-    playPause();
+    $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', false) && playPause() : '';
+    Math.round(($('#top-menu').height() / $(window).height())*100) !== 9 ? $('#top-menu').css('overflow-y', 'hidden') && $('#top-menu').animate({
+      'height': '9vh'
+    }, 500, 'linear', function(){
+      $(window).width() <= 870 ? $('ul.menu-main').css("display", "none") : $('ul.menu-main').css("display", "block");
+      $('#top-menu').css('overflow-y', '');
+    }) : $(window).width() >= 870 ? $('#menu-main').css("display", "block") : $('#menu-main').css("display", "none");
   };
 };
 function collapse() {
-  if (document.getElementById('collapse').checked){
-    $('#inf').css("top", "9%");
-    $('#label').css("transform", "rotateX(180deg)");
+  if ($('#collapse').prop('checked') === true){
+    $('#menu').prop('checked') === true ? $('#menu').prop('checked', false) && check() : '';
     $('#infp').css("display", "block");
-    $('#menu').prop('checked', false);
-    check();
-    $('#playPause').prop('checked', true);
-    setTimeout(playPause, 500);
+    $('#label').css("transform", "rotateX(180deg)");
+    $('#inf').animate({
+      'top': '9vh'
+    }, 500, 'linear', function(){
+      $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', true) && playPause() : '';
+    })
   }else{
     $('#collapseOne').collapse('hide');
-    $('#inf').css("top", "96%");
-    setTimeout(infp, 500);
-    $('#label').css("transform", "rotateX(360deg)");
-    $('#playPause').prop('checked', false);
-    playPause();
+    $('#label').css("transform", "rotateX(0deg)");
+    $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', false) && playPause() : '';
+    $('#inf').animate({
+      'top': '96vh'
+    }, 500, 'linear', function(){
+      $('#infp').css("display", "none");
+    })
   };
-};
-
-function display(){
-  $('#menu-main').css("display", "none");
 };
 
 function infp(){
@@ -96,11 +91,5 @@ function playPause() {
     plRot = 0.002;
     clRot = 0.003;
     spRot = 0.001;
-    controls.rotateSpeed = 1.0;
-    controls.zoomSpeed = 1.0;
-    if (document.getElementById('cut').checked) {
-      $('#cut').prop('checked', false);
-      uncut();
-    };
   };
 };

@@ -35,7 +35,7 @@ function check() {
       'height': '96%'
     }, 500, 'linear', function(){
       $('ul.menu-main').css("display", "block");
-      $('#top-menu').css('overflow-y', 'auto');
+      $('#top-menu').css('overflow', 'auto');
       $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', true) && playPause() : '';
     })
   }else{
@@ -44,7 +44,7 @@ function check() {
       'height': '9%'
     }, 500, 'linear', function(){
       $(window).width() <= 870 ? $('ul.menu-main').css("display", "none") : $('ul.menu-main').css("display", "block");
-      $('#top-menu').css('overflow-y', '');
+      $('#top-menu').css('overflow', '');
     }) : $(window).width() >= 870 ? $('#menu-main').css("display", "block") : $('#menu-main').css("display", "none");
   };
 };

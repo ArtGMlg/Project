@@ -14,8 +14,21 @@ header{
 	width: 100vw;
 	height: 50vh;
 	background: rgba(0,0,0,.75);
-  transition:.3s linear;
+  transition: .3s linear;
+  /*opacity: 0;*/
   backdrop-filter: saturate(180%) blur(5px);
+  animation: transparency .5s linear;
+  animation-delay: .3s;
+  animation-fill-mode: both;
+}
+
+@keyframes transparency{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
 }
 
 #up{

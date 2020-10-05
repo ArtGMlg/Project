@@ -32,7 +32,7 @@ function check() {
   if ($('#menu').prop('checked') === true){
     $('#collapse').prop('checked') === true ? $('#collapse').prop('checked', false) && collapse() : '';
     $('#top-menu').animate({
-      'height': '96%'
+      'height': '96vh'
     }, 500, 'linear', function(){
       $('ul.menu-main').css("display", "block");
       $('#top-menu').css('overflow', 'auto');
@@ -41,7 +41,7 @@ function check() {
   }else{
     $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', false) && playPause() : '';
     Math.round(($('#top-menu').height() / $(window).height())*100) !== 9 ? $('#top-menu').css('overflow-y', 'hidden') && $('#top-menu').animate({
-      'height': '9%'
+      'height': '9vh'
     }, 500, 'linear', function(){
       $(window).width() <= 870 ? $('ul.menu-main').css("display", "none") : $('ul.menu-main').css("display", "block");
       $('#top-menu').css('overflow', '');

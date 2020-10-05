@@ -75,7 +75,7 @@ h5, h3{
   height: 91vh;
   width: 100vw;
   z-index: 100;
-  top: 96vh;
+  top: 96%;
   overflow-y: auto;
   color: black;
 }

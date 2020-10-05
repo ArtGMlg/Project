@@ -32,7 +32,7 @@ function check() {
   if ($('#menu').prop('checked') === true){
     $('#collapse').prop('checked') === true ? $('#collapse').prop('checked', false) && collapse() : '';
     $('#top-menu').animate({
-      'height': '96vh'
+      'height': '96%'
     }, 500, 'linear', function(){
       $('ul.menu-main').css("display", "block");
       $('#top-menu').css('overflow-y', 'auto');
@@ -41,7 +41,7 @@ function check() {
   }else{
     $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', false) && playPause() : '';
     Math.round(($('#top-menu').height() / $(window).height())*100) !== 9 ? $('#top-menu').css('overflow-y', 'hidden') && $('#top-menu').animate({
-      'height': '9vh'
+      'height': '9%'
     }, 500, 'linear', function(){
       $(window).width() <= 870 ? $('ul.menu-main').css("display", "none") : $('ul.menu-main').css("display", "block");
       $('#top-menu').css('overflow-y', '');
@@ -54,7 +54,7 @@ function collapse() {
     $('#infp').css("display", "block");
     $('#label').css("transform", "rotateX(180deg)");
     $('#inf').animate({
-      'top': '9vh'
+      'top': '9%'
     }, 500, 'linear', function(){
       $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', true) && playPause() : '';
     })
@@ -63,19 +63,15 @@ function collapse() {
     $('#label').css("transform", "rotateX(0deg)");
     $('#cut').prop('checked') !== true ? $('#playPause').prop('checked', false) && playPause() : '';
     $('#inf').animate({
-      'top': '96vh'
+      'top': '96%'
     }, 500, 'linear', function(){
       $('#infp').css("display", "none");
     })
   };
 };
 
-function infp(){
-  $('#infp').css("display", "none");
-};
-
 function playPause() {
-  if (document.getElementById('playPause').checked) {
+  if ($('#playPause').prop('checked') === true) {
     $('#pause').css("opacity", "0");
     $('#pause').css("display", "none");
     $('#play').css("display", "block");

@@ -270,6 +270,29 @@ header a:hover{
 	}
 }
 
+.appear-anim-img{
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1), transform .5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.appear-anim-txt{
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1) .5s, transform .5s cubic-bezier(0.16, 1, 0.3, 1) .5s;
+}
+
+@keyframes scaleIn{
+  from{
+    transform: scale(0);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 10px; 
   background-color: rgba(0,0,0,.75);

@@ -18,24 +18,10 @@ function appearBox(element, element_top, bottom_of_window) {
   /* If the object is completely visible in the window, fade it it */
   var buffer = element.parent().outerHeight()/2;
   if( bottom_of_window > element_top + buffer) {
-    element.removeClass('trigger');
-    element.removeClass('lazy-load-box');
-    $({scale: 0.5, opacity: 0}).stop(true, true).delay(element.data('delay')).animate({
-      scale: 1,
-      opacity: 1
-    }, {
-      duration: element.data('speed'),
-      easing: 'easeOutExpo',
-      start: function(){
-        //do smth
-      },
-      step: function(now, fx) {
-        element.css({
-          'transform': 'scale(' + now + ')',
-          'opacity': now
-        });
-      }
-    });           
+    element.css({
+      opacity: 1,
+      transform: 'scale(1)'
+    })           
   }
 }
 
@@ -52,7 +38,7 @@ function appearContainer(element, element_top, bottom_of_window) {
 
 (function($) {
   $(document).ready(function() {
-    $('.lazy-load-box').each( function(i){
+    $('.appear-anim-img, .appear-anim-txt').each( function(i){
       var element_offset = $(this).parent().offset(),
           element_top = element_offset.top;
           bottom_of_window = $(window).scrollTop() + getWindowHeight();
@@ -69,7 +55,7 @@ function appearContainer(element, element_top, bottom_of_window) {
     /* Every time the window is scrolled ... */
     $(window).scroll( function() {
       /* Check the location of each desired element */
-      $('.lazy-load-box').each( function(i){
+      $('.appear-anim-img, .appear-anim-txt').each( function(i){
         var element_offset = $(this).parent().offset(),
             element_top = element_offset.top;
             bottom_of_window = $(window).scrollTop() + getWindowHeight();

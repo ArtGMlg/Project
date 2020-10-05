@@ -282,17 +282,6 @@ header a:hover{
   transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1) .5s, transform .5s cubic-bezier(0.16, 1, 0.3, 1) .5s;
 }
 
-@keyframes scaleIn{
-  from{
-    transform: scale(0);
-    opacity: 0;
-  }
-  to{
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 ::-webkit-scrollbar {
   width: 10px; 
   background-color: rgba(0,0,0,.75);

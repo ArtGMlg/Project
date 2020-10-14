@@ -1,167 +1,170 @@
+/*Импортируем шрифты*/
 @import url('https://fonts.googleapis.com/css?family=Arimo');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap');
 
+/*Устанавливаем правила для документа и его тела*/
 html{
-	overflow-x: hidden;
+  overflow-x: hidden!important;
 }
 
 body{
-	margin: 0;
-	overflow-x: hidden;
+  margin: 0;
+  overflow-x: hidden!important;
 }
 
+/*Стилевые свойства заголовка и относящихся к нему элементов*/
 header{
-	width: 100vw;
-	height: 50vh;
-	background: rgba(0,0,0,.75);
+  width: 100vw;
+  height: 50vh;
+  background: rgba(0,0,0,.75);
   transition: .3s linear;
-  /*opacity: 0;*/
   backdrop-filter: saturate(180%) blur(5px);
   animation: transparency .5s linear;
   animation-delay: .3s;
   animation-fill-mode: both;
 }
 
-@keyframes transparency{
-	from{
-		opacity: 0;
-	}
-	to{
-		opacity: 1;
-	}
-}
-
-#up{
-	background-color: transparent;
-	border-color: transparent;
-	color: white;
-	font-size: 30px;
-	width: 100%;
-	text-align: center;
-	display: none;
-	margin-top: 90px;
-	outline: none;
-  transition:.3s linear;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 800px){
-	header{
-		height: 100vh;
-	}
-	#up{
-		display: block;
-	}
-}
-
-article{
-	background-color: white;
-}
-
 #logo{
-	font-size: 100px;
-	color: white;
+  font-size: 100px;
+  color: white;
   height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+header a{
+  font-size: 18px;
+  line-height: 61px;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 2px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: bold;
+  padding: 0px 10px;
+  transition: all .3s linear;
+}
+
+header a:hover{
+  background-color: rgba(0,0,0,.5);
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+#up{
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  display: none;
+  margin-top: 90px;
+  outline: none;
+  transition:.3s linear;
+  cursor: pointer;
+}
+
 #up:hover{
-	background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.5);
+}
+
+.moving-block{
+  font-size: 100px;
+}
+
+#animation1{
+  position: absolute;
+  z-index: -100;
+  top: 0;
+  transform: translate(-30vw, -10vw);
+  animation: animation1 25s infinite;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-timing-function: ease-out;
+}
+
+#animation2{
+  position: absolute;
+  z-index: -99;
+  top: 0;
+  transform: translate(100vw, -10vw);
+  animation: animation2 28s infinite;
+  animation-timing-function: linear;
+  animation-delay: 6s;
+  animation-timing-function: ease-in;
+}
+
+#animation3{
+  position: absolute;
+  z-index: -98;
+  top: 0;
+  transform: translate(100vw, 70vw);
+  animation: animation3 30s infinite;
+  animation-timing-function: linear;
+  animation-delay: 9s;
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+#animation4{
+  position: absolute;
+  z-index: -97;
+  top: 0;
+  transform: translate(-30vw, 70vw);
+  animation: animation4 33s infinite;
+  animation-timing-function: linear;
+  animation-delay: 12s;
+  animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0);
+}
+
+#animation5{
+  position: absolute;
+  z-index: -97;
+  top: 0;
+  transform: translate(-30vw, 35vw);
+  animation: animation5 35s infinite;
+  animation-timing-function: linear;
+  animation-delay: 15s;
+  animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+#animation6{
+  position: absolute;
+  z-index: -97;
+  top: 0;
+  transform: translate(100vw, -10vw);
+  animation: animation6 15s infinite;
+  animation-timing-function: linear;
+  animation-delay: 18s;
+  animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+/*Стилевые свойства статьи и элементов относящихся к ней*/
+article{
+  background-color: white;
 }
 
 #toTop{
-	border-radius: 100%;
-	border-color: transparent;
-	color: white;
-	font-size: 20px;
-	position: fixed;
-	right: 3%;
-	background-color: rgba(0,0,0,.5);
-	display: none;
+  border-radius: 50%;
+  border-color: transparent;
+  color: white;
+  font-size: 20px;
+  position: fixed;
+  background-color: rgba(0,0,0,.5);
+  display: none;
   width: 35px;
   height: 35px;
   align-items: center;
   justify-content: center;
-	outline: none;
-	cursor: pointer;
-	transition: all.3s linear;
-	animation-name: showToTop;
-	animation-iteration-count: 1;
-	animation-fill-mode: both;
-	animation-duration: 1s;
-	animation-timing-function: cubic-bezier(0.43,-0.06, 0.11, 2.21);
-}
-
-.moving-block{
-	font-size: 100px;
-}
-
-#animation1{
-	position: absolute;
-	z-index: -100;
-	top: 0;
-	transform: translate(-30vw, -10vw);
-	animation: animation1 25s infinite;
-	animation-timing-function: linear;
-	animation-delay: 2s;
-	animation-timing-function: ease-out;
-}
-
-#animation2{
-	position: absolute;
-	z-index: -99;
-	top: 0;
-	transform: translate(100vw, -10vw);
-	animation: animation2 28s infinite;
-	animation-timing-function: linear;
-	animation-delay: 6s;
-	animation-timing-function: ease-in;
-}
-
-#animation3{
-	position: absolute;
-	z-index: -98;
-	top: 0;
-	transform: translate(100vw, 70vw);
-	animation: animation3 30s infinite;
-	animation-timing-function: linear;
-	animation-delay: 9s;
-	animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-#animation4{
-	position: absolute;
-	z-index: -97;
-	top: 0;
-	transform: translate(-30vw, 70vw);
-	animation: animation4 33s infinite;
-	animation-timing-function: linear;
-	animation-delay: 12s;
-	animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0);
-}
-
-#animation5{
-	position: absolute;
-	z-index: -97;
-	top: 0;
-	transform: translate(-30vw, 35vw);
-	animation: animation5 35s infinite;
-	animation-timing-function: linear;
-	animation-delay: 15s;
-	animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
-}
-
-#animation6{
-	position: absolute;
-	z-index: -97;
-	top: 0;
-	transform: translate(100vw, -10vw);
-	animation: animation6 15s infinite;
-	animation-timing-function: linear;
-	animation-delay: 18s;
-	animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
+  outline: none;
+  cursor: pointer;
+  bottom: 80px;
+  right: 18px;
+  transition: .3s linear;
+  animation-name: showToTop;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.43,-0.06, 0.11, 2.21);
 }
 
 .article-pic
@@ -182,105 +185,7 @@ section img
 }
 
 section:nth-child(4n+3){
-	flex-flow: row-reverse;
-}
-
-header a{
-  font-size: 18px;
-  line-height: 61px;
-  text-decoration: none;
-  color: white;
-  letter-spacing: 2px;
-  font-family: 'Arimo', sans-serif;
-  font-weight: bold;
-  padding: 0px 10px;
-  transition: all .3s linear;
-}
-
-header a:hover{
-	background-color: rgba(0,0,0,.5);
-	color: #dcdcdc;
-	text-decoration: none;
-}
-
-@keyframes animation1 {
-  0% {
-		transform: translate(-30vw, -10vw) rotate(0deg);
-  }
-  50%{
-		transform: translate(100vw, 50vw) rotate(360deg);
-  }
-  100% { 
-    transform: translate(-30vw, -15vw) rotate(0deg);
-  }  
-}
-
-@keyframes animation2{
-	0% {
-		transform: translate(100vw, -10vw) rotate(0deg);
-  }
-  50% {
-  	transform: translate(-20vw, 90vw) rotate(360deg);
-  }
-  100% { 
-    transform: translate(80vw, -10vw) rotate(0deg);
-  }  
-}
-
-@keyframes animation3{
-	0% {
-		transform: translate(100vw, 70vw) rotate(0deg);
-  }
-  50% {
-		transform: translate(-20vw, -10vw) rotate(360deg);
-  }
-  100% {
-		transform: translate(100vw, 75vw) rotate(0deg);
-  }
-}
-
-@keyframes animation4{
-	0% {
-		transform: translate(-30vw, 70vw) rotate(0deg);
-  }
-  100% {
-		transform: translate(100vw, -10vw) rotate(15deg);
-  }
-}
-
-@keyframes animation5{
-	0% {
-		transform: translate(-30vw, 35vw) rotate(0deg);
-  }
-  50% {
-		transform: translate(100vw, 15vw) rotate(15deg);
-  }
-  51% {
-  	transform: translate(100vw, 15vw) rotate(180deg);
-  }
-  100% {
-  	transform: translate(-30vw, 35vw) rotate(180deg);
-  }
-}
-
-@keyframes animation6{
-	0% {
-		transform: translate(100vw, -10vw);
-  }
-  100% {
-		transform: translate(-20vw, 75vw);
-  }
-}
-
-@keyframes showToTop{
-	0%{
-		bottom: -1%;
-		opacity: 0;
-	}
-	100%{
-		bottom: 5%;
-		opacity: 1;
-	}
+  flex-flow: row-reverse;
 }
 
 .appear-anim-img{
@@ -295,7 +200,97 @@ header a:hover{
   transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1) .5s, transform .5s cubic-bezier(0.16, 1, 0.3, 1) .5s;
 }
 
-::-webkit-scrollbar {
+/*CSS анимации*/
+@keyframes transparency{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes animation1 {
+  0% {
+    transform: translate(-30vw, -10vw) rotate(0deg);
+  }
+  50%{
+    transform: translate(100vw, 50vw) rotate(360deg);
+  }
+  100% { 
+    transform: translate(-30vw, -15vw) rotate(0deg);
+  }  
+}
+
+@keyframes animation2{
+  0% {
+    transform: translate(100vw, -10vw) rotate(0deg);
+  }
+  50% {
+    transform: translate(-20vw, 90vw) rotate(360deg);
+  }
+  100% { 
+    transform: translate(80vw, -10vw) rotate(0deg);
+  }  
+}
+
+@keyframes animation3{
+  0% {
+    transform: translate(100vw, 70vw) rotate(0deg);
+  }
+  50% {
+    transform: translate(-20vw, -10vw) rotate(360deg);
+  }
+  100% {
+    transform: translate(100vw, 75vw) rotate(0deg);
+  }
+}
+
+@keyframes animation4{
+  0% {
+    transform: translate(-30vw, 70vw) rotate(0deg);
+  }
+  100% {
+    transform: translate(100vw, -10vw) rotate(15deg);
+  }
+}
+
+@keyframes animation5{
+  0% {
+    transform: translate(-30vw, 35vw) rotate(0deg);
+  }
+  50% {
+    transform: translate(100vw, 15vw) rotate(15deg);
+  }
+  51% {
+    transform: translate(100vw, 15vw) rotate(180deg);
+  }
+  100% {
+    transform: translate(-30vw, 35vw) rotate(180deg);
+  }
+}
+
+@keyframes animation6{
+  0% {
+    transform: translate(100vw, -10vw);
+  }
+  100% {
+    transform: translate(-20vw, 75vw);
+  }
+}
+
+@keyframes showToTop{
+  0%{
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/*::-webkit-scrollbar {
   width: 10px; 
   background-color: rgba(0,0,0,.75);
 }
@@ -306,28 +301,38 @@ header a:hover{
 }
 ::-webkit-scrollbar-thumb:vertical:active {
   -webkit-border-radius: 1rem;
+}*/
+
+/*медиа запросы*/
+@media screen and (max-width: 800px){
+  header{
+    height: 100vh;
+  }
+  #up{
+    display: block;
+  }
 }
 
 @media all and (max-width: 992px){
-	section img{
-		width: 75%;
-	}
+  section img{
+    width: 75%;
+  }
 
-	#logo{
-		height: 40%;
-	}
+  #logo{
+    height: 40%;
+  }
 
-	#list{
-		display: block;
-		text-align: center;
-	}
+  #list{
+    display: block;
+    text-align: center;
+  }
 
-	#list a{
-		display: block;
-	}
+  #list a{
+    display: block;
+  }
 
-	header a{
-		width: 100%;
-		text-align: center;
-	}
+  header a{
+    width: 100%;
+    text-align: center;
+  }
 }

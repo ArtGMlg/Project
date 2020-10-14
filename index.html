@@ -16,10 +16,10 @@
   <header>
     <div id="logo"><i class="fas fa-globe-americas"></i></div>
     <div class="d-md-flex">
-      <div class="col-12 col-md-6 d-flex d-md-inline-flex justify-content-center">
+      <div class="col-12 col-md-6 d-flex d-md-inline-flex justify-content-center text-uppercase">
         <a href="stars.html">Звездное небо</a>
       </div>
-    	<div class="col-12 col-md-6 d-flex d-md-inline-flex justify-content-center">
+    	<div class="col-12 col-md-6 d-flex d-md-inline-flex justify-content-center text-uppercase">
         <a href="earth.html">Солнечная система</a>
       </div>
 	  </div>
@@ -163,7 +163,7 @@
       if(window.pageYOffset >= $(window).height()){
         $('#toTop').css("display", "flex");
       }else{
-        $('#toTop').css("display", "none");
+        $('#toTop').fadeOut();
       };
     };
 

@@ -26,7 +26,6 @@ var Detector = {
 
 		var element = document.createElement( 'div' );
 		element.id = 'webgl-error-message';
-		element.style.height = $(window).height() + "px";
 		element.style.padding = $(window).height()*0.286 + "px" + " 0px" + " 0px" + " 0px";
 
 		if ( ! this.webgl ) {

@@ -178,6 +178,10 @@ article{
   transition:.3s linear;
 }
 
+section{
+  height: 100vh;
+}
+
 section img
 {
   transition:.3s linear;
@@ -186,6 +190,12 @@ section img
 
 section:nth-child(4n+3){
   flex-flow: row-reverse;
+}
+
+section div.col-lg-7 p{
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 25px;
+  text-align: justify;
 }
 
 .appear-anim-img{
@@ -311,11 +321,26 @@ section:nth-child(4n+3){
   #up{
     display: block;
   }
+  .mk_scroller_panel{
+    display: none!important;
+  }
 }
 
-@media all and (max-width: 992px){
+@media all and (max-width: 768px){
+  section{
+    height: auto;
+  }
+}
+
+@media all and (max-width: 576px){
   section img{
     width: 75%;
+  }
+}
+
+@media all and (min-width: 576px) and (max-width: 992px){
+  section img{
+    width: 50%;
   }
 
   #logo{

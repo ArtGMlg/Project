@@ -117,6 +117,7 @@
       </label>
     </div>
   </div>
+  <!-- Контейнер для нашего канваса -->
   <div id ="WebGL-output"></div>
   <script type="text/javascript">
     if(!localStorage.getItem('quality')){
@@ -341,12 +342,14 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-      $('#loadingScreen').animate({
+      /*$('#loadingScreen').animate({
         'opacity': '0'
       }, 800, 'linear', function(){
         $(this).hide();
         clearInterval(interval);
-      });
+      });*/
+      $('#loadingScreen').fadeOut(800).delay(800).remove();
+      clearInterval(interval);
 
       $('#'+localStorage.quality).prop('checked', true);
 

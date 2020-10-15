@@ -27,7 +27,7 @@ function appearBox(element, element_top, bottom_of_window) {
 
 function appearContainer(element, element_top, bottom_of_window) {
   /* If the object is completely visible in the window, fade it it */
-  var buffer = element.outerHeight()/2;
+  var buffer = element.outerHeight()/3;
   if( bottom_of_window > element_top + buffer) {
     element.removeClass('trigger').stop(true, true).delay(element.data('delay')).animate({
       opacity: 1

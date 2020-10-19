@@ -67,17 +67,12 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title h3" id="exampleModalLabel">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-body p-4">
           </div>
         </div>
       </div>
@@ -110,7 +105,7 @@
         crossDomain: true,
         contentType: 'text/plain; charset=utf-8',
         success: function (data) {
-          constellations = JSON.parse(data)
+          constellations = JSON.parse(data);
           createConstDivs(constellations)
         }
       });
@@ -141,16 +136,24 @@
           $('#myth').html("Мы уже знаем об этой ошибке и стараемся устранить её.");
           setTimeout(show, 500);
         }else{
-        for(i=0; i<constellations.constellations.length; i++){
-          if(constellations.constellations[i].latName === constname){
-            $('#exampleModalLongTitle').html("Миф о созвездии " + constellations.constellations[i].name);
-            $('#myth').html(constellations.constellations[i].description);
-            setTimeout(function(){
-              $('#exampleModalLong').modal('toggle');
-            }, 500);
-            return;
+          if ($('#constellationModal').hasClass('show')) {
+            $('#constellationModal').modal('hide');
           };
-        };
+          for(i=0; i<constellations.constellations.length; i++){
+            if(constellations.constellations[i].latName === constname){
+              $('#exampleModalLongTitle').html("Миф о созвездии " + constellations.constellations[i].name);
+              $('#myth').html(constellations.constellations[i].description);
+              setTimeout(function(){
+                $('#exampleModalLong').modal('toggle');
+              }, 500);
+              break;
+            };
+          };
+          $('#exampleModalLong').on('hidden.bs.modal', function(e){
+            if ($(window).width() <= 992) {
+              $('#constellationModal').modal('show');
+            }
+          });
         };
       };
     </script>

@@ -25,8 +25,9 @@ THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal
 };
 
 THREE.DefaultLoadingManager.onLoad = function ( ) {
-  $('#loadingScreen').remove();
-  console.log( 'Loading Complete!');
+  $('#loadingScreen').fadeOut(800).delay(800).remove();
+  clearInterval(interval);
+  console.log('Loading Complete!');
 };
 
 //Фон космоса - большая сфера

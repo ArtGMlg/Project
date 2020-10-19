@@ -220,5 +220,20 @@ h2{
 }
 
 .modal-open .modal{
-  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.modal-content{
+  background-color: rgba(255,255,255,.6);
+  border-radius: 10px;
+}
+
+.modal-body{
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.modal-body .btn {
+  margin-top: 15px;
 }

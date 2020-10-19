@@ -36,153 +36,23 @@ function display() {
   $('#list').css('opacity', "1");
 }
 
-function hide() {
-  $('#list').css("display", "none");
-}
-
 function Inf(constellationName) {
-  switch(constellationName){
-    case 'ursam':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#ursam').css('display', "block");
-      $('#ursam').css('opacity', "1");
-      animCamera(ursam.position);
-      break;
-    case 'draco':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#draco').css('display', "block");
-      $('#draco').css('opacity', "1");
-      animCamera(draco.position);
-      break;
-    case 'casiopea':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#casiopea').css('display', "block");
-      $('#casiopea').css('opacity', "1");
-      animCamera(casiopea.position);
-      break;
-    case 'camelopardus':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#camelopardus').css('display', "block");
-      $('#camelopardus').css('opacity', "1");
-      animCamera(camelopardus.position);
-      break;
-    case 'cepheus':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#cepheus').css('display', "block");
-      $('#cepheus').css('opacity', "1");
-      animCamera(cepheus.position);
-      break;
-    case 'ursaMaj':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#ursaMaj').css('display', "block");
-      $('#ursaMaj').css('opacity', "1");
-      animCamera(ursaMaj.position);
-      break;
-    case 'leoMin':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#leoMin').css('display', "block");
-      $('#leoMin').css('opacity', "1");
-      animCamera(leoMin.position);
-      break;
-    case 'canesVinatici':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#canesVinatici').css('display', "block");
-      $('#canesVinatici').css('opacity', "1");
-      animCamera(canesVinatici.position);
-      break;
-    case 'booties':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#booties').css('display', "block");
-      $('#booties').css('opacity', "1");
-      animCamera(booties.position);
-      break;
-    case 'coronaBorealis':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#coronaBorealis').css('display', "block");
-      $('#coronaBorealis').css('opacity', "1");
-      animCamera(coronaBorealis.position);
-      break;
-    case 'hercules':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#hercules').css('display', "block");
-      $('#hercules').css('opacity', "1");
-      animCamera(hercules.position);
-      break;
-    case 'lyra':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#lyra').css('display', "block");
-      $('#lyra').css('opacity', "1");
-      animCamera(lyra.position);
-      break;
-    case 'cygnus':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#cygnus').css('display', "block");
-      $('#cygnus').css('opacity', "1");
-      animCamera(cygnus.position);
-      break;
-    case 'lacerta':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#lacerta').css('display', "block");
-      $('#lacerta').css('opacity', "1");
-      animCamera(lacerta.position);
-      break;
-    case 'pegasusAndromeda':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#pegasusAndromeda').css('display', "block");
-      $('#pegasusAndromeda').css('opacity', "1");
-      animCamera(pegasusAndromeda.position);
-      break;
-    case 'perseus':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#perseus').css('display', "block");
-      $('#perseus').css('opacity', "1");
-      animCamera(perseus.position);
-      break;
-    case 'triangulum':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#triangulum').css('display', "block");
-      $('#triangulum').css('opacity', "1");
-      animCamera(triangulum.position);
-      break;
-    case 'auriga':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#auriga').css('display', "block");
-      $('#auriga').css('opacity', "1");
-      animCamera(auriga.position);
-      break;
-    case 'gemini':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#gemini').css('display', "block");
-      $('#gemini').css('opacity', "1");
-      animCamera(gemini.position);
-      break;
-    case 'lynx':
-      $('#list').css('opacity', "0");
-      setTimeout(hide, 500);
-      $('#lynx').css('display', "block");
-      $('#lynx').css('opacity', "1");
-      animCamera(lynx.position);
-      break;
-  }
+  for (var i = 0; i < spacesphere.children.length; i++) {
+    if (spacesphere.children[i].uuid === constellationName) {
+      animCamera(spacesphere.children[i].position);
+    }
+  };
+  $('#list').css('opacity', "0");
+  setTimeout(function() {
+    $('#list').css("display", "none");
+  }, 500);
+  $('#'+constellationName).css('display', "block");
+  $('#'+constellationName).css('opacity', "1");
+  var constellationCard = $('#content').find('#' + constellationName);
+  var modal = $('#constellationModal');
+  modal.find('.modal-title').text(constellationCard.find('h2').text());
+  modal.find('.modal-body').html(constellationCard.find('ul').html() + constellationCard.find('p').html() + constellationCard.find('a.btn')[0].outerHTML)
+  modal.modal('show');
 };
 
 function back() {

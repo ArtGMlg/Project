@@ -18,7 +18,8 @@ header{
   height: 100vh;
   background: rgba(0,0,0,.75);
   transition: .3s linear;
-  backdrop-filter: saturate(180%) blur(5px);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+          backdrop-filter: saturate(180%) blur(5px);
   animation: transparency .5s linear;
   animation-delay: .3s;
   animation-fill-mode: both;

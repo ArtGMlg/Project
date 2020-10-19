@@ -21,7 +21,8 @@ body{ margin: 0; overflow: hidden; }
   position: absolute;
   z-index: 102;
   background-color: rgba(204,204,204, .6);
-  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+          backdrop-filter: saturate(180%) blur(20px);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -55,7 +56,8 @@ h5, h3{
   position: fixed;
   width: 100%;
   z-index: 100;
-  backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
+          backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
 }
 
 .fas{
@@ -72,7 +74,8 @@ h5, h3{
 #inf{
   position: fixed;
   background-color: rgba(225,225,225,.5);
-  backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
+          backdrop-filter: saturate(180%) brightness(0.65) blur(15px);
   height: 91vh;
   width: 100vw;
   z-index: 100;
@@ -248,7 +251,8 @@ label[for="menu"]{
   font-weight: bold;
   color: white;
   transition: all .3s linear;
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
 }
 
 .submenu li a:hover{
@@ -469,7 +473,8 @@ div#myth p{
   z-index: -1;
   width: 100%;
   height: 100%;
-  backdrop-filter: saturate(180%) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+          backdrop-filter: saturate(180%) blur(15px);
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }

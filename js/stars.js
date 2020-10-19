@@ -266,10 +266,9 @@ $(function(){
           var intersects = raycaster.intersectObjects( spacesphere.children );
 
           for ( var i = 0; i < intersects.length; i++ ) {
-            $('.constellation').css('display', 'none');
-            Inf(intersects[ i ].object.uuid);
+            $('.constellation').fadeOut(500);
             $("#collapse").prop('checked', true);
-            collapse();
+            Inf(intersects[ i ].object.uuid);
           }
         }
       });
@@ -292,10 +291,9 @@ $(function(){
           var intersects = raycaster.intersectObjects( spacesphere.children );
 
           for ( var i = 0; i < intersects.length; i++ ) {
-            $('.constellation').css('display', 'none');
-            Inf(intersects[ i ].object.uuid);
+            $('.constellation').fadeOut(500);
             $("#collapse").prop('checked', true);
-            collapse();
+            Inf(intersects[ i ].object.uuid);
           }
         }
       });

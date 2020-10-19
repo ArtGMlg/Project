@@ -16,25 +16,17 @@ function collapse() {
     $('#content').css("left", "65%");
     $('#label').css("transform", "rotate(180deg)");
     for (var i = 0; i < $('.constellation').length; i++) {
-      if ($('.constellation')[i].style.display === 'block') {
-        return;
+      if ($('.constellation').eq(i).css('display') === 'block') {
+        return
       }
     };
-    setTimeout(function(){
-      $('#list').css('display', "block");
-      $('#list').css('opacity', "1");
-    }, 500);
+    $('#list').delay(500).fadeIn(500);
   }else{
     $('#content').css("left", "calc(100vw - 30px)");
-    setTimeout(hide, 500);
+    $('#list').delay(500).fadeOut(500);
     $('#label').css("transform", "rotate(360deg)");
   };
 };
-
-function display() {
-  $('#list').css('display', "block");
-  $('#list').css('opacity', "1");
-}
 
 function Inf(constellationName) {
   for (var i = 0; i < spacesphere.children.length; i++) {
@@ -42,22 +34,22 @@ function Inf(constellationName) {
       animCamera(spacesphere.children[i].position);
     }
   };
-  $('#list').css('opacity', "0");
-  setTimeout(function() {
-    $('#list').css("display", "none");
-  }, 500);
-  $('#'+constellationName).css('display', "block");
-  $('#'+constellationName).css('opacity', "1");
+  if (document.getElementById('collapse').checked) {
+    $('#content').css("left", "65%");
+    $('#label').css("transform", "rotate(180deg)");
+  };
+  $('#list').delay(500).fadeOut(500);
+  $('#'+constellationName).delay(500).fadeIn(500);
   var constellationCard = $('#content').find('#' + constellationName);
   var modal = $('#constellationModal');
   modal.find('.modal-title').text(constellationCard.find('h2').text());
   modal.find('.modal-body').html(constellationCard.find('ul').html() + constellationCard.find('p').html() + constellationCard.find('a.btn')[0].outerHTML)
-  modal.modal('show');
+  width < 992 ? modal.modal('show') : '';
 };
 
 function back() {
-  $('.constellation').css('opacity', '0');
-  setTimeout(consHide, 500);
+  $('.constellation').fadeOut(500);
+  $('#list').delay(500).fadeIn(500);
   $("#collapse").prop("disabled", false);
 };
 

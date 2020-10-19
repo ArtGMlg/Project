@@ -4,8 +4,6 @@
 
 #list{
   display: none;
-  opacity: 0;
-  transition: opacity .5s linear;
   width: 95%;
 }
 
@@ -185,11 +183,9 @@ ul#list li:nth-child(20) {
 }
 
 .constellation{
-  opacity: 0;
   display: none;
   margin-left: 25px;
   padding-top: 10px;
-  transition: opacity .5s linear;
   font-family: 'Oswald', serif;
   font-size: 22px;
 }

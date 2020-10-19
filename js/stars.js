@@ -269,6 +269,7 @@ $(function(){
             $('.constellation').fadeOut(500);
             $("#collapse").prop('checked', true);
             Inf(intersects[ i ].object.uuid);
+            break;
           }
         }
       });
@@ -294,6 +295,7 @@ $(function(){
             $('.constellation').fadeOut(500);
             $("#collapse").prop('checked', true);
             Inf(intersects[ i ].object.uuid);
+            break;
           }
         }
       });

@@ -38,7 +38,7 @@ function Inf(constellationName) {
     $('#content').css("left", "65%");
     $('#label').css("transform", "rotate(180deg)");
   };
-  $('#list').delay(500).fadeOut(500);
+  $('#list').fadeOut(500);
   $('#'+constellationName).delay(500).fadeIn(500);
   var constellationCard = $('#content').find('#' + constellationName);
   var modal = $('#constellationModal');

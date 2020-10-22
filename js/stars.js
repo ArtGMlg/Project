@@ -264,13 +264,13 @@ $(function(){
 
           // calculate objects intersecting the picking ray
           var intersects = raycaster.intersectObjects( spacesphere.children );
-
+          var c;
           for ( var i = 0; i < intersects.length; i++ ) {
-            $('.constellation').fadeOut(500);
-            $("#collapse").prop('checked', true);
-            Inf(intersects[ i ].object.uuid);
-            break;
-          }
+            c = intersects[i];
+          };
+          $('.constellation').fadeOut(500);
+          $("#collapse").prop('checked', true);
+          c ? Inf(c.object.uuid) : '';
         }
       });
     } else {
@@ -290,13 +290,13 @@ $(function(){
 
           // calculate objects intersecting the picking ray
           var intersects = raycaster.intersectObjects( spacesphere.children );
-
+          var c;
           for ( var i = 0; i < intersects.length; i++ ) {
-            $('.constellation').fadeOut(500);
-            $("#collapse").prop('checked', true);
-            Inf(intersects[ i ].object.uuid);
-            break;
-          }
+            c = intersects[i];
+          };
+          $('.constellation').fadeOut(500);
+          $("#collapse").prop('checked', true);
+          c ? Inf(c.object.uuid) : '';
         }
       });
     }

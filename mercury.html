@@ -107,10 +107,16 @@
     </p>
   </div>
   <div id="quality">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button onclick="changeQualityLow()" type="button" id="low" class="btn btn-secondary">Low</button>
-      <button onclick="changeQualityMiddle()" type="button" id="medium" class="btn btn-secondary">Medium</button>
-      <button onclick="changeQualityHigh()" type="button" id="high" class="btn btn-secondary">High</button>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary" onclick="changeQuality('low')">
+        <input type="radio" name="options" id="low"> Low
+      </label>
+      <label class="btn btn-secondary" onclick="changeQuality('medium')">
+        <input type="radio" name="options" id="medium"> Medium
+      </label>
+      <label class="btn btn-secondary" onclick="changeQuality('high')">
+        <input type="radio" name="options" id="high"> High
+      </label>
     </div>
   </div>
   <div id ="WebGL-output"></div>
@@ -143,85 +149,54 @@
       $('.progress-bar').prop('aria-valuenow', itemsLoaded);  
       $('.progress-bar').text(Math.floor((itemsLoaded/itemsTotal)*100) + "%")
     };
-    
-    var planetMaterial = new THREE.MeshPhongMaterial(); 
-    planetMaterial.map = texture;
-    
-    planetMaterial.bumpMap = bumpmap;
-    planetMaterial.bumpScale = 0.005;
 
-    var planet = new THREE.Mesh(planetGeometry, planetMaterial); 
+    var planetGeometry = new THREE.SphereGeometry(1,32,32),
+        planetMaterial,
+        planet,
+        controls,
+        plRot = 0.002,
+        clRot = 0.003,
+        spRot = 0.001,
+        cut;
 
-    planet.position.set(0,0,0); 
-    
-    //planet.rotation.x -= 0.4;
-   
-    scene.add(planet);
+    function matFunc(resolve, reject){
+      var quality = localStorage.quality;
+      if (quality === 'low') {
+        var mat = new THREE.MeshBasicMaterial();
+        resolve(mat);
+      }else if (quality === 'medium') {
+        var mat = new THREE.MeshLambertMaterial();
+        resolve(mat);
+      }else if (quality === 'high') { 
+        var mat = new THREE.MeshPhongMaterial();
+        resolve(mat);
+      }
+    }
 
-    function changeQualityLow(){
-      planet.material.dispose();
-      scene.remove(planet);
-      planetMaterial = new THREE.MeshBasicMaterial();
+    async function create(){
+      planetMaterial = await new Promise(matFunc);
       planetMaterial.needsUpdate = true;
       planetMaterial.map = texture;
-      
+    
       planetMaterial.bumpMap = bumpmap;
       planetMaterial.bumpScale = 0.005;
-      planet = new THREE.Mesh(planetGeometry, planetMaterial);
 
-      uncut();
+      planet = new THREE.Mesh(planetGeometry, planetMaterial); 
 
+      planet.position.set(0,0,0);
+     
       scene.add(planet);
+    }
 
-      $('#low').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
-      $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
-      $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
-
-      localStorage.quality = 'low';
-    };
-
-    function changeQualityMiddle(){
+    //Описываем функцию смены качества отрисовки текстур
+    function changeQuality(q){
+      localStorage.quality = q;
       planet.material.dispose();
       scene.remove(planet);
-      planetMaterial = new THREE.MeshLambertMaterial();
-      planetMaterial.needsUpdate = true;
-      planetMaterial.map = texture;
-      
-      planetMaterial.bumpMap = bumpmap;
-      planetMaterial.bumpScale = 0.005;
-      planet = new THREE.Mesh(planetGeometry, planetMaterial);
+      create();
 
-      uncut();
+      cut !== undefined ? uncut():'';
 
-      scene.add(planet);
-
-      $('#medium').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
-      $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
-      $('#high').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
-
-      localStorage.quality = 'med';
-    };
-
-    function changeQualityHigh(){
-      planet.material.dispose();
-      scene.remove(planet);
-      planetMaterial = new THREE.MeshPhongMaterial();
-      planetMaterial.needsUpdate = true;
-      planetMaterial.map = texture;
-      
-      planetMaterial.bumpMap = bumpmap;
-      planetMaterial.bumpScale = 0.005;
-      planet = new THREE.Mesh(planetGeometry, planetMaterial);
-
-      uncut();
-
-      scene.add(planet);
-
-      $('#high').css({"background-color" : "#5a6268", "border-color": "#5a6268"});
-      $('#low').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
-      $('#medium').css({"background-color" : "#6c757d", "border-color": "#6c757d"});
-
-      localStorage.quality = 'high';
     };
     
     //Space background is a large sphere
@@ -235,20 +210,16 @@
     //spacesphere needs to be double sided as the camera is within the spacesphere
     spacesphere.material.side = THREE.DoubleSide;
     
-    //spacesphere.material.map.wrapS = THREE.RepeatWrapping; 
-    //spacesphere.material.map.wrapT = THREE.RepeatWrapping;
-    //spacesphere.material.map.repeat.set( 5, 3);
-    
     scene.add(spacesphere);
 
-    function create(){
+    function createCutPlane(){
       var cutGeo = new THREE.PlaneGeometry(5.1,5.1,1,1);
       var cutMat = new THREE.MeshPhongMaterial({
         map: cutTex,
         side: THREE.DoubleSide,
         transparent: true
       });
-      var cut = new THREE.Mesh(cutGeo,cutMat);
+      cut = new THREE.Mesh(cutGeo,cutMat);
       cut.position.set(0, 0, 0);
       cut.rotation.y = 3.14;
       return cut;
@@ -277,20 +248,26 @@
       camera.updateProjectionMatrix();
     };
 
-    var cut = create();
-
     function half() {
       if (document.getElementById('cut').checked) {
         scene.remove(planet);
-        scene.add(cut);
-        camera.position.set(0,0,-7);
+        scene.add(createCutPlane());
+        if ($(window).width() >= 870){
+          camera.position.set(0,0,-7);
+        }else{
+          camera.position.set(0,0,-9);
+        };
         $('#playPause').prop('checked', true);
         playPause();
-        controls.rotateSpeed = 0;
-        controls.zoomSpeed = 0;
+        $('#playPause').prop('disabled', true);
+        $('label[for="playPause"] i').addClass('text-muted').parent().css('cursor', 'not-allowed');
+        controls.enabled = false;
       }else{
         $('#playPause').prop('checked', false);
         playPause();
+        $('#playPause').prop('disabled', false);
+        $('label[for="playPause"] i').removeClass('text-muted').parent().css('cursor', 'pointer');
+        controls.enabled = true;
         uncut();
       };
     };
@@ -300,11 +277,10 @@
       cut.geometry.dispose();
       cut.material.dispose();
       cut = undefined;
-      cut = create();
       scene.add(planet);
     };
 
-    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
 
     controls.enableDamping = true; 
     controls.dampingFactor = 0.05;
@@ -316,12 +292,13 @@
 
     controls.maxPolarAngle = Math.PI;
 
-    //call render loop once
+    //Вызываем цикл прорисовки
+    callRenderer();
 
-    var plRot = 0.002;
-    var spRot = 0.001;
-
-    render();
+    async function callRenderer(){
+      await create();
+      render()
+    }
     //render loop
     function render() { 
       requestAnimationFrame(render); 
@@ -333,23 +310,12 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-      $('#loadingScreen').remove();
+      $('#loadingScreen').fadeOut(800);
+      clearInterval(interval);
 
       console.log( 'Loading Complete!');
 
-      var quality = localStorage.getItem('quality');
-
-      switch(quality){
-        case "low":
-          changeQualityLow();
-          break;
-        case "med":
-          changeQualityMiddle();
-          break;
-        case "high":
-          changeQualityHigh();
-          break;
-      };
+      $('#'+localStorage.quality).prop('checked', true);
     };
     </script>
   <script type="text/javascript" src="./js/blocks.js"></script>

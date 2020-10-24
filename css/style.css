@@ -35,11 +35,12 @@ body{ margin: 0; overflow: hidden; }
 
 #loadingContent img{
   width: 25%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 665px){
   #loadingContent img{
-    width: 25%
+    width: 45%
   }
 }
 

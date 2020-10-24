@@ -284,10 +284,10 @@
         camera.position.set(0,0,-7);
         $('#playPause').prop('checked', true);
         playPause();
-        controls.rotateSpeed = 0;
-        controls.zoomSpeed = 0;
+        controls.enabled = false;
       }else{
         $('#playPause').prop('checked', false);
+        controls.enabled = true;
         playPause();
         uncut();
       };
@@ -331,7 +331,8 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-      $('#loadingScreen').remove();
+      $('#loadingScreen').fadeOut(800);
+      clearInterval(interval);
 
       console.log( 'Loading Complete!');
 

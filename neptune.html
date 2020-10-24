@@ -103,8 +103,8 @@
       <input onclick="playPause()" type="checkbox" name="playPause" id="playPause">
       <label for="playPause" id="play"><i style="color: white;" id="player" class="fas fa-play"></i></label>
       <label for="playPause" id="pause"><i style="color: white;" id="player" class="fas fa-pause"></i></label>
-      <input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">
-      <label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>
+      <!--<input onclick="half()" type="checkbox" name="toggle" id="cut" class="cut">-->
+      <!--<label for="cut" id="cutter"><i id="cutter" class="fas fa-cut"></i></label>-->
     </p>
   </div>
   <div id="quality">
@@ -272,7 +272,8 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-      $('#loadingScreen').remove();
+      $('#loadingScreen').fadeOut(800);
+      clearInterval(interval);
 
       console.log( 'Loading Complete!');
 

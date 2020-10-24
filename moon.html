@@ -256,7 +256,8 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-      $('#loadingScreen').remove();
+      $('#loadingScreen').fadeOut(800);
+      clearInterval(interval);
 
       console.log( 'Loading Complete!');
 

@@ -342,13 +342,7 @@
     };
 
     THREE.DefaultLoadingManager.onLoad = function ( ) {
-      /*$('#loadingScreen').animate({
-        'opacity': '0'
-      }, 800, 'linear', function(){
-        $(this).hide();
-        clearInterval(interval);
-      });*/
-      $('#loadingScreen').fadeOut(800).delay(800).remove();
+      $('#loadingScreen').fadeOut(800);
       clearInterval(interval);
 
       $('#'+localStorage.quality).prop('checked', true);

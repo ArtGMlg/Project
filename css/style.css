@@ -38,11 +38,11 @@ body{ margin: 0; overflow: hidden; }
   object-fit: cover;
 }
 
-@media screen and (max-width: 665px){
+/*@media screen and (max-width: 665px){
   #loadingContent img{
     width: 45%
   }
-}
+}*/
 
 #phrases{
   opacity: 1;
